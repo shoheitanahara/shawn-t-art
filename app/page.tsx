@@ -110,7 +110,11 @@ export default function Home() {
         if (!open) setSelectedImage(null);
       }}>
         <DialogContent className="max-w-2xl w-[90%] mx-auto">
-          <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          {loading ? ( // 追加: ローディング中の表示
+            <div className="text-lg">Loading...</div>
+          ) : (
+            <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          )}
         </DialogContent>
       </Dialog>
     </main>
