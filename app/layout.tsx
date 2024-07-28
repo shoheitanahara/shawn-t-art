@@ -8,8 +8,8 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Shawn T.',
-  description: 'Shawn T. | Showcasing our AI-generated masterpieces using the latest technologies like Stable Diffusion, Next.js, Vercel, Tailwind CSS, Radix UI, and more.',
+  title: 'Shawn T. Art',
+  description: 'Shawn T. Art | Showcasing our AI-generated art masterpieces. Fast portofolio using the latest technologies like Stable Diffusion, Next.js, Vercel, Tailwind CSS, Radix UI, and more.',
   icons: {
     icon: 'app/images/00200-495783960.png', // faviconのパスを指定
   },
