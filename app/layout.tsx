@@ -9,7 +9,10 @@ interface RootLayoutProps {
 
 export const metadata: Metadata = {
   title: 'Shawn T.',
-  description: 'Shawn T. | Showcasing our AI-generated masterpieces using the latest technologies like Next.js, Vercel, Tailwind CSS, Radix UI, and more.',
+  description: 'Shawn T. | Showcasing our AI-generated masterpieces using the latest technologies like Stable Diffusion, Next.js, Vercel, Tailwind CSS, Radix UI, and more.',
+  icons: {
+    icon: 'app/images/00200-495783960.png', // faviconのパスを指定
+  },
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
