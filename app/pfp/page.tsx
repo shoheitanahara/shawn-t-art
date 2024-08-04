@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Card, CardContent } from "@/components/ui/card"; // Cardコンポーネントをインポート
 import { useEffect, useState } from "react";
 import {
@@ -36,7 +37,7 @@ export default function Home() {
   useEffect(() => {
     const fetchImages = async (page: number) => {
       setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
+      const response = await fetch(`/api/images/pfp?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
       const data = await response.json(); // 変更: JSONを直接取得
 
       if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
@@ -94,7 +95,7 @@ export default function Home() {
           <PaginationItem>
             <PaginationLink 
               onClick={currentPage < totalPages ? () => handlePageChange(totalPages) : undefined}
-              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
             >
               Last
             </PaginationLink> {/* 最後のページボタン */}
@@ -105,7 +106,11 @@ export default function Home() {
         if (!open) setSelectedImage(null);
       }}>
         <DialogContent className="max-w-2xl w-[90%] mx-auto">
-          <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          {loading ? ( // 追加: ローディング中の表示
+            <div className="text-lg">Loading...</div>
+          ) : (
+            <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          )}
         </DialogContent>
       </Dialog>
     </main>
