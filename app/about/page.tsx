@@ -26,7 +26,8 @@ const AboutPage: FC = () => {
       </div>
 
       <div className="mt-8">
-        <p className="text-lg italic">すべての画像は私たちの著作物であり、無断使用や権利侵害は厳禁です。これに違反した場合、法的措置を講じることがありますので、ご了承ください。</p>
+        <p className="text-lg italic">すべての画像は私たちのオリジナルであり、無断使用や権利侵害は厳禁です。これに違反した場合、法的措置を講じることがありますので、ご了承ください。</p>
+        <p className="text-lg italic">All images are our original works, and unauthorized use or infringement of rights is strictly prohibited. Legal action may be taken in case of violation, so please be aware.</p>
       </div>
     </div>
   )
