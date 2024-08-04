@@ -91,13 +91,13 @@ export default function Home() {
           </PaginationItem>
           <PaginationItem>
             <PaginationNext 
-              onClick={() => handlePageChange(currentPage + 1)} // 次のページに移動
-              className={`cursor-pointer ${images.length < ITEMS_PER_PAGE ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+              onClick={currentPage < totalPages ? () => handlePageChange(currentPage + 1) : undefined} // 修正: 最後のページでのクリックを無効化
+              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
             /> {/* 次へボタン */}
           </PaginationItem>
           <PaginationItem>
             <PaginationLink 
-              onClick={currentPage < totalPages ? () => handlePageChange(totalPages) : undefined}
+              onClick={currentPage < totalPages ? () => handlePageChange(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
               className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
             >
               Last
