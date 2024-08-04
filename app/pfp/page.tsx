@@ -54,6 +54,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pt-10 pb-6 md:pb-24">
+      <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
+        <h2 className="text-2xl font-bold">Future Vintage PFP</h2>
+      </div>
       {loading ? ( // 追加: ローディング中の表示
         <div className="text-lg">Loading...</div>
       ) : (

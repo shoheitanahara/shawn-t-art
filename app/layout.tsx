@@ -51,7 +51,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </nav>
           <div className="container mx-auto flex justify-center items-center">
-            <h1 className="text-3xl font-bold">Shawn T. Art</h1>
+            <h1 className="text-4xl font-bold">Shawn T. Art</h1>
           </div>
           {children}
           <footer className="bg-gray-800 text-white p-4">
