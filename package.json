@@ -22,6 +22,7 @@
     "next-themes": "^0.3.0",
     "postcss": "^8.4.40",
     "punycode": "^2.3.1",
+    "qrcode": "^1.5.4",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8.57.0",
