@@ -57,11 +57,16 @@ const ImageDownloader = () => {
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height - 200);
 
                         ctx.fillStyle = 'white';
-                        ctx.font = '20px Poppins, sans-serif';
+                        ctx.font = '30px Poppins, sans-serif';
 
                         ctx.fillText(data.title, 20, canvas.height - 150);
-                        ctx.fillText(`Created by ${data.creator}`, 20, canvas.height - 125);
-                        ctx.fillText(`Owned by ${data.owner}`, 20, canvas.height - 75);
+
+                        ctx.font = '20px Poppins, sans-serif';
+                        ctx.fillText(`Created by ${data.creator}`, 20, canvas.height - 120);
+
+
+                        ctx.font = '20px Poppins, sans-serif';
+                        ctx.fillText(`Owned by ${data.owner}`, 20, canvas.height - 65);
 
                         ctx.drawImage(qrCodeImg, canvas.width - 175, canvas.height - 175, 150, 150);
                     };

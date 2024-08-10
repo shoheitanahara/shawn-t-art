@@ -39,6 +39,8 @@ export async function GET(request: Request) {
     const imageUrlMatch = html.match(/<img.*?class="Image--image".*?src="(.*?)"/); // 修正: imgタグからsrcを取得
     const imageUrl = imageUrlMatch ? imageUrlMatch[1] : ''; // 修正: imageUrlMatchを使用
 
+    console.log(imageUrl);
+
     console.log(title, owner, creator, imageUrl);
 
     return NextResponse.json({
