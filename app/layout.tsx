@@ -44,6 +44,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </Button>
             </div>
             <div className="flex items-center space-x-4">
+              <Button variant="outline" asChild className="ml-auto">
+                <Link href="/create">NFT Pic</Link>
+              </Button>
               <Button variant="outline" asChild>
                 <Link href="/about">About</Link>
               </Button>
