@@ -6,8 +6,8 @@ export async function GET(request: Request) {
     const url = searchParams.get('url'); // 修正: URLを直接取得
 
     // URLがnullの場合の処理を追加
-    if (!url) {
-        return NextResponse.json({ error: 'URL is required' }, { status: 400 });
+    if (!url || !url.startsWith('https://opensea.io/assets/')) { // 修正: URLの検証を追加
+        return NextResponse.json({ error: 'Valid OpenSea URL is required' }, { status: 400 });
     }
     console.log(url);
     const response = await fetch(url!); // 修正: urlを非nullアサーションで強制
