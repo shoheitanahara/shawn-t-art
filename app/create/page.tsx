@@ -8,6 +8,17 @@ import QRCode from 'qrcode'; // QRコードライブラリのインポート
 const ImageDownloader = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [url, setUrl] = useState('https://opensea.io/assets/ethereum/0x2eacf49b0c80d883cc699883e50a0ce10a453c7f/4');
+    const [nftData, setNftData] = useState<{ title: string; owner: string; creator: string; imageUrl: string } | null>(null);
+    const [loading, setLoading] = useState(false); // ローディング状態の追加
+
+    const fetchNFTData = async (url: string) => {
+        setLoading(true); // ローディング開始
+        const response = await fetch(`/api/opensea?url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        setNftData(data);
+        setLoading(false); // ローディング終了
+        await drawCanvas(data); // データ取得後に描画
+    };
 
     const downloadImage = () => {
         const canvas = canvasRef.current;
@@ -19,9 +30,9 @@ const ImageDownloader = () => {
         }
     };
 
-    const drawCanvas = async () => {
+    const drawCanvas = async (data: any) => { // 引数にデータを追加
         const canvas = canvasRef.current;
-        if (canvas) {
+        if (canvas && data) {
             const ctx = canvas.getContext('2d');
             if (ctx) {
                 ctx.fillStyle = '#000';
@@ -33,16 +44,16 @@ const ImageDownloader = () => {
 
                 qrCodeImg.onload = () => {
                     const img = new Image();
-                    img.src = '/images/pfp/PFP-4.png';
+                    img.src = data.imageUrl; // NFTの画像URLを使用
                     img.onload = () => {
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height - 200);
 
                         ctx.fillStyle = 'white';
                         ctx.font = '20px Poppins, sans-serif';
 
-                        ctx.fillText('Future Vintage PFP #4', 20, canvas.height - 150);
-                        ctx.fillText('Created by test', 20, canvas.height - 125);
-                        ctx.fillText('Owned by you', 20, canvas.height - 50);
+                        ctx.fillText(data.title, 20, canvas.height - 150);
+                        ctx.fillText(`Created by ${data.creator}`, 20, canvas.height - 125);
+                        ctx.fillText(`Owned by ${data.owner}`, 20, canvas.height - 50);
 
                         ctx.drawImage(qrCodeImg, canvas.width - 175, canvas.height - 175, 150, 150);
                     };
@@ -71,10 +82,13 @@ const ImageDownloader = () => {
                 className="mb-4 p-3 border border-gray-600 rounded bg-gray-700 text-white w-full"
             />
             <div className="flex space-x-4 mb-4 justify-center">
-                <Button onClick={drawCanvas} disabled={!url} className="bg-blue-600 hover:bg-blue-700 w-1/2">Draw</Button>
-                <Button onClick={downloadImage} className="bg-green-600 hover:bg-green-700 w-1/2">Download Image</Button>
+                <Button onClick={() => fetchNFTData(url)} disabled={!url || loading} className="bg-green-600 hover:bg-green-700 w-1/2">
+                    {loading ? 'Loading...' : 'Create'} {/* ローディング中の表示 */}
+                </Button>
+                <Button onClick={downloadImage} className="bg-red-600 hover:bg-red-700 w-1/2">Download Image</Button>
             </div>
-        <Card className="p-6 bg-gray-800 text-white overflow-hidden">
+        <Card className="p-6 bg-gray-800 text-white overflow-hidden relative">
+            {loading && <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">Loading...</div>} {/* ローディング表示 */}
             <canvas ref={canvasRef} width={600} height={800} className="border border-gray-600 max-w-full" />
         </Card>
         </div>
