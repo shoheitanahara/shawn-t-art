@@ -1,11 +1,8 @@
 import { NextResponse } from 'next/server';
 import fetch from 'node-fetch';
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 // リクエストを送信する関数
 const fetchData = async (url: string) => {
-    await delay(5000); // 5秒待機
     const response = await fetch(url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/89.0',

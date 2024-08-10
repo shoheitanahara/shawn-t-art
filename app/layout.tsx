@@ -35,18 +35,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
           disableTransitionOnChange
         >
           <nav className="flex justify-between items-center w-full px-6 md:px-24 pt-5 pb-6 md:pb-12">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <Button variant="outline" asChild>
                 <Link href="/">Top</Link>
               </Button>
               <Button variant="outline" asChild>
                 <Link href="/pfp">PFP</Link>
               </Button>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" asChild className="ml-auto">
-                <Link href="/create">NFT Pic</Link>
+              <Button variant="outline" asChild>
+                <Link href="/nft">NFTs</Link>
               </Button>
+            </div>
+            <div className="flex items-center space-x-2 md:space-x-4">
               <Button variant="outline" asChild>
                 <Link href="/about">About</Link>
               </Button>
