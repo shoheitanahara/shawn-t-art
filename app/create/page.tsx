@@ -1,15 +1,20 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card'; // Cardコンポーネントのインポート
 import { Button } from '@/components/ui/button'; // Buttonコンポーネントのインポート
 import QRCode from 'qrcode'; // QRコードライブラリのインポート
 
 const ImageDownloader = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [url, setUrl] = useState('');
+    const [url, setUrl] = useState('https://opensea.io/assets/ethereum/0x2eacf49b0c80d883cc699883e50a0ce10a453c7f/9'); // デフォルトのURLを設定
     const [nftData, setNftData] = useState<{ title: string; owner: string; creator: string; imageUrl: string } | null>(null);
     const [loading, setLoading] = useState(false); // ローディング状態の追加
+
+    // コンポーネントがマウントされたときにデフォルトのURLでデータを取得
+    useEffect(() => {
+        fetchNFTData(url);
+    }, []);
 
     const fetchNFTData = async (url: string) => {
         setLoading(true); // ローディング開始
@@ -74,11 +79,11 @@ const ImageDownloader = () => {
 
     const drawText = (ctx: CanvasRenderingContext2D, nftData: any) => {
         ctx.fillStyle = 'white';
-        ctx.font = '30px Poppins, sans-serif';
-        ctx.fillText(nftData.title, 20, canvasRef.current!.height - 150);
-        ctx.font = '20px Poppins, sans-serif';
-        ctx.fillText(`Created by ${nftData.creator}`, 20, canvasRef.current!.height - 120);
-        ctx.fillText(`Owned by ${nftData.owner}`, 20, canvasRef.current!.height - 65);
+        ctx.font = 'bold 30px Inter, Poppins, sans-serif';
+        ctx.fillText(nftData.title, 20, canvasRef.current!.height - 130);
+        ctx.font = '20px Inter, Poppins, sans-serif';
+        ctx.fillText(`Created by ${nftData.creator}`, 26, canvasRef.current!.height - 95);
+        ctx.fillText(`Owned by ${nftData.owner}`, 26, canvasRef.current!.height - 50);
     };
 
     return (
