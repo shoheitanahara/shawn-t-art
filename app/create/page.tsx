@@ -7,24 +7,25 @@ import QRCode from 'qrcode'; // QRコードライブラリのインポート
 
 const ImageDownloader = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [url, setUrl] = useState('https://opensea.io/assets/ethereum/0x2eacf49b0c80d883cc699883e50a0ce10a453c7f/4');
+    const [url, setUrl] = useState('');
     const [nftData, setNftData] = useState<{ title: string; owner: string; creator: string; imageUrl: string } | null>(null);
     const [loading, setLoading] = useState(false); // ローディング状態の追加
 
     const fetchNFTData = async (url: string) => {
         setLoading(true); // ローディング開始
-        const response = await fetch(`/api/opensea?url=${encodeURIComponent(url)}`);
-        
-        if (!response.ok) { // レスポンスが正常か確認
-            alert('Please enter a valid link to an OpenSea NFT.'); // エラーメッセージを表示
+        try {
+            const response = await fetch(`/api/opensea?url=${encodeURIComponent(url)}`);
+            if (!response.ok) { // レスポンスが正常か確認
+                throw new Error('Invalid OpenSea URL'); // エラーメッセージを表示
+            }
+            const data = await response.json();
+            setNftData(data);
+            await drawCanvas(data); // データ取得後に描画
+        } catch (error: any) {
+            alert(error.message); // エラーメッセージを表示
+        } finally {
             setLoading(false); // ローディング終了
-            return; // 処理を終了
         }
-
-        const data = await response.json();
-        setNftData(data);
-        setLoading(false); // ローディング終了
-        await drawCanvas(data); // データ取得後に描画
     };
 
     const downloadImage = () => {
@@ -37,9 +38,9 @@ const ImageDownloader = () => {
         }
     };
 
-    const drawCanvas = async (data: any) => { // 引数にデータを追加
+    const drawCanvas = async (nftData: any) => { // 引数にデータを追加
         const canvas = canvasRef.current;
-        if (canvas && data) {
+        if (canvas && nftData) {
             const ctx = canvas.getContext('2d');
             if (ctx) {
                 ctx.fillStyle = '#000';
@@ -52,22 +53,10 @@ const ImageDownloader = () => {
                 qrCodeImg.onload = () => {
                     const img = new Image();
                     img.crossOrigin = 'Anonymous'; // CORS対応を追加
-                    img.src = data.imageUrl; // NFTの画像URLを使用
+                    img.src = nftData.imageUrl; // NFTの画像URLを使用
                     img.onload = () => {
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height - 200);
-
-                        ctx.fillStyle = 'white';
-                        ctx.font = '30px Poppins, sans-serif';
-
-                        ctx.fillText(data.title, 20, canvas.height - 150);
-
-                        ctx.font = '20px Poppins, sans-serif';
-                        ctx.fillText(`Created by ${data.creator}`, 20, canvas.height - 120);
-
-
-                        ctx.font = '20px Poppins, sans-serif';
-                        ctx.fillText(`Owned by ${data.owner}`, 20, canvas.height - 65);
-
+                        drawText(ctx, nftData); // テキスト描画を関数に分ける
                         ctx.drawImage(qrCodeImg, canvas.width - 175, canvas.height - 175, 150, 150);
                     };
 
@@ -81,6 +70,15 @@ const ImageDownloader = () => {
                 };
             }
         }
+    };
+
+    const drawText = (ctx: CanvasRenderingContext2D, nftData: any) => {
+        ctx.fillStyle = 'white';
+        ctx.font = '30px Poppins, sans-serif';
+        ctx.fillText(nftData.title, 20, canvasRef.current!.height - 150);
+        ctx.font = '20px Poppins, sans-serif';
+        ctx.fillText(`Created by ${nftData.creator}`, 20, canvasRef.current!.height - 120);
+        ctx.fillText(`Owned by ${nftData.owner}`, 20, canvasRef.current!.height - 65);
     };
 
     return (
@@ -105,10 +103,10 @@ const ImageDownloader = () => {
                     {loading ? 'Loading...' : 'Download Image'} {/* ローディング中の表示 */}
                 </Button>
             </div>
-        <Card className="p-6 bg-gray-800 text-white overflow-hidden relative">
-            {loading && <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">Loading...</div>} {/* ローディング表示 */}
-            <canvas ref={canvasRef} width={600} height={800} className="border border-gray-600 max-w-full" />
-        </Card>
+            <Card className="p-6 bg-gray-800 text-white overflow-hidden relative">
+                {loading && <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">Loading...</div>} {/* ローディング表示 */}
+                <canvas ref={canvasRef} width={600} height={800} className="border border-gray-600 max-w-full" />
+            </Card>
         </div>
     );
 };
