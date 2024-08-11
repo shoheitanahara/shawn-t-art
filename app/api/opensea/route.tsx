@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const fetchData = async (url: string) => {
-    await delay(5000); // 2秒待機
+    await delay(5000); // 5秒待機
     const response = await fetch(url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/89.0',
