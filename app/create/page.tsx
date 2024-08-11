@@ -79,7 +79,7 @@ const ImageDownloader = () => {
 
     const drawText = (ctx: CanvasRenderingContext2D, nftData: any) => {
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 30px Inter, Poppins, sans-serif';
+        ctx.font = 'bold 24px Inter, Poppins, sans-serif';
         ctx.fillText(nftData.title, 20, canvasRef.current!.height - 130);
         ctx.font = '20px Inter, Poppins, sans-serif';
         ctx.fillText(`Created by ${nftData.creator}`, 26, canvasRef.current!.height - 95);
