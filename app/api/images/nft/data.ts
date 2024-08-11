@@ -1,1 +1,1 @@
-export const nftImageList = ["pfp-5.png","pfp-8.png","pfp-9.png","pfp-10.png","pfp-4.png","fv-2.png","fv-3.png","pfp-7.png","pfp-6.png","pfp-3.png","pfp-12.png","pfp-2.png","fv-4.png","fv-1.png","fv-5.png","pfp-11.png","pfp-1.png","fv-6.png"];
+export const nftImageList = ["pfp-10.png","pfp-2.png","fv-3.png","fv-4.png","pfp-4.png","pfp-1.png","pfp-6.png","fv-2.png","fv-1.png","pfp-5.png","pfp-7.png","pfp-9.png","pfp-12.png","pfp-8.png","fv-6.png","pfp-11.png","pfp-3.png","fv-5.png"];
