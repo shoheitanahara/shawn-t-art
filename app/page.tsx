@@ -36,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     const fetchImages = async (page: number) => {
       setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
+      const response = await fetch(`/api/images/cryptostars?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
       const data = await response.json(); // 変更: JSONを直接取得
 
       if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pt-10 pb-6">
       <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
-        <h2 className="text-2xl font-bold">Future Vintage</h2>
+        <h2 className="text-2xl font-bold">CryptoStars</h2>
       </div>
       {loading ? ( // 追加: ローディング中の表示
         <div className="text-lg">Loading...</div>
