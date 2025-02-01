@@ -11,10 +11,10 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Shawn T. Art | A Fusion of Future and Vintage',
-  description: 'Shawn T. Art | Showcasing unique and whimsical art influenced by pop art, blending futuristic visions with vintage aesthetics. Fast portfolio using the latest technologies like Next.js, Vercel, Tailwind CSS, Radix UI, and more.',
+  title: 'Shawn T. Art | CryptoStars',
+  description: 'Explore the unique and imaginative world of Shawn T., a Japanese artist and musician. His work blends the vibrant energy of pop art with futuristic and vintage aesthetics. Discover a fast and seamless experience powered by cutting-edge technologies like Next.js, Vercel, and Tailwind CSS.',
   icons: {
-    icon: 'app/images/00200-495783960.png', // faviconのパスを指定
+    icon: '/favicon.ico', // faviconのパスを指定
   },
 };
 
