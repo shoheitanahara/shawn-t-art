@@ -42,9 +42,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Button variant="outline" asChild>
                 <Link href="/pfp">PFP</Link>
               </Button>
-              <Button variant="outline" asChild>
-                <Link href="/nft">NFTs</Link>
-              </Button>
             </div>
             <div className="flex items-center space-x-2 md:space-x-4">
               <Button variant="outline" asChild>
