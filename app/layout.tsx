@@ -22,6 +22,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="jp">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         {/*
         DarkModeの実装の影響
