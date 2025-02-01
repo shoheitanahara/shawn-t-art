@@ -19,7 +19,7 @@ const AboutPage: FC = () => {
         <h2 className="text-2xl font-semibold mb-2">English Version</h2>
         <div className="space-y-4">
           <p className="italic">&ldquo;Every Star starts as a Nobody.&rdquo;</p>
-          <p>My name is Shawn T. I am an artist and musician from Japan, deeply inspired by 50s American music and classic Hollywood films. My theme, "Every Star starts as a Nobody," celebrates the journey of ordinary people who become stars through talent and hard work. I create art and music that feel both familiar and fresh, combining elements of the past with a new twist.</p>
+          <p>My name is Shawn T. I am an artist and musician from Japan, deeply inspired by 50s American music and classic Hollywood films. My theme, &ldquo;Every Star starts as a Nobody&rdquo; celebrates the journey of ordinary people who become stars through talent and hard work. I create art and music that feel both familiar and fresh, combining elements of the past with a new twist.</p>
           <p>I strive to vividly depict everyday spaces, offering viewers a fresh perspective. The interiors, landscapes, and figures I illustrate stand out with striking color contrasts, drawing the audience in with their charm. Notably, my bold use of color and geometric shapes creates a delightful visual experience.</p>
           <p>Utilizing the latest technology, this site operates at high speed, highlighting the beauty of my art and music. My works are set to be released as NFTs, exploring new possibilities in digital art. I am also a web engineer, pursuing the fusion of art and technology.</p>
         </div>
