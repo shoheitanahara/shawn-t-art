@@ -15,6 +15,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import ComingSoonBanner from "@/components/waiting"; // 追加: Coming Soonコンポーネントをインポート
 
 const ITEMS_PER_PAGE = 9; // 追加: 1ページあたりのアイテム数
 
@@ -26,10 +27,10 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState<number>(1); // 追加: 総ページ数を管理
 
   const handlePageChange = (page: number) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    }); // 追加: ページを上部にスクロール
+    const element = document.getElementById("crypto-stars"); // 追加: h2タグの要素を取得
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' }); // 追加: スムーズにスクロール
+    }
     setCurrentPage(page);
   };
 
@@ -53,21 +54,27 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pt-10 pb-6">
+      <div className="mb-6">
+        <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
+      </div>
+      <ComingSoonBanner />
       <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
-        <h2 className="text-2xl font-bold">CryptoStars</h2>
+        <h2 id="crypto-stars" className="text-2xl font-bold pt-10">CryptoStars</h2>
       </div>
       {loading ? ( // 追加: ローディング中の表示
         <div className="text-lg">Loading...</div>
       ) : (
-        <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex lg:grid lg:grid-cols-3">
-          {images.map((image, index) => (
-            <Card key={index} className="m-4 cursor-pointer h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
-              <CardContent className="grid gap-4">
-                <Image src={image} alt={`Image ${index}`} width={500} height={300} className="object-cover h-full" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <>
+          <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex lg:grid lg:grid-cols-3">
+            {images.map((image, index) => (
+              <Card key={index} className="m-4 cursor-pointer h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
+                <CardContent className="grid gap-4">
+                  <Image src={image} alt={`Image ${index}`} width={500} height={300} className="object-cover h-full" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </>
       )}
       <Pagination>
         <PaginationContent className="gap-5">
