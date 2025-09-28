@@ -3,7 +3,7 @@ import '@/app/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ModeToggle } from '@/components/mode-toggle';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 // RootLayoutPropsの型を定義
 interface RootLayoutProps {
@@ -33,25 +33,33 @@ export default function RootLayout({ children }: RootLayoutProps) {
         */}
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <nav className="flex justify-between items-center w-full px-6 md:px-24 pt-5 pb-6 md:pb-12">
             <div className="flex items-center space-x-2 md:space-x-4">
               <Button variant="outline" asChild>
-                <Link href="/">Top</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/cryptostars">CryptoStars</Link>
+                <Link href="/">Top</Link> 
               </Button>
             </div>
-            <div className="flex items-center space-x-2 md:space-x-4">
-              <Button variant="outline" asChild>
-                <Link href="/about">About</Link>
-              </Button>
-              <ModeToggle />
+            <div className="text-2xl font-bold flex items-center space-x-2 md:space-x-4">
+                <a href="/">Shawn T. Art</a>
             </div>
+            <DropdownMenu>
+              <div className="flex items-center border rounded-md">
+                  <DropdownMenuTrigger className="flex items-center space-x-2 md:space-x-4 py-2 px-4">Menu</DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-black">
+                    <DropdownMenuItem>
+                    <Link href="/about">About</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                    <Link href="/cryptostars">CryptoStars</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                  </div>
+
+                </DropdownMenu>
           </nav>
           {children}
           <footer className="bg-gray-800 text-white p-4">
