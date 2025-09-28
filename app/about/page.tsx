@@ -21,7 +21,7 @@ const AboutPage: FC = () => {
       <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-2">English Version</h2>
         <div className="space-y-4">
-        <p>Exploring what art can be in the age of AI and Web3</p>
+        <h3 className="text-lg font-bold">Exploring what art can be in the age of AI and Web3</h3>
         <p>I’m an artist and musician from Japan, blending street-culture aesthetics with digital expression. I experiment with emerging technologies such as AI while directing and curating every concept myself.</p>
         <p>My signature works include The Double Slash, Mutant Hip Hop, and other Web3-native collections. As a holder of NFT collections such as MAYC, Meebits, and BAG, I’m actively engaged in the early Web3 art scene.</p>
         <p>My practice is an experiment at the intersection of street energy and cutting-edge technology—exploring themes of freedom, control, and hope. Anchored by “Every Star Starts as a Nobody,” my goal is to inspire and to help shape Web3 culture as a pioneering artist.</p>

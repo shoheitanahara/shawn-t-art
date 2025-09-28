@@ -51,10 +51,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <DropdownMenuTrigger className="flex items-center space-x-2 md:space-x-4 py-2 px-4">Menu</DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-black">
                     <DropdownMenuItem>
-                    <Link href="/about">About</Link>
+                      <Link href="/links">Links</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                    <Link href="/cryptostars">CryptoStars</Link>
+                      <Link href="/about">About</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link href="/cryptostars">CryptoStars</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                   </div>

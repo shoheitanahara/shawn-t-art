@@ -6,8 +6,9 @@ const pfpImagesDir = path.join(process.cwd(), 'public/images/pfp');
 const cryptostarsImagesDir = path.join(process.cwd(), 'public/images/cryptostars'); // Cryptostars画像のディレクトリ
 const outputFilePath = path.join(process.cwd(), 'app/api/images/data.ts');
 const pfpOutputFilePath = path.join(process.cwd(), 'app/api/images/pfp/data.ts');
-const nftOutputFilePath = path.join(process.cwd(), 'app/api/images/nft/data.ts'); // NFTデータの出力先
 const cryptostarsOutputFilePath = path.join(process.cwd(), 'app/api/images/cryptostars/data.ts'); // Cryptostarsデータの出力先
+const doubleslashImagesDir = path.join(process.cwd(), 'public/images/doubleslash');
+const doubleslashOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash/data.ts');
 
 export default function generateImageList() {
   if (!fs.existsSync(imagesDir)) {
@@ -24,6 +25,9 @@ export default function generateImageList() {
   // cryptostars画像ファイル名を取得
   const cryptostarsImageFiles = fs.readdirSync(cryptostarsImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file)); // Cryptostars画像の取得
 
+  // doubleslash画像ファイル名を取得
+  const doubleslashImageFiles = fs.readdirSync(doubleslashImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // 配列をシャッフルする関数
   const shuffleArray = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -37,6 +41,7 @@ export default function generateImageList() {
   const shuffledImageFiles = shuffleArray(imageFiles);
   const shuffledPfpImageFiles = shuffleArray(pfpImageFiles);
   const shuffledCryptostarsImageFiles = shuffleArray(cryptostarsImageFiles); // Cryptostars画像のシャッフル
+  const shuffledDoubleslashImageFiles = shuffleArray(doubleslashImageFiles);
 
   // data.tsファイルの内容を生成
   const content = `export const imageList = ${JSON.stringify(shuffledImageFiles)};`;
@@ -54,4 +59,9 @@ export default function generateImageList() {
   const cryptostarsContent = `export const cryptostarsImageList = ${JSON.stringify(shuffledCryptostarsImageFiles)};`;
   fs.writeFileSync(cryptostarsOutputFilePath, cryptostarsContent, 'utf8');
   console.log(`Cryptostars image list generated: ${cryptostarsOutputFilePath}`);
+
+  // doubleslash画像の内容を生成
+  const doubleslashContent = `export const doubleslashImageList = ${JSON.stringify(shuffledDoubleslashImageFiles)};`;
+  fs.writeFileSync(doubleslashOutputFilePath, doubleslashContent, 'utf8');
+  console.log(`Doubleslash image list generated: ${doubleslashOutputFilePath}`);
 }

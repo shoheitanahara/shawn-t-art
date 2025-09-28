@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/pagination"
 import ComingSoonBanner from "@/components/waiting"; // 追加: Coming Soonコンポーネントをインポート
 
-const ITEMS_PER_PAGE = 9; // 追加: 1ページあたりのアイテム数
+// const ITEMS_PER_PAGE = 9; // 追加: 1ページあたりのアイテム数
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
@@ -27,7 +27,7 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState<number>(1); // 追加: 総ページ数を管理
 
   const handlePageChange = (page: number) => {
-    const element = document.getElementById("crypto-stars"); // 追加: h2タグの要素を取得
+    const element = document.getElementById("double-slash"); // 追加: h2タグの要素を取得
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' }); // 追加: スムーズにスクロール
     }
@@ -37,7 +37,7 @@ export default function Home() {
   useEffect(() => {
     const fetchImages = async (page: number) => {
       setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images/cryptostars?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
+      const response = await fetch(`/api/images/doubleslash?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
       const data = await response.json(); // 変更: JSONを直接取得
 
       if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
@@ -58,7 +58,7 @@ export default function Home() {
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
       <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
-        <h2 id="crypto-stars" className="text-2xl font-bold pt-10">CryptoStars</h2>
+        <h2 id="double-slash" className="text-2xl font-bold">The Double Slash</h2>
       </div>
       {loading ? ( // 追加: ローディング中の表示
         <div className="text-lg">Loading...</div>
