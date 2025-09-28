@@ -43,7 +43,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Link href="/">Top</Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/pfp">PFP</Link>
+                <Link href="/cryptostars">CryptoStars</Link>
               </Button>
             </div>
             <div className="flex items-center space-x-2 md:space-x-4">
@@ -53,9 +53,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <ModeToggle />
             </div>
           </nav>
-          <div className="container mx-auto flex justify-center items-center">
-            <h1 className="text-4xl font-bold">Shawn T. Art</h1>
-          </div>
           {children}
           <footer className="bg-gray-800 text-white p-4">
             <div className="container mx-auto text-center">

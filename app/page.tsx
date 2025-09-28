@@ -53,11 +53,10 @@ export default function Home() {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pt-10 pb-6">
+    <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pb-6">
       <div className="mb-6">
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
-      <ComingSoonBanner />
       <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
         <h2 id="crypto-stars" className="text-2xl font-bold pt-10">CryptoStars</h2>
       </div>
