@@ -11,8 +11,8 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Shawn T. Art | CryptoStars',
-  description: 'Explore the unique and imaginative world of Shawn T., a Japanese artist and musician. His work blends the vibrant energy of pop art with futuristic and vintage aesthetics. Discover a fast and seamless experience powered by cutting-edge technologies like Next.js, Vercel, and Tailwind CSS.',
+  title: 'Shawn T. Art | The Double Slash',
+  description: 'Explore the unique and imaginative world of Shawn T., a Japanese artist and musician. His work blends street-culture aesthetics with digital expression, experimenting with emerging technologies such as AI and Web3. As a pioneering artist, Shawn T. aims to inspire and help shape Web3 culture.',
   icons: {
     icon: '/favicon.ico', // faviconのパスを指定
   },
