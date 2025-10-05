@@ -58,8 +58,23 @@ export default function Home() {
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
       <div className="container mx-auto flex justify-center items-center mb-6 md:mb-12">
-        <h2 id="double-slash" className="text-2xl font-bold">The Double Slash</h2>
+        <h2 className="text-2xl font-bold">The Double Slash</h2>
       </div>
+      <div className="container mx-auto mb-6 md:mb-12 w-auto lg:w-2/3">
+        <p>
+          The Double Slash は「自由」と「抑圧」のあいだにある緊張を探るシリーズです。
+          壊れやすい美しさの上に引かれた二重の黒い線は、覆い隠すと同時に、その存在をより鮮烈に浮かび上がらせます。
+          黒い線は検閲や制限を象徴しながらも、同時に消し去れない抵抗の痕跡です。美は覆われても透けて見え、抑圧されるほどに強く存在を主張します。
+          この二重線は装飾ではなく、現代社会の矛盾を映すシンボルであり、作家自身のアイコンです。観る者はその線を通して「奪われる自由」と「消えない力」を読み取るでしょう。
+        </p>
+        <p className="mt-4">
+        The Double Slash is a series about the tension between freedom and oppression.
+        Two black lines are drawn over fragile beauty. They try to cover it, but at the same time make it stand out even more.
+        These lines symbolize censorship and control, yet they also show the traces of resistance that cannot be erased. Beauty can still be seen through the cover, and the more it is oppressed, the stronger it insists on its presence.
+        The double slash is not decoration. It is a symbol of the contradictions of today’s society and has become the artist’s own icon. Through these lines, viewers can feel both the freedom that is taken away and the power that refuses to disappear.
+        </p>
+      </div>
+      <div id="double-slash"> </div>
       {loading ? ( // 追加: ローディング中の表示
         <div className="text-lg">Loading...</div>
       ) : (
