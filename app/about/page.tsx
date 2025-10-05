@@ -3,7 +3,11 @@ import { FC } from 'react'
 const AboutPage: FC = () => {
   return (
     <div className="container mx-auto px-8 md:px-8 py-8 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-6">Shawn T. Art</h1>
+      <div className="flex items-center mb-8">
+        <img src="/images/about/icon.jpg" alt="Icon" className="w-16 h-16 mr-4 lg:w-32 lg:h-32 lg:mr-12" />
+        <h1 className="text-3xl font-bold">Shawn T. Art</h1>
+      </div>
+      
       
       <div className="mb-8">
         <h2 className="text-md">Web3-based digital artist inspired by street culture</h2>
