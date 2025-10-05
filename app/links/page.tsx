@@ -6,6 +6,7 @@ const LinkPage = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pb-6">
       <div className="flex flex-col w-full lg:w-1/2">
+        <h2 className="text-2xl font-bold text-center mb-4">Links</h2>
         <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
           <Card>
             <CardHeader>
