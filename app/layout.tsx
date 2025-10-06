@@ -63,6 +63,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/event">Event</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
+                      <Link href="/collaborations">Collaborations</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
                       <Link href="/cryptostars">CryptoStars</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
