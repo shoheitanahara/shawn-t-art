@@ -7,7 +7,10 @@ const CollaborationsPage = () => {
       <h2 className="text-2xl font-bold text-center mb-4">Collaborations</h2>
       <div className="flex flex-col items-center justify-between">
         <h2 className="text-2xl font-bold text-center mb-4">UndeadBear x The Double Slash</h2>
-        <p>Year: 2025, Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a>, <a href="https://x.com/Runne0808" target="_blank" rel="noopener noreferrer">@Runne0808</a></p>
+        <div className="text-left w-full lg:w-1/2">
+          <p>Year: 2025</p>
+          <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a>, <a href="https://x.com/Runne0808" target="_blank" rel="noopener noreferrer">@Runne0808</a></p>
+        </div>
         <p className="mt-4 w-full lg:w-1/2">
           The Double Slash シリーズ初のコラボレーション作品です。Runneの「UndeadBear」が持つキュートさと不気味さを、「The Double Slash」の象徴的な二重線で包み込みました。
           UndeadBear NFT のオーナーでもある Shawn T. Art は、その甘さとダークさが同居する世界観に惹かれ、「自由と抑圧」というテーマにぴったりだと感じて、このコラボが生まれました。

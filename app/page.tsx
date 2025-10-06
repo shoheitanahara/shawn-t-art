@@ -61,7 +61,9 @@ export default function Home() {
         <h2 className="text-2xl font-bold">The Double Slash</h2>
       </div>
       <div className="container mx-auto mb-6 md:mb-12 w-auto lg:w-2/3">
-        <p>
+        <p>Year: 2025</p>
+        <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
+        <p className="mt-4">
           The Double Slash は「自由」と「抑圧」のあいだにある緊張を探るシリーズです。
           壊れやすい美しさの上に引かれた二重の黒い線は、覆い隠すと同時に、その存在をより鮮烈に浮かび上がらせます。
           黒い線は検閲や制限を象徴しながらも、同時に消し去れない抵抗の痕跡です。美は覆われても透けて見え、抑圧されるほどに強く存在を主張します。
