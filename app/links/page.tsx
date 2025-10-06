@@ -33,19 +33,6 @@ const LinkPage = () => {
             </CardContent>
           </Card>
         </a>
-        <a href="https://www.spatial.io/s/sora-Halloween-ver-66bca7d4d0fe4cae0ac8cc9c?share=142495709783127535" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>SORA Spatial Metaverse</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <img src="/images/links/spatial.jpeg" alt="Spatial Logo" className="w-8 h-auto mr-4" />
-                <span>SORA creater team is building a metaverse for the culture.</span>
-              </div>
-            </CardContent>
-          </Card>
-        </a>
         <a href="https://opensea.io/collection/the-double-slash" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
           <Card>
             <CardHeader>
@@ -55,6 +42,19 @@ const LinkPage = () => {
               <div className="flex items-center">
                 <img src="/images/links/opensea.png" alt="OpenSea Logo" className="w-8 h-auto mr-4" />
                 <span>OpenSea / Not for sale for now</span>
+              </div>
+            </CardContent>
+          </Card>
+        </a>
+        <a href="https://www.spatial.io/s/sora-Halloween-ver-66bca7d4d0fe4cae0ac8cc9c?share=142495709783127535" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>SORA Spatial Metaverse</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center">
+                <img src="/images/links/spatial.jpeg" alt="Spatial Logo" className="w-8 h-auto mr-4" />
+                <span>SORA creater team is building a metaverse for the culture.</span>
               </div>
             </CardContent>
           </Card>
