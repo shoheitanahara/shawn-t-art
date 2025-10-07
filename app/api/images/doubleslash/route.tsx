@@ -4,7 +4,7 @@ import { doubleslashImageList } from "./data"; // 生成したデータをイン
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = parseInt(searchParams.get("page") || "1", 10); // クエリパラメータからページ番号を取得
-  const ITEMS_PER_PAGE = 9; // 1ページあたりのアイテム数
+  const ITEMS_PER_PAGE = 2; // 1ページあたりのアイテム数
 
   try {
     const totalImages = doubleslashImageList.length; // 画像の総数を取得

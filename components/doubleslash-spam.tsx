@@ -1,9 +1,8 @@
-"use client"
-
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from "@/components/ui/card"; // Cardコンポーネントをインポート
 import { useEffect, useState } from "react";
-import {
+import {  
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog"
@@ -15,9 +14,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import DoubleSlashSpam from "@/components/doubleslash-spam"; 
 
-export default function Home() {
+const DoubleSlashSpam: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
   const [images, setImages] = useState<string[]>([]); // ここで初期値を空の配列に設定
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -27,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const fetchImages = async (page: number) => {
       setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images/doubleslash?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
+      const response = await fetch(`/api/images/doubleslash-spam?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
       const data = await response.json(); // 変更: JSONを直接取得
 
       if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
@@ -43,17 +41,9 @@ export default function Home() {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pb-6">
-      <div className="mb-6">
-        <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
-      </div>
-
-      <DoubleSlashSpam />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
+    <div className="flex flex-col items-center justify-center">
       <div className="container mx-auto flex justify-center items-center mb-6">
-        <h2 className="text-2xl font-bold">The Double Slash</h2>
+        <h2 className="text-2xl font-bold">The Double Slash - SPAM</h2>
       </div>
 
       {loading ? ( // 追加: ローディング中の表示
@@ -114,24 +104,63 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-
-      <div className="container mx-auto mb-6 md:mb-12 mt-6 w-auto lg:w-2/3">
-        <p>"The Double Slash"</p>
+      <div className="container mx-auto w-auto lg:w-2/3 mb-6 md:mb-12 mt-6">
+        <p>"The Double Slash - SPAM"</p>
         <p>Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
         <p className="mt-4">
-          The Double Slash は「自由」と「抑圧」のあいだにある緊張を探るシリーズです。
-          壊れやすい美しさの上に引かれた二重の黒い線は、覆い隠すと同時に、その存在をより鮮烈に浮かび上がらせます。
-          黒い線は検閲や制限を象徴しながらも、同時に消し去れない抵抗の痕跡です。美は覆われても透けて見え、抑圧されるほどに強く存在を主張します。
-          この二重線は装飾ではなく、現代社会の矛盾を映すシンボルであり、作家自身のアイコンです。観る者はその線を通して「奪われる自由」と「消えない力」を読み取るでしょう。
+          この作品は、否定からではなく、身近さから生まれました。
+          SPAMは、沖縄で育った僕にとって家庭の食卓に当たり前のようにあったもの。
+          もともと保存食として作られ、戦争をきっかけに食料として世界中に広まり、
+          その後、静かに日常の中に根づいていった存在です。
         </p>
         <p className="mt-4">
-        The Double Slash is a series about the tension between freedom and oppression.
-        Two black lines are drawn over fragile beauty. They try to cover it, but at the same time make it stand out even more.
-        These lines symbolize censorship and control, yet they also show the traces of resistance that cannot be erased. Beauty can still be seen through the cover, and the more it is oppressed, the stronger it insists on its presence.
-        The double slash is not decoration. It is a symbol of the contradictions of today’s society and has become the artist’s own icon. Through these lines, viewers can feel both the freedom that is taken away and the power that refuses to disappear.
+          その中には、“生き延びるための食”としての記憶、
+          そして戦争という時代の痕跡が今も残っています。
+          それを知りながら、僕は今もこの日常を愛している。
+          だからこそ、そこにある矛盾を強く感じます。
+          戦争の影から広まったものが、平和の中でも愛され続けているということ。
+        </p>
+        <p className="mt-4">
+          The Double Slash の二重線は、
+          自由とコントロール、美と抑圧、記憶と習慣のあいだにある緊張を描いています。
+          この線は、SPAMを否定するためではなく、
+          “安らぎの中に眠る歴史”をそっと浮かび上がらせるためにあります。
+        </p>
+        <p className="mt-4">
+          これは抗議ではなく、観察です。
+          戦争と平和、過去と現在、愛と矛盾が、
+          ひとつの缶の中で静かに共存している——その事実を見つめています。
+        </p>
+        <p className="mt-4">
+          This work began not from rejection, but from familiarity.
+          SPAM was simply one of the foods on my family’s table in Okinawa —
+          a product that spread around the world as a source of food during wartime,
+          and quietly became part of everyday life afterward.
+        </p>
+        <p className="mt-4">
+          It carries traces of that history —
+          a history born from survival and conflict —
+          yet it also holds the comfort of home and peace.
+          I don’t hate it.
+          It’s part of what I grew up with, part of what I still love.
+          But when I look at it now, I can’t ignore the contradiction —
+          how something tied to war could become a symbol of daily life.
+        </p>
+        <p className="mt-4">
+          In The Double Slash series, the parallel lines represent tension:
+          between freedom and control, beauty and restraint, memory and habit.
+          Here, they cut across SPAM not to reject it,
+          but to reveal the quiet coexistence of history and comfort.
+        </p>
+        <p className="mt-4">
+          This is not a protest.
+          It’s a reflection on how war, peace, and daily life
+          can live together in the same familiar object.
         </p>
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default DoubleSlashSpam;
