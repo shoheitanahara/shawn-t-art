@@ -105,7 +105,7 @@ const DoubleSlashSpam: React.FC = () => {
       </Dialog>
 
       <div className="container mx-auto w-auto lg:w-2/3 mb-6 md:mb-12 mt-6">
-        <p>"The Double Slash - SPAM"</p>
+        <p>&quot;The Double Slash - SPAM&quot;</p>
         <p>Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
         <p className="mt-4">

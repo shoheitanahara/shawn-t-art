@@ -116,7 +116,7 @@ export default function Home() {
 
 
       <div className="container mx-auto mb-6 md:mb-12 mt-6 w-auto lg:w-2/3">
-        <p>"The Double Slash"</p>
+        <p>&quot;The Double Slash&quot;</p>
         <p>Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
         <p className="mt-4">
