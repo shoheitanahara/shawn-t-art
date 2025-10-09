@@ -12,7 +12,7 @@ interface RootLayoutProps {
 
 export const metadata: Metadata = {
   title: 'Shawn T. Art | The Double Slash',
-  description: 'Explore the unique and imaginative world of Shawn T. Art, a Japanese artist and musician. His work blends street-culture aesthetics with digital expression, experimenting with emerging technologies such as AI and Web3. As a pioneering artist, Shawn T. aims to inspire and help shape Web3 culture.',
+  description: 'Welcome to Shawn T. Art. Explore how Japanese artist Shawn T. blends the raw energy of street culture with the precision of digital art. Known for "The Double Slash," his work transforms the tension between censorship and beauty into stunning visuals. As an NFT collector and creator, Shawn T. is actively shaping the Web3 art scene. His motto, "Every Star Starts as a Nobody," captures a quest to archive the hopes and contradictions of our time. Discover more on our site.',
   icons: {
     icon: '/favicon.ico', // faviconのパスを指定
   },
@@ -54,6 +54,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/about">About</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
+                      <Link href="/philosophy">Philosophy</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link href="/nft-manifest">NFT Manifest</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
                       <Link href="/links">Links</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
@@ -64,9 +70,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Link href="/collaborations">Collaborations</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link href="/cryptostars">CryptoStars</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                   </div>
