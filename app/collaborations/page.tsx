@@ -122,7 +122,7 @@ const CollaborationsPage = () => {
           SORAのオーナーであり、アーティストとしても精力的に活動する WabiSabi さんとのコラボレーション。
           彼の代表作「wabiSPA」シリーズは、ドットの中に温かさと寂しさが共存する独特の世界観を持ち、見る人の心に静かな余韻を残します。
           私自身も wabiSPA のホルダーとしてその作品に深く共感しており、今回「The Double Slash」としてその上に刻むことは大きな喜びです。
-          二重線は、自由と制約という相反する力を浮かび上がらせ、WabiSabi さんのアートに新たな緊張と生命を吹き込みました。
+          二重線は、自由と制約という相反する力を浮かび上がらせ、WabiSabi さんのアートに新たな緊張と生命を吹き込みました。 
         </p>
         <p className="mt-4 w-full lg:w-1/2">
           This is the fourth collaboration piece in The Double Slash series.
