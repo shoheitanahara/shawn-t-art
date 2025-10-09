@@ -1,5 +1,6 @@
 
 import React from "react";
+import Image from 'next/image'
 
 const EventPage = () => {
   return (
@@ -10,7 +11,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-halloween-2025/weird_halloween_2025.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-halloween-2025/weird_halloween_2025.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Weird</h3>
           </div>
@@ -18,7 +19,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-halloween-2025/spooky_halloween_2025.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-halloween-2025/spooky_halloween_2025.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Spooky</h3>
           </div>
@@ -26,7 +27,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-halloween-2025/mutant_halloween_2025.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-halloween-2025/mutant_halloween_2025.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Mutant</h3>
           </div>
@@ -34,7 +35,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-halloween-2025/space_introduction_wall_2025_1.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-halloween-2025/space_introduction_wall_2025_1.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Space Introduction Wall 1</h3>
           </div>
@@ -42,7 +43,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-halloween-2025/space_introduction_wall_2025_2.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-halloween-2025/space_introduction_wall_2025_2.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Space Introduction Wall 2</h3>
           </div>
@@ -55,7 +56,7 @@ const EventPage = () => {
         <div className="w-full lg:w-2/3 mb-16">
           <div>
             <div className="flex flex-col lg:flex-row mt-4 bg-white">
-              <img src="/images/event/sora-opening-2025/poppy.png" alt="Event" className="w-full h-auto" />
+              <Image src="/images/event/sora-opening-2025/poppy.png" alt="Event" className="w-full h-auto" width={700} height={500} />
             </div>
             <h3 className="text-lg font-bold">Poppy - OneBloom</h3>
           </div>

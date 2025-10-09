@@ -1,5 +1,6 @@
 
 import React from "react";
+import Image from 'next/image'
 
 const CollaborationsPage = () => {
   return (
@@ -9,13 +10,13 @@ const CollaborationsPage = () => {
         <h2 className="text-2xl font-bold text-center mb-4">UndeadBear x The Double Slash</h2>
         <div className="w-full lg:w-2/3 mb-8">
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/undeadbear/undeadbear1.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/undeadbear/undeadbear1.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={500} />
             <h3 className="text-lg font-bold mt-2">UndeadBear 1</h3>
           </div>
         </div>
         <div className="w-full lg:w-2/3 mb-8">
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/undeadbear/undeadbear2.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/undeadbear/undeadbear2.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={700} />
             <h3 className="text-lg font-bold mt-2">UndeadBear 2</h3>
           </div>
         </div>
@@ -42,7 +43,7 @@ const CollaborationsPage = () => {
         <h2 className="text-2xl font-bold text-center mb-4">ブラックかっぴー x The Double Slash</h2>
         <div className="w-full lg:w-2/3 mb-8">
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/blackkappie/dahchan.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/blackkappie/dahchan.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={500} />
             <h3 className="text-lg font-bold mt-2">Black Kappie</h3>
           </div>
         </div>
@@ -71,11 +72,11 @@ const CollaborationsPage = () => {
         <h2 className="text-2xl font-bold text-center mb-4">Keiko x The Double Slash</h2>
         <div className="w-full lg:w-2/3 mb-8 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/keiko/keiko1.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/keiko/keiko1.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={500} />
             <h3 className="text-lg font-bold mt-2">Keiko 1</h3>
           </div>
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/keiko/keiko2.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/keiko/keiko2.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={500} />
             <h3 className="text-lg font-bold mt-2">Keiko 2</h3>
           </div>
         </div>
@@ -107,7 +108,7 @@ const CollaborationsPage = () => {
         <h2 className="text-2xl font-bold text-center mb-4">WabiSPA x The Double Slash</h2>
         <div className="w-full lg:w-2/3 mb-8 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center mt-4">
-            <img src="/images/collaborations/wabispa/wabispa.png" alt="Event" className="w-full lg:w-1/2 h-auto" />
+            <Image src="/images/collaborations/wabispa/wabispa.png" alt="Event" className="w-full lg:w-1/2 h-auto" width={500} height={500} />
             <h3 className="text-lg font-bold mt-2">WabiSPA</h3>
           </div>
         </div>

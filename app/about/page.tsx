@@ -1,10 +1,11 @@
 import { FC } from 'react'
+import Image from 'next/image'
 
 const AboutPage: FC = () => {
   return (
     <div className="container mx-auto px-8 md:px-8 py-8 max-w-4xl">
       <div className="flex items-center mb-8">
-        <img src="/images/about/icon.jpg" alt="Icon" className="w-16 h-16 mr-4 lg:w-32 lg:h-32 lg:mr-12" />
+        <Image src="/images/about/icon.jpg" alt="Icon" className="w-16 h-16 mr-4 lg:w-32 lg:h-32 lg:mr-12" width={128} height={128} />
         <h1 className="text-3xl font-bold">Shawn T. Art</h1>
       </div>
       

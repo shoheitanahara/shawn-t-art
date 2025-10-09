@@ -1,5 +1,6 @@
 
 import React from "react";
+import Image from 'next/image'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const LinkPage = () => {
@@ -14,7 +15,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
             <div className="flex items-center">
-                <img src="/images/links/x.png" alt="X Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/x.png" alt="X Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>@shawn_t_art</span>
             </div>
             </CardContent>
@@ -27,7 +28,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center">
-                <img src="/images/links/instagram.png" alt="Instagram Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/instagram.png" alt="Instagram Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>@shawn_t_art</span>
               </div>
             </CardContent>
@@ -40,7 +41,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center">
-                <img src="/images/links/opensea.png" alt="OpenSea Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/opensea.png" alt="OpenSea Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>OpenSea / Not for sale for now</span>
               </div>
             </CardContent>
@@ -53,7 +54,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center">
-                <img src="/images/links/spatial.jpeg" alt="Spatial Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/spatial.jpeg" alt="Spatial Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>SORA creater team is building a metaverse for the culture.</span>
               </div>
             </CardContent>
@@ -66,7 +67,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center">
-                <img src="/images/links/spotify.png" alt="Spotify Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/spotify.png" alt="Spotify Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>Listen to my music on Spotify.</span>
               </div>
             </CardContent>
@@ -79,7 +80,7 @@ const LinkPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center">
-                <img src="/images/links/hexa.png" alt="Hexa Logo" className="w-8 h-auto mr-4" />
+                <Image src="/images/links/hexa.png" alt="Hexa Logo" className="w-8 h-auto mr-4" width={32} height={32} />
                 <span>Hexa NFT. My first music NFT collection. For SORA Halloween event.</span>
               </div>
             </CardContent>
