@@ -110,7 +110,7 @@ const DoubleSlashSpam: React.FC = () => {
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
         <p className="mt-4">
           この作品は、否定からではなく、身近さから生まれました。
-          SPAMは、沖縄で育った僕にとって家庭の食卓に当たり前のようにあったもの。
+          SPAMは、沖縄で育った私にとって家庭の食卓に当たり前のようにあったもの。
           もともと保存食として作られ、戦争をきっかけに食料として世界中に広まり、
           その後、静かに日常の中に根づいていった存在です。
         </p>

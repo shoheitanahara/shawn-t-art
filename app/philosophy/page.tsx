@@ -31,7 +31,7 @@ const PhilosophyPage: FC = () => {
 
         <hr className="w-full mt-12 border-gray-300 mb-6" />
 
-        <h3 className="text-lg font-bold">4. Freedom and Restraint</h3>
+        <h3 className="text-lg font-bold">4. Freedom and Control</h3>
         <p className="italic">Freedom is not to escape rules, but to dance within them. Every black line I draw hides beauty — and reveals it. To cover is not to erase; it’s to affirm what endures beneath.</p>
         <p>自由と抑制、そのあいだで呼吸する。</p>
         <p>自由とはルールから逃れることではなく、その中で踊ることです。私が描く黒い線は、美を隠し、そして浮かび上がらせます。覆うことは消すことではなく、そこに残るものを肯定する行為です。</p>

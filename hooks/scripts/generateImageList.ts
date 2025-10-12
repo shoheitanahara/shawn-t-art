@@ -9,6 +9,8 @@ const doubleslashImagesDir = path.join(process.cwd(), 'public/images/doubleslash
 const doubleslashOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash/data.ts');
 const doubleslashSpamImagesDir = path.join(process.cwd(), 'public/images/doubleslash-spam');
 const doubleslashSpamOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash-spam/data.ts');
+const doubleslashLikeImagesDir = path.join(process.cwd(), 'public/images/doubleslash-like');
+const doubleslashLikeOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash-like/data.ts');
 
 export default function generateImageList() {
   if (!fs.existsSync(imagesDir)) {
@@ -28,6 +30,9 @@ export default function generateImageList() {
   // doubleslash-spam画像ファイル名を取得
   const doubleslashSpamImageFiles = fs.readdirSync(doubleslashSpamImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
+  // doubleslash-like画像ファイル名を取得
+  const doubleslashLikeImageFiles = fs.readdirSync(doubleslashLikeImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // 配列をシャッフルする関数
   const shuffleArray = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -42,6 +47,7 @@ export default function generateImageList() {
   const shuffledCryptostarsImageFiles = shuffleArray(cryptostarsImageFiles); // Cryptostars画像のシャッフル
   const shuffledDoubleslashImageFiles = shuffleArray(doubleslashImageFiles);
   const shuffledDoubleslashSpamImageFiles = shuffleArray(doubleslashSpamImageFiles);
+  const shuffledDoubleslashLikeImageFiles = shuffleArray(doubleslashLikeImageFiles);
 
   // data.tsファイルの内容を生成
   const content = `export const imageList = ${JSON.stringify(shuffledImageFiles)};`;
@@ -64,4 +70,9 @@ export default function generateImageList() {
   const doubleslashSpamContent = `export const doubleslashSpamImageList = ${JSON.stringify(shuffledDoubleslashSpamImageFiles)};`;
   fs.writeFileSync(doubleslashSpamOutputFilePath, doubleslashSpamContent, 'utf8');
   console.log(`Doubleslash spam image list generated: ${doubleslashSpamOutputFilePath}`);
+
+  // doubleslash-like画像の内容を生成
+  const doubleslashLikeContent = `export const doubleslashLikeImageList = ${JSON.stringify(shuffledDoubleslashLikeImageFiles)};`;
+  fs.writeFileSync(doubleslashLikeOutputFilePath, doubleslashLikeContent, 'utf8');
+  console.log(`Doubleslash like image list generated: ${doubleslashLikeOutputFilePath}`);
 }
