@@ -49,15 +49,6 @@ export default function Home() {
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
 
-      <DoubleSlashSpam />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-
-      <DoubleSlashLike />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
       <div className="container mx-auto flex justify-center items-center mb-6">
         <h2 className="text-2xl font-bold">The Double Slash</h2>
       </div>
@@ -138,6 +129,15 @@ export default function Home() {
         The double slash is not decoration. It is a symbol of the contradictions of today’s society and has become the artist’s own icon. Through these lines, viewers can feel both the freedom that is taken away and the power that refuses to disappear.
         </p>
       </div>
+
+      <DoubleSlashSpam />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+      <DoubleSlashLike />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
+
     </main>
   );
 }
