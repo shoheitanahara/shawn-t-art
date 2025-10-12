@@ -130,13 +130,13 @@ export default function Home() {
         </p>
       </div>
 
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
+
       <DoubleSlashSpam />
 
       <hr className="w-full mt-12 border-gray-300 mb-12" />
 
       <DoubleSlashLike />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
 
     </main>
   );
