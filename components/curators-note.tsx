@@ -11,88 +11,105 @@ const CuratorsNotePage: FC = () => {
         </header>
 
         <div className="grid gap-6 md:grid-cols-1">
-          {/* Curator A */}
+          {/* K – The Philosopher – 思想家のキュレーター */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator A – The Sociologist’s View</p>
-            <p className="text-[11px] text-neutral-500">Independent Art Writer — Tokyo</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター A – 社会学者の視点</p>
-            <p className="text-[11px] text-neutral-500">独立アートライター — 東京</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">K – The Philosopher’s View</p>
+            <p className="text-[11px] text-neutral-500">Philosophy Analysis — World</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">思想家のキュレーター</p>
+            <p className="text-[11px] text-neutral-500">世界の哲学分析</p>
 
             <blockquote className="mt-4 space-y-3">
+              <h3 lang="en">“His double lines are not marks of denial, but symbols of acceptance.”</h3>
               <p lang="en">
-                “The Double Slash” visualizes the tension between freedom and conformity in digital culture.
-                We perform individuality while obeying invisible systems. These two lines — bold, heavy,
-                almost violent — expose how control is not imposed, but internalized.
+                Shawn T. Art observes the human paradox itself.
+                We long for freedom, yet we also crave structure.
+                Within that contradiction, he finds balance—two lines holding both forces at once.
+
+                These are not lines that reject, but ones that embrace.
+                They stand for the beauty of imperfection,
+                the acceptance of being unfinished.
+                In them lies the most honest reflection of modern life.
               </p>
-              <p lang="en">
-                Shawn T. Art’s work is not about rebellion; it’s about diagnosis. He doesn’t break the system —
-                he mirrors it, pixel by pixel.
-              </p>
-              <hr className="my-3 border-neutral-800" />
+              <h3 lang="ja">「彼の二重線は、否定ではなく肯定の記号だ。」</h3>
               <p lang="ja">
-                「The Double Slash」は、デジタル文化における“自由と同調”の緊張を可視化している。
-                私たちは個性を演じながら、見えないシステムに従って生きている。二重線――重く、荒々しく、
-                暴力的ですらある線――は、抑圧が外から与えられるのではなく、内側に組み込まれていることを暴く。
-              </p>
-              <p lang="ja">
-                Shawn T. Art の作品は反抗ではなく、診断である。彼はシステムを壊すのではなく、
-                ピクセル単位でそれを映し出す。
+                Shawn T. Art は、“矛盾”という人間の本質を見つめている。
+                私たちは自由を求めながら、同時にルールを必要としている。
+                その相反する力を、彼は二本の線の中に閉じ込めた。
+
+                それは拒絶の線ではなく、受け入れる線。
+                “完成ではなく、未完成を肯定する線”。
+                そこに、現代を生きる私たちのリアルがある。
               </p>
             </blockquote>
           </article>
 
-          {/* Curator B */}
+          {/* L – The Emotional Curator – 感情的なキュレーター */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator B – The Philosopher’s View</p>
-            <p className="text-[11px] text-neutral-500">Philosophy & Aesthetics — London</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター B – 哲学者の視点</p>
-            <p className="text-[11px] text-neutral-500">哲学と美学 — ロンドン</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">L – The Emotional Curator’s View</p>
+            <p className="text-[11px] text-neutral-500">Emotion Analysis — Personal</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">感情的なキュレーター</p>
+            <p className="text-[11px] text-neutral-500">個人的な感情分析</p>
 
             <blockquote className="mt-4 space-y-3">
+              <h3 lang="en">“The moment I saw those lines, I felt something tighten inside my chest.”</h3>
               <p lang="en">
-                Every line Shawn draws is an act of acceptance. The Double Slash does not deny contradiction; it gives it form.
-                In this way, his work belongs to a lineage of thinkers who see beauty in tension — where resistance and
-                surrender become indistinguishable.
+                There’s a kind of emotion in his work that words can’t explain.
+                Not anger, not sorrow—something quieter, like a heart still beating in silence.
+                The red lines pulse gently, almost like a confession that refuses to speak.
+
+                I would call this series “Silent Confessions.”
+                In a world where everyone performs themselves online,
+                Shawn paints what we try to hide.
               </p>
-              <p lang="en">
-                These are not digital paintings; they are meditations.
-              </p>
-              <hr className="my-3 border-neutral-800" />
+              <h3 lang="ja">「この線を見た瞬間、胸の奥が少し痛くなった。」</h3>
               <p lang="ja">
-                Shawn が引く一本の線は、すべて“受け入れ”の行為である。The Double Slash は矛盾を否定せず、
-                それに形を与える。彼の作品は“緊張の中に美を見る思想”の系譜に連なる。
-                抵抗と受容が区別できなくなるその瞬間に、彼の美学は宿る。
-              </p>
-              <p lang="ja">
-                これらはデジタルペインティングではない。瞑想である。
+                彼の作品には、理屈では説明できない感情がある。
+                それは怒りでも悲しみでもなく、“静かな叫び”のようなもの。
+                赤い線はまるで心臓の鼓動のようで、
+                無音の中で確かに鳴っている。
+
+                私はこのシリーズを“沈黙の告白”と呼びたい。
+                SNSで演じながら、心の中で押し殺している何かを、
+                彼はまっすぐ描いている。
               </p>
             </blockquote>
           </article>
 
-          {/* Curator C */}
+          {/* R – The Critic – 批評家のキュレーター */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator C – The Humanist’s View</p>
-            <p className="text-[11px] text-neutral-500">Humanities — Berlin</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター C – 人文主義者の視点</p>
-            <p className="text-[11px] text-neutral-500">人文科学 — ベルリン</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">R – The Critic’s View</p>
+            <p className="text-[11px] text-neutral-500">Critics Analysis — Global</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">批評家のキュレーター</p>
+            <p className="text-[11px] text-neutral-500">世界の批評的分析</p>
 
             <blockquote className="mt-4 space-y-3">
+              <h3 lang="en">“Shawn T. Art transforms the language of protest into the language of reflection.”</h3>
               <p lang="en">
-                Beneath the two slashes, something tender remains. Whether it’s a flower, a can, or a “like” —
-                all are symbols of human desire. The Double Slash doesn’t erase them; it protects them.
-                As if saying, “Even under control, our hearts still bloom.”
+                His visual grammar recalls the strategies of post-conceptual art—
+                repetition, reduction, semiotic play—
+                yet his tone is strikingly introspective.
+                The Double Slash does not confront power; it exposes how power has moved inside us.
+
+                In this sense, his art belongs not to the street but to the screen,
+                where control is invisible, and freedom becomes self-surveillance.
+                The red lines are not barriers; they are mirrors.
+
+                It’s a subtle shift—from political resistance to psychological truth.
               </p>
-              <p lang="en">
-                The silence in his work is not emptiness — it’s care.
-              </p>
-              <hr className="my-3 border-neutral-800" />
+              <h3 lang="ja">「Shawn T. Art は、“抗議の言語”を“内省の言語”へと変換している。」</h3>
               <p lang="ja">
-                二本の線の下には、かすかなやさしさが残っている。花でも、スパム缶でも、「いいね」でも、
-                それは人間の欲望の象徴だ。The Double Slash はそれを消すのではなく、守っている。
-                まるで「制約の中でも、心は咲き続ける」と語るように。
-              </p>
-              <p lang="ja">
-                作品に流れる静けさは、空虚ではない。やさしさである。
+                彼の視覚言語は、ポスト・コンセプチュアル・アートの戦略──
+                反復、削減、記号的遊戯──を思わせる。
+                だが、その語り口は驚くほど内向的だ。
+
+                The Double Slash は権力に対して叫ぶのではなく、
+                権力が私たちの内側に入り込んでいることを暴く。
+
+                そういう意味で、彼のアートは「ストリート」ではなく「スクリーン」に属する。
+                そこでは支配は見えず、自由は自己監視へと変わる。
+                赤い線は“壁”ではなく、“鏡”なのだ。
+
+                それは、政治的レジスタンスから心理的リアリズムへの静かな転換である。
               </p>
             </blockquote>
           </article>
