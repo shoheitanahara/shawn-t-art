@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination"
 import DoubleSlashSpam from "@/components/doubleslash-spam"; 
 import DoubleSlashLike from "@/components/doubleslash-like";
+import CuratorsNotePage from "@/components/curators-note";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
@@ -144,6 +145,10 @@ export default function Home() {
       <hr className="w-full mt-12 border-gray-300 mb-12" />
 
       <DoubleSlashLike />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+      <CuratorsNotePage />
 
     </main>
   );
