@@ -13,9 +13,9 @@ const CuratorsNotePage: FC = () => {
         <div className="grid gap-6 md:grid-cols-1">
           {/* Curator A */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Fictional Curator A</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator A – The Sociologist’s View</p>
             <p className="text-[11px] text-neutral-500">Independent Art Writer — Tokyo</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">架空キュレーター A</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター A – 社会学者の視点</p>
             <p className="text-[11px] text-neutral-500">独立アートライター — 東京</p>
 
             <blockquote className="mt-4 space-y-3">
@@ -43,9 +43,9 @@ const CuratorsNotePage: FC = () => {
 
           {/* Curator B */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Fictional Curator B</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator B – The Philosopher’s View</p>
             <p className="text-[11px] text-neutral-500">Philosophy & Aesthetics — London</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">架空キュレーター B</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター B – 哲学者の視点</p>
             <p className="text-[11px] text-neutral-500">哲学と美学 — ロンドン</p>
 
             <blockquote className="mt-4 space-y-3">
@@ -71,9 +71,9 @@ const CuratorsNotePage: FC = () => {
 
           {/* Curator C */}
           <article className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-neutral-400">Fictional Curator C</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">Curator C – The Humanist’s View</p>
             <p className="text-[11px] text-neutral-500">Humanities — Berlin</p>
-            <p className="text-xs uppercase tracking-wide text-neutral-400">架空キュレーター C</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-400">キュレーター C – 人文主義者の視点</p>
             <p className="text-[11px] text-neutral-500">人文科学 — ベルリン</p>
 
             <blockquote className="mt-4 space-y-3">
@@ -96,6 +96,12 @@ const CuratorsNotePage: FC = () => {
               </p>
             </blockquote>
           </article>
+
+          <p className="mt-6 text-center text-xs text-neutral-500 italic">
+            These curators are fictional voices imagined by the artist to explore multiple readings of “The Double Slash”.
+            <br />
+            これらのキュレーターは、アーティストが「The Double Slash」の多面的な読み方を探るために想像した架空の声です。
+          </p>
         </div>
       </div>
     </div>
