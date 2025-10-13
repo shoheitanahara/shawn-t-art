@@ -50,9 +50,9 @@ const DoubleSlashSpam: React.FC = () => {
         <div className="text-lg">Loading...</div>
       ) : (
         <>
-          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex lg:grid-cols-2">
+          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
             {images.map((image, index) => (
-              <Card key={index} className="m-4 cursor-pointer h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
+              <Card key={index} className="m-4 cursor-pointer h-80 md:h-64 lg:h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
                 <CardContent className="grid gap-4">
                   <Image src={image} alt={`Image ${index}`} width={500} height={300} className="object-cover h-full" />
                 </CardContent>
@@ -99,7 +99,7 @@ const DoubleSlashSpam: React.FC = () => {
       <Dialog open={!!selectedImage} onOpenChange={(open) => { 
         if (!open) setSelectedImage(null);
       }}>
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
+        <DialogContent className="max-w-xl w-[90%] mx-auto">
           <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
         </DialogContent>
       </Dialog>

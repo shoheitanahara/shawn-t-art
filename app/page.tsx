@@ -44,10 +44,17 @@ export default function Home() {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-6 md:px-24 pb-6">
+    <main className="flex min-h-screen flex-col items-center justify-between pb-6">
       <div className="mb-6">
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
+
+      <div className="container mx-auto mb-2 w-auto lg:w-2/3">
+        <p>The Double Slash は、自由と抑圧のあいだにある現代人の葛藤を描いたシリーズです。</p>
+        <p className="mt-6">The Double Slash explores the fragile balance between freedom and control in the modern age.</p>
+      </div>
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
 
       <div className="container mx-auto flex justify-center items-center mb-6">
         <h2 className="text-2xl font-bold">The Double Slash</h2>
@@ -57,9 +64,9 @@ export default function Home() {
         <div className="text-lg">Loading...</div>
       ) : (
         <>
-          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex lg:grid-cols-2">
+          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
             {images.map((image, index) => (
-              <Card key={index} className="m-4 cursor-pointer h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
+              <Card key={index} className="m-4 cursor-pointer h-80 md:h-64 lg:h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
                 <CardContent className="grid gap-4">
                   <Image src={image} alt={`Image ${index}`} width={500} height={300} className="object-cover h-full" />
                 </CardContent>
@@ -106,7 +113,7 @@ export default function Home() {
       <Dialog open={!!selectedImage} onOpenChange={(open) => { 
         if (!open) setSelectedImage(null);
       }}>
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
+        <DialogContent className="max-w-xl w-[90%] mx-auto">
           <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
         </DialogContent>
       </Dialog>
