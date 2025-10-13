@@ -47,7 +47,7 @@ const DoubleSlashLike: React.FC = () => {
       </div>
 
       {loading ? ( // 追加: ローディング中の表示
-        <div className="text-lg">Loading...</div>
+        <div className="text-lg h-[300px] flex items-center justify-center">Loading...</div>
       ) : (
         <>
           <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
