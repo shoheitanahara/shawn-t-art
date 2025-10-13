@@ -49,9 +49,9 @@ export default function Home() {
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
 
-      <div className="container mx-auto mb-2 w-auto lg:w-2/3">
+      <div className="container mx-auto mb-2 w-auto lg:w-2/3 text-center">
         <p>The Double Slash は、自由と抑圧のあいだにある現代人の葛藤を描いたシリーズです。</p>
-        <p className="mt-6">The Double Slash explores the fragile balance between freedom and control in the modern age.</p>
+        <p className="mt-6 lg:mt-2">The Double Slash explores the fragile balance between freedom and control in the modern age.</p>
       </div>
 
       <hr className="w-full mt-12 border-gray-300 mb-12" />
