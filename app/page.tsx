@@ -44,7 +44,7 @@ export default function Home() {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between pb-6">
+    <main className="flex min-h-screen flex-col items-center justify-between mx-auto md:px-8 pb-6">
       <div className="mb-6">
         <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
       </div>
