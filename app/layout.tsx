@@ -60,6 +60,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/nft-manifest">NFT Manifest</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
+                      <Link href="/videos">Videos</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
                       <Link href="/collaborations">Collaborations</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
