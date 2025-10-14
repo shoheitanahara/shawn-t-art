@@ -3,7 +3,7 @@ import React from "react";
 
 const TulipVideoComponent = () => (
   <div>
-    <video width="960" height="540" controls autoPlay loop muted>
+    <video width="960" height="540" autoPlay loop muted>
       <source src="/videos/tulip.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -12,7 +12,7 @@ const TulipVideoComponent = () => (
 
 const SpamVideoComponent = () => (
   <div>
-    <video width="960" height="540" controls autoPlay loop muted>
+    <video width="960" height="540" autoPlay loop muted>
       <source src="/videos/spam.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -21,7 +21,7 @@ const SpamVideoComponent = () => (
 
 const LikeVideoComponent = () => (
   <div>
-    <video width="960" height="540" controls autoPlay loop muted>
+    <video width="960" height="540" autoPlay loop muted>
       <source src="/videos/like.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
