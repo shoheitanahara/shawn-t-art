@@ -30,7 +30,7 @@ const LikeVideoComponent = () => (
 
 const VideosPage = () => {
   return (
-    <main className="px-6 md:px-24 pb-6">
+    <main className="w-full lg:w-3/4 px-6 md:px-12 lg:mx-auto pb-6">
       <h2 className="text-2xl font-bold text-center mb-4">The Double Slash – Motion Series</h2>
 
       <div className="flex flex-col items-center justify-between">
