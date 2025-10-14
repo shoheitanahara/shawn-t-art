@@ -1,6 +1,15 @@
 
 import React from "react";
 
+const FvVideoComponent = () => (
+  <div>
+    <video width="960" height="540" autoPlay loop muted>
+      <source src="/videos/firstview.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+);
+
 const TulipVideoComponent = () => (
   <div>
     <video width="960" height="540" autoPlay loop muted>
@@ -31,6 +40,13 @@ const LikeVideoComponent = () => (
 const MotionPage = () => {
   return (
     <main className="w-full lg:w-3/4 px-6 md:px-12 lg:mx-auto pb-6">
+
+      <div className="w-full mx-auto lg:w-2/3 mb-8">
+        <div className="flex flex-col items-center justify-center mt-4">
+          <FvVideoComponent />
+        </div>
+      </div>
+
       <h2 className="text-2xl font-bold text-center mb-4">The Double Slash – Motion Series</h2>
 
       <div className="flex flex-col items-center justify-between">
