@@ -28,7 +28,7 @@ const LikeVideoComponent = () => (
   </div>
 );
 
-const VideosPage = () => {
+const MotionPage = () => {
   return (
     <main className="w-full lg:w-3/4 px-6 md:px-12 lg:mx-auto pb-6">
       <h2 className="text-2xl font-bold text-center mb-4">The Double Slash – Motion Series</h2>
@@ -111,5 +111,5 @@ const VideosPage = () => {
   );
 };
 
-export default VideosPage;
+export default MotionPage;
 
