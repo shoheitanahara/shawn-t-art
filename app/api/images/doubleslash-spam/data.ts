@@ -1,1 +1,1 @@
-export const doubleslashSpamImageList = ["spam6.png","spam4.png","spam3.png","spam1.png","spam2.png","spam5.png"];
+export const doubleslashSpamImageList = ["spam6.png","spam1.png","spam4.png","spam2.png","spam3.png","spam5.png"];
