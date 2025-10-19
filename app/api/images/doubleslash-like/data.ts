@@ -1,1 +1,1 @@
-export const doubleslashLikeImageList = ["like8.png","like6.png","like3.png","like2.png","like4.png","like7.png","like1.png","like5.png"];
+export const doubleslashLikeImageList = ["like1.png","like2.png","like8.png","like4.png","like3.png","like5.png","like6.png","like7.png"];
