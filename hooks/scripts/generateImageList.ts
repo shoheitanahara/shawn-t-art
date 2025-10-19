@@ -11,6 +11,8 @@ const doubleslashSpamImagesDir = path.join(process.cwd(), 'public/images/doubles
 const doubleslashSpamOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash-spam/data.ts');
 const doubleslashLikeImagesDir = path.join(process.cwd(), 'public/images/doubleslash-like');
 const doubleslashLikeOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash-like/data.ts');
+const marksoffreedomSapporo2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/sapporo-2025');
+const marksoffreedomSapporo2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-sapporo-2025/data.ts');
 
 export default function generateImageList() {
   if (!fs.existsSync(imagesDir)) {
@@ -33,6 +35,9 @@ export default function generateImageList() {
   // doubleslash-like画像ファイル名を取得
   const doubleslashLikeImageFiles = fs.readdirSync(doubleslashLikeImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
+  // marks of freedom sapporo 2025画像ファイル名を取得
+  const marksoffreedomSapporo2025ImageFiles = fs.readdirSync(marksoffreedomSapporo2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // 配列をシャッフルする関数
   const shuffleArray = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -48,6 +53,7 @@ export default function generateImageList() {
   const shuffledDoubleslashImageFiles = shuffleArray(doubleslashImageFiles);
   const shuffledDoubleslashSpamImageFiles = shuffleArray(doubleslashSpamImageFiles);
   const shuffledDoubleslashLikeImageFiles = shuffleArray(doubleslashLikeImageFiles);
+  const shuffledMarksoffreedomSapporo2025ImageFiles = shuffleArray(marksoffreedomSapporo2025ImageFiles);
 
   // data.tsファイルの内容を生成
   const content = `export const imageList = ${JSON.stringify(shuffledImageFiles)};`;
@@ -75,4 +81,9 @@ export default function generateImageList() {
   const doubleslashLikeContent = `export const doubleslashLikeImageList = ${JSON.stringify(shuffledDoubleslashLikeImageFiles)};`;
   fs.writeFileSync(doubleslashLikeOutputFilePath, doubleslashLikeContent, 'utf8');
   console.log(`Doubleslash like image list generated: ${doubleslashLikeOutputFilePath}`);
+
+  // marks of freedom sapporo 2025画像の内容を生成
+  const marksoffreedomSapporo2025Content = `export const marksoffreedomSapporo2025ImageList = ${JSON.stringify(shuffledMarksoffreedomSapporo2025ImageFiles)};`;
+  fs.writeFileSync(marksoffreedomSapporo2025OutputFilePath, marksoffreedomSapporo2025Content, 'utf8');
+  console.log(`Marks of freedom sapporo 2025 image list generated: ${marksoffreedomSapporo2025OutputFilePath}`);
 }
