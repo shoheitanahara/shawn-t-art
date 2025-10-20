@@ -116,8 +116,12 @@ export default function Home() {
           if (!open) setSelectedImage(null);
         }}>
           <DialogContent className="max-w-xl w-[90%] mx-auto">
-            <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
-          </DialogContent>
+          {selectedImage ? (
+            <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          ) : (
+            <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
+          )}
+        </DialogContent>
         </Dialog>
 
 

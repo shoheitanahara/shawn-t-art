@@ -51,7 +51,7 @@ const MarksOfFreedom: React.FC = () => {
             {images.map((image, index) => (
               <Card key={index} className="m-4 cursor-pointer h-50 md:h-50 lg:h-50 object-contain" onClick={() => setSelectedImage(image)}>
                 <CardContent className="grid gap-2 p-0">
-                  <Image src={image} alt={`Image ${index}`} width={500} height={300} className="object-cover h-full" />
+                  <Image src={image} alt={`Image ${index}`} width={800} height={600} className="object-cover h-full" />
                 </CardContent>
               </Card>
             ))}
@@ -97,7 +97,11 @@ const MarksOfFreedom: React.FC = () => {
         if (!open) setSelectedImage(null);
       }}>
         <DialogContent className="max-w-xl w-[90%] mx-auto">
-          <Image src={selectedImage || ''} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          {selectedImage ? (
+            <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+          ) : (
+            <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
+          )}
         </DialogContent>
       </Dialog>
 
