@@ -1,15 +1,35 @@
 "use client";
 
 import React from "react";
-import Image from 'next/image'
-import MarksOfFreedom from "@/components/marksoffreedom";
+import MarksOfFreedomSapporo2025 from "@/components/marksoffreedom-sapporo-2025";
+import MarksOfFreedomIshikawa2025 from "@/components/marksoffreedom-ishikawa-2025";
+
+const MarksOfFreedomVideoComponent = () => (
+  <div>
+    <video width="960" height="540" autoPlay loop muted>
+      <source src="/videos/marksoffreedom_ishikawa.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+);
 
 const MarksOfFreedomPage = () => {
   return (
     <main className="w-full lg:w-3/4 px-6 md:px-12 lg:mx-auto pb-6">
       <h2 className="text-3xl font-bold text-center mb-4">Marks of Freedom</h2>
 
-      <MarksOfFreedom />
+      <div className="w-auto mx-auto lg:w-2/3 mb-6 md:mb-12 mt-6 text-center">
+        <p className="text-lg mt-4">自由を感じた瞬間に、シャッターを切る。</p>
+        <p className="text-lg italic">I press the shutter at the moment I feel free.</p>
+      </div>
+
+      <MarksOfFreedomIshikawa2025 />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+      <MarksOfFreedomSapporo2025 />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
 
       <div className="w-auto mx-auto lg:w-2/3 mb-6 md:mb-12 mt-6 text-left">
         <p className="text-lg">― 現実世界に残された、自由の痕跡 ―</p>

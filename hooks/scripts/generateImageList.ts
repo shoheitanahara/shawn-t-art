@@ -13,6 +13,8 @@ const doubleslashLikeImagesDir = path.join(process.cwd(), 'public/images/doubles
 const doubleslashLikeOutputFilePath = path.join(process.cwd(), 'app/api/images/doubleslash-like/data.ts');
 const marksoffreedomSapporo2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/sapporo-2025');
 const marksoffreedomSapporo2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-sapporo-2025/data.ts');
+const marksoffreedomIshikawa2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/ishikawa-2025');
+const marksoffreedomIshikawa2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-ishikawa-2025/data.ts');
 
 export default function generateImageList() {
   if (!fs.existsSync(imagesDir)) {
@@ -38,6 +40,9 @@ export default function generateImageList() {
   // marks of freedom sapporo 2025画像ファイル名を取得
   const marksoffreedomSapporo2025ImageFiles = fs.readdirSync(marksoffreedomSapporo2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
+  // marks of freedom ishikawa 2025画像ファイル名を取得
+  const marksoffreedomIshikawa2025ImageFiles = fs.readdirSync(marksoffreedomIshikawa2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // 配列をシャッフルする関数
   const shuffleArray = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -54,6 +59,7 @@ export default function generateImageList() {
   const shuffledDoubleslashSpamImageFiles = shuffleArray(doubleslashSpamImageFiles);
   const shuffledDoubleslashLikeImageFiles = shuffleArray(doubleslashLikeImageFiles);
   const shuffledMarksoffreedomSapporo2025ImageFiles = shuffleArray(marksoffreedomSapporo2025ImageFiles);
+  const shuffledMarksoffreedomIshikawa2025ImageFiles = shuffleArray(marksoffreedomIshikawa2025ImageFiles);
 
   // data.tsファイルの内容を生成
   const content = `export const imageList = ${JSON.stringify(shuffledImageFiles)};`;
@@ -86,4 +92,9 @@ export default function generateImageList() {
   const marksoffreedomSapporo2025Content = `export const marksoffreedomSapporo2025ImageList = ${JSON.stringify(shuffledMarksoffreedomSapporo2025ImageFiles)};`;
   fs.writeFileSync(marksoffreedomSapporo2025OutputFilePath, marksoffreedomSapporo2025Content, 'utf8');
   console.log(`Marks of freedom sapporo 2025 image list generated: ${marksoffreedomSapporo2025OutputFilePath}`);
+
+  // marks of freedom ishikawa 2025画像の内容を生成
+  const marksoffreedomIshikawa2025Content = `export const marksoffreedomIshikawa2025ImageList = ${JSON.stringify(shuffledMarksoffreedomIshikawa2025ImageFiles)};`;
+  fs.writeFileSync(marksoffreedomIshikawa2025OutputFilePath, marksoffreedomIshikawa2025Content, 'utf8');
+  console.log(`Marks of freedom ishikawa 2025 image list generated: ${marksoffreedomIshikawa2025OutputFilePath}`);
 }

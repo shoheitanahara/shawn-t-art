@@ -142,20 +142,20 @@ export default function Home() {
           The double slash is not decoration. It is a symbol of the contradictions of today’s society and has become the artist’s own icon. Through these lines, viewers can feel both the freedom that is taken away and the power that refuses to disappear.
           </p>
         </div>
+
+        <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+        <DoubleSlashSpam />
+
+        <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+        <DoubleSlashLike />
+
+        <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+        <CuratorsNotePage />
+
       </div>
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <DoubleSlashSpam />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <DoubleSlashLike />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <CuratorsNotePage />
-
     </main>
   );
 }
