@@ -46,7 +46,7 @@ const PhilosophyPage: FC = () => {
         <hr className="w-full mt-12 border-gray-300 mb-6" />
 
         <h3 className="text-lg font-bold">Summary Statement</h3>
-        <p>“I create to remember that technology can still feel human.”</p>
+        <p className="italic">“I create to remember that technology can still feel human.”</p>
         <p>私は、テクノロジーがまだ人間的であり得ることを思い出すために創る。</p>
       </div>
     </div>

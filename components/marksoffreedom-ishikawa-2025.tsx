@@ -106,7 +106,7 @@ const MarksOfFreedomIshikawa2025: React.FC = () => {
       </Dialog>
 
       <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
-        <p>&quot;Marks of Freedom - Ishikawa 2025&quot;</p>
+        <p>&quot;Marks of Freedom - Kanazawa 2025&quot;</p>
         <p>Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
       </div>
