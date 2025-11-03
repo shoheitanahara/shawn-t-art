@@ -18,7 +18,7 @@ export default function SlashSheepModel() {
       exposure="0.8"
       rotation-per-minute="0"
       orientation="0deg 0deg 240deg"
-      style={{ width: '100%', height: '300px', background: '#f8f8f8' }}
+      style={{ width: '100%', height: '300px', background: '#505050' }}
     />
   );
 }

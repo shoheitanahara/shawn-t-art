@@ -42,8 +42,8 @@ const SlashSheep: React.FC = () => {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="container mx-auto flex justify-center items-center mt-6 mb-6">
+    <div className="flex flex-col items-center justify-center mb-6">
+      <div className="container mx-auto flex justify-center items-center mt-6 mb-2">
         <h2 className="text-2xl font-bold">Slash Sheep</h2>
       </div>
 
