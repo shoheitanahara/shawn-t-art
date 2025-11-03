@@ -63,6 +63,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/marksoffreedom">Side Works</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
+                      <Link href="/slashsheep">Slash Sheep</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
                       <Link href="/collaborations">Collaborations</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>

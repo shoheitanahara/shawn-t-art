@@ -15,6 +15,8 @@ const marksoffreedomSapporo2025ImagesDir = path.join(process.cwd(), 'public/imag
 const marksoffreedomSapporo2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-sapporo-2025/data.ts');
 const marksoffreedomIshikawa2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/ishikawa-2025');
 const marksoffreedomIshikawa2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-ishikawa-2025/data.ts');
+const slashsheepImagesDir = path.join(process.cwd(), 'public/images/slashsheep');
+const slashsheepOutputFilePath = path.join(process.cwd(), 'app/api/images/slashsheep/data.ts');
 
 export default function generateImageList() {
   if (!fs.existsSync(imagesDir)) {
@@ -43,6 +45,9 @@ export default function generateImageList() {
   // marks of freedom ishikawa 2025画像ファイル名を取得
   const marksoffreedomIshikawa2025ImageFiles = fs.readdirSync(marksoffreedomIshikawa2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
+  // slashsheep画像ファイル名を取得
+  const slashsheepImageFiles = fs.readdirSync(slashsheepImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // 配列をシャッフルする関数
   const shuffleArray = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -61,6 +66,9 @@ export default function generateImageList() {
   const shuffledMarksoffreedomSapporo2025ImageFiles = shuffleArray(marksoffreedomSapporo2025ImageFiles);
   const shuffledMarksoffreedomIshikawa2025ImageFiles = shuffleArray(marksoffreedomIshikawa2025ImageFiles);
 
+  // slashsheep画像はシャッフルしない
+  const shuffledSlashsheepImageFiles = slashsheepImageFiles;  // slashsheep画像はシャッフルしない
+  
   // data.tsファイルの内容を生成
   const content = `export const imageList = ${JSON.stringify(shuffledImageFiles)};`;
 
@@ -97,4 +105,9 @@ export default function generateImageList() {
   const marksoffreedomIshikawa2025Content = `export const marksoffreedomIshikawa2025ImageList = ${JSON.stringify(shuffledMarksoffreedomIshikawa2025ImageFiles)};`;
   fs.writeFileSync(marksoffreedomIshikawa2025OutputFilePath, marksoffreedomIshikawa2025Content, 'utf8');
   console.log(`Marks of freedom ishikawa 2025 image list generated: ${marksoffreedomIshikawa2025OutputFilePath}`);
+
+  // slashsheep画像の内容を生成
+  const slashsheepContent = `export const slashsheepImageList = ${JSON.stringify(shuffledSlashsheepImageFiles)};`;
+  fs.writeFileSync(slashsheepOutputFilePath, slashsheepContent, 'utf8');
+  console.log(`Slash sheep image list generated: ${slashsheepOutputFilePath}`);
 }
