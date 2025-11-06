@@ -15,6 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 import SlashSheepModel from "@/components/slashsheep-model";
+import SlashSheepModelBlack from "@/components/slashsheep-model-black";
 
 const SlashSheep: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
@@ -51,6 +52,11 @@ const SlashSheep: React.FC = () => {
       <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
         <SlashSheepModel />
       </div>
+
+      <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
+        <SlashSheepModelBlack />
+      </div>
+
 
       <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
         <p>&quot;Slash Sheep&quot;</p>
