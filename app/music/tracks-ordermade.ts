@@ -199,4 +199,161 @@ Side by side, we shine — SORA!
 “We are SORA… we rise…
 yeah, fly high… SORA…”)`,
       },
+
+
+    {
+        id: "petty",
+        title: "Petty",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/ordermade/Petty.png",
+        audioSrc: "/music/tracks/ordermade/Petty.mp3",
+        lyrics: `[Verse 1]
+
+Petty draw love in a 32 frame,
+Tiny dots burn like a pocket flame.
+Hokkaido cold but her warmth don’t fade,
+Snow turns gold in the art she made.
+
+“Good morning 🌹” start of the day,
+No brag, no flex, just a gentle way.
+Collecting dreams like petals that fall,
+Petty don’t take — Petty lift us all.
+
+SORA night sky slow like air,
+Petty walk in — color everywhere.
+No walls, no locks, no guard, no fight,
+Just “I’m here. I hold your light.”
+
+Pixel bloom soft, healing the scars,
+Warm like tea under winter stars.
+No noise, no push, love with ease,
+Soft like fur in a moonlight breeze.
+
+[Hook / Chorus]
+
+Petty, Petty, rose in the pixel sky,
+Soft but strong, you don’t even try.
+Petty just give, and the room comes alive,
+Keeping our flame that survives.
+Petty, Petty, bloom in the cold,
+Red like passion, warm like gold.
+Even in silence the message is clear:
+“Sending love 🌹 I'm always here.”
+
+[Verse 2]
+
+Yoshiki piano in her heartbeat slow,
+Crimson echoes in the afterglow.
+RIP tears still cut like glass,
+But Petty turn pain into things that last.
+
+Pixel pets, soft night air,
+Boat jokes, laughter, gentle care.
+She lift new artists, she clap, she cheer,
+Not for herself — for the ones right here.
+
+Metaverse gardens where quiet wins,
+Where heavy hearts turn light again.
+Where masks drop off, where you can cry,
+Where no one ask you how or why.
+
+Support so steady it feel like fate,
+Petty don’t rush, Petty just wait.
+Patience warm as a candle flame,
+Same soft love — every day same.
+
+[Hook / Chorus]
+
+Petty, Petty, rose in the pixel sky,
+Soft but strong, you don’t even try.
+Petty just give, and the room comes alive,
+Keeping our flame that survives.
+Petty, Petty, bloom in the cold,
+Red like passion, warm like gold.
+Even in silence the message is clear:
+“Sending love 🌹 I'm always here.”
+
+[Outro]
+
+Meet me in the pixel garden,
+Where roses don’t fade.
+Where hearts don’t harden,
+And Petty already made.`,
+      },
+
+
+
+
+    {
+        id: "kappy",
+        title: "Kappy",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/ordermade/Kappy.png",
+        audioSrc: "/music/tracks/ordermade/Kappy.mp3",
+        lyrics: `[Verse 1]
+Green kappa boy from the cucumber line
+Born when you cut one, yeah perfect timing
+Lives by the swamp, Okeguru zone
+Summer in the fields where the cucumbers grow
+
+Five cukes weight, light on his feet
+Knows every farm just by one bite to eat
+Plate on his head, shell come off clean
+Pop it on, pop it off, flexible being
+
+Veggie school grad, green science brain
+Studied cucumbers deep in grad-school pain
+Loves them raw, that’s his daily choice
+Says “thank you” different — “Sankyuri” voice
+
+Hates wasabi rolls, keep that away
+Goya, zucchini? Nah, hard pass, no way
+Cute little smile but the details happy
+All that lore packed inside Kappy
+
+[Chorus]
+Kappy — born from a cucumber, pop
+Kappy — five-cuke weight, never too heavy
+Kappy — swamp-side summer, field-hop
+Kappy — secret age, but the smile stay ready
+
+Kappy — veggie brain, cucumber PhD
+Kappy — one bite tell the origin easy
+Kappy — say “Thank you — Li”, feel happy
+Last word ring worldwide — Kappy
+
+[Verse 2]
+Behind that smile, yeah here’s the source
+Dahchan fold paper with serious force
+Bright and cute, light up the room
+But lock-in mode flip the mood real soon
+
+Laugh like sunshine, energy loud
+But when she work, tunnel vision crowd
+Eyes stay sharp, hands precise
+Every fold clean, no roll of the dice
+
+Cute and playful, passion stay strong
+Disciplined heart keep pushin’ long
+Fun on the surface, core like steel
+That balance right there make the art feel real
+
+Cute and loud, but she still moves classy
+Serious with the art, heart strong, not flashy
+Every clean fold got that spark and that snappy
+So when it hits your chest, yeah — that’s Kappy
+
+[Chorus]
+Kappy — born from a cucumber, pop
+Kappy — five-cuke weight, never too heavy
+Kappy — swamp-side summer, field-hop
+Kappy — secret age, but the smile stay ready
+
+Kappy — veggie brain, cucumber PhD
+Kappy — one bite tell the origin easy
+Kappy — say “Thank you — Li”, feel happy
+Last word ring worldwide — Kappy`,
+      },
 ];
