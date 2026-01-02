@@ -168,4 +168,133 @@ No gatekeepers.
 Just light, just soul,
 Just… SORA.`,
       },
-  ];
+
+      {
+        id: "meebitsjapan",
+        title: "Meebits Japan",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/MeebitsJapan.png",
+        audioSrc: "/music/tracks/Meebits Japan.mp3",
+        lyrics: `【Verse 1 – Fujii 10627】
+Shinjuku lane, speed flash like chrome
+Metaverseの街で make it my home
+LarvaLabs roots, sparkin’ my flame
+From voxel dreams to a global name
+
+ゼロヨン勝負で chainを切る
+On-chain drift — watch how I steer
+Fujii 10627,  you’ll know
+Tokyo heat in a neon glow
+
+【Hook / Chorus – 全員】
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)
+
+【Verse 2 – KuroShiba 4487】
+Backstreet twist, smoke in the light
+Gear up quick — vanish from sight
+Crypto blood with a voxel soul
+Run this track, I’m in control
+
+KuroShiba 4487 — steady aim
+In the drift game, we ain’t the same
+Code and culture, fuse as one
+From Tokyo night till the rising sun
+
+【Hook / Chorus – 全員】
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)
+
+【Verse 3 – Shawn T. Art 4274】
+I'm Shawn T. Art 4274,
+Tokyo base, kicking down the door
+光の中を voxel step,
+Steelの頭、chainで rep
+
+Bullet train speed — beatに sync
+街を突き抜ける digital link
+追いつけないぜ、この frame rate,
+History made in a voxel state
+
+【Hook / Chorus – 全員】
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)
+Who runs it? — Meebits Japan!  
+Who owns it? — Meebits Japan! (ハイ!)  
+Meebits Japan (Go! Go! Go!)  
+Meebits Japan (Go! Go! Go!)`,
+  },
+
+  {
+    id: "yugalabs",
+    title: "Yuga Labs",
+    artist: "Shawn T. Art",
+    year: "2025",
+    coverSrc: "/music/covers/Hiphop.png",
+    audioSrc: "/music/tracks/YugaLabs.mp3",
+    lyrics: `[Hook / Chorus]
+Guess who built the scene? — YugaLabs!
+Guess who runs the dream? — YugaLabs!
+You tried to doubt the chain, but look what collapsed,
+Now the world moves on — with YugaLabs.
+
+[Verse 1]
+Now this looks like a job for Apes,
+So everybody just fill that space.
+We need a little bit of Yuga flame,
+‘Cause without Labs, it ain’t the same.
+
+Mutants roar with a toxic bite,
+Yacht Club kings take the stage tonight.
+Otherside open, the portal wide,
+Step through the code, take a digital ride.
+
+[Hook / Chorus]
+Guess who built the scene? — YugaLabs!
+Guess who runs the dream? — YugaLabs!
+You tried to doubt the chain, but look what collapsed,
+Now the world moves on — with YugaLabs.
+
+[Verse 2]
+Kids so fed up with the old-school rules,
+Laugh at the critics, they look like fools.
+We don’t fade, we don’t disguise,
+Culture eternal, it multiplies.
+
+This is payback, code in veins,
+Apes on top, still run the game.
+Mutants evolve, future survives,
+YugaLabs proving the culture thrives.
+
+[Hook / Chorus] (x2)
+Guess who built the scene? — YugaLabs!
+Guess who runs the dream? — YugaLabs!
+You tried to doubt the chain, but look what collapsed,
+Now the world moves on — with YugaLabs.`,
+    },
+
+    {
+        id: "goodmorning",
+        title: "Good Morning",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/Hiphop.png",
+        audioSrc: "/music/tracks/Good Morning.mp3",
+        lyrics: "",
+        },
+];

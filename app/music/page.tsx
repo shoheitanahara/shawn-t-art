@@ -90,7 +90,7 @@ export default function MusicPage() {
                     preload="metadata"
                     src={track.audioSrc}
                   >
-                    お使いのブラウザは audio タグに対応していません。
+                    Your browser does not support the audio element.
                   </audio>
                 </div>
 
@@ -106,7 +106,7 @@ export default function MusicPage() {
                     </div>
                   ) : (
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      歌詞は未登録です。
+                      Lyrics are not available.
                     </p>
                   )}
                 </div>
