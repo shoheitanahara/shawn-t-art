@@ -80,7 +80,6 @@ export default function MusicPage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      priority={track.id === tracks[0]?.id} // 先頭だけ優先（任意）
                     />
                   </div>
 
@@ -89,6 +88,8 @@ export default function MusicPage() {
                     controls
                     preload="metadata"
                     src={track.audioSrc}
+                    controlsList="nodownload noplaybackrate"
+                    onContextMenu={(e) => e.preventDefault()}
                   >
                     Your browser does not support the audio element.
                   </audio>
