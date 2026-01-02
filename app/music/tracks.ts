@@ -295,6 +295,32 @@ Now the world moves on — with YugaLabs.`,
         year: "2025",
         coverSrc: "/music/covers/Hiphop.png",
         audioSrc: "/music/tracks/Good Morning.mp3",
-        lyrics: "",
+        lyrics: `[Verse 1]
+Sunshine creepin’ on my screen,
+Floor checkin’ while I sip that bean.
+B A Y C cap, morning glow,
+Feelin’ fresh, got that GM flow.
+
+Toothbrush jammin’, Discord ping,
+Someone minted a wild new thing.
+PFP crisp, fit just right,
+I’m an ape — yeah, the vibe’s so tight!
+
+[Chorus / Hook]
+ GM GM! What’s up, fam?
+Apes in the mirror go BAM BAM BAM!
+From Tokyo clocks to NYC,
+We rise up loud with that energy! 
+
+[Verse 2]
+WAGMI dreams, banana toast,
+Sayin’ GM way more than I post.
+Ape life breezy, never too slow,
+Ridin’ good vibes — now you know.
+
+No suit, no tie, just hoodie grace,
+Mutants with me, we own this space.
+Who's that grinnin’ with NFT fate?
+It’s Shawn T. Art 3258`,
         },
 ];
