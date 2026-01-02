@@ -27,7 +27,7 @@ export default function MusicPage() {
 
       <section
         aria-label="Music gallery"
-        className="grid grid-cols-2 md:grid-cols-3 gap-2"
+        className="grid grid-cols-2 md:grid-cols-3 gap-4"
       >
         {tracks.map((track) => (
           <Dialog key={track.id}>
@@ -124,7 +124,7 @@ export default function MusicPage() {
 
       <section
         aria-label="Music gallery"
-        className="grid grid-cols-2 md:grid-cols-3 gap-2"
+        className="grid grid-cols-2 md:grid-cols-3 gap-4"
       >
         {tracksOrdermade.map((track) => (
           <Dialog key={track.id}>
