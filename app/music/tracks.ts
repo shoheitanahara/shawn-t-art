@@ -622,4 +622,54 @@ Laugh at the haters, what else is new?
 Mock all you want, but you’ll sing along,
 End of the day — Apes together strong.`,
                     },
+    
+    {
+        id: "sorahalloweenjam",
+        title: "SORA HALLOWEEN JAM",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/SORA HALLOWEEN JAM.png",
+        audioSrc: "/music/tracks/SORA HALLOWEEN JAM.mp3",
+        lyrics: ``,
+    },
+    
+    {
+        id: "dracula",
+        title: "Dracula",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/Dracula.png",
+        audioSrc: "/music/tracks/Dracula.mp3",
+        lyrics: ``,
+    },
+
+    {
+        id: "pumpkin",
+        title: "Pumpkin",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/Pumpkin.png",
+        audioSrc: "/music/tracks/Pumpkin.mp3",
+        lyrics: ``,
+    },
+
+    {
+        id: "zombie",
+        title: "Zombie",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/Zombie.png",
+        audioSrc: "/music/tracks/Zombie.mp3",
+        lyrics: ``,
+    },
+    
+    {
+        id: "bats",
+        title: "Bats",
+        artist: "Shawn T. Art",
+        year: "2025",
+        coverSrc: "/music/covers/Bats.png",
+        audioSrc: "/music/tracks/Bats.mp3",
+        lyrics: ``,
+    },
 ];
