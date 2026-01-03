@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
+    // unoptimized: true, 
+    minimumCacheTTL: 60 * 60 * 24 * 30,  // unoptimized: trueの代わりに、キャッシュの有効期限を30日に設定
     remotePatterns: [
       {
         protocol: 'https',
