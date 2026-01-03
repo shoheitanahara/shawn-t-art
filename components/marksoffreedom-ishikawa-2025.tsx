@@ -96,7 +96,7 @@ const MarksOfFreedomIshikawa2025: React.FC = () => {
       <Dialog open={!!selectedImage} onOpenChange={(open) => { 
         if (!open) setSelectedImage(null);
       }}>
-        <DialogContent className="max-w-xl w-[90%] mx-auto">
+        <DialogContent className="max-w-2xl w-[90%] mx-auto">
           {selectedImage ? (
             <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
           ) : (
