@@ -15,6 +15,8 @@ const marksoffreedomSapporo2025ImagesDir = path.join(process.cwd(), 'public/imag
 const marksoffreedomSapporo2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-sapporo-2025/data.ts');
 const marksoffreedomIshikawa2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/ishikawa-2025');
 const marksoffreedomIshikawa2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-ishikawa-2025/data.ts');
+const marksoffreedomTokyo2025ImagesDir = path.join(process.cwd(), 'public/images/marksoffreedom/tokyo-2025');
+const marksoffreedomTokyo2025OutputFilePath = path.join(process.cwd(), 'app/api/images/marksoffreedom-tokyo-2025/data.ts');
 const slashsheepImagesDir = path.join(process.cwd(), 'public/images/slashsheep');
 const slashsheepOutputFilePath = path.join(process.cwd(), 'app/api/images/slashsheep/data.ts');
 
@@ -45,6 +47,9 @@ export default function generateImageList() {
   // marks of freedom ishikawa 2025画像ファイル名を取得
   const marksoffreedomIshikawa2025ImageFiles = fs.readdirSync(marksoffreedomIshikawa2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
+  // marks of freedom tokyo 2025画像ファイル名を取得
+  const marksoffreedomTokyo2025ImageFiles = fs.readdirSync(marksoffreedomTokyo2025ImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
+
   // slashsheep画像ファイル名を取得
   const slashsheepImageFiles = fs.readdirSync(slashsheepImagesDir).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));
 
@@ -65,6 +70,7 @@ export default function generateImageList() {
   const shuffledDoubleslashLikeImageFiles = shuffleArray(doubleslashLikeImageFiles);
   const shuffledMarksoffreedomSapporo2025ImageFiles = shuffleArray(marksoffreedomSapporo2025ImageFiles);
   const shuffledMarksoffreedomIshikawa2025ImageFiles = shuffleArray(marksoffreedomIshikawa2025ImageFiles);
+  const shuffledMarksoffreedomTokyo2025ImageFiles = shuffleArray(marksoffreedomTokyo2025ImageFiles);
 
   // slashsheep画像はシャッフルしない
   const shuffledSlashsheepImageFiles = slashsheepImageFiles;  // slashsheep画像はシャッフルしない
@@ -105,6 +111,11 @@ export default function generateImageList() {
   const marksoffreedomIshikawa2025Content = `export const marksoffreedomIshikawa2025ImageList = ${JSON.stringify(shuffledMarksoffreedomIshikawa2025ImageFiles)};`;
   fs.writeFileSync(marksoffreedomIshikawa2025OutputFilePath, marksoffreedomIshikawa2025Content, 'utf8');
   console.log(`Marks of freedom ishikawa 2025 image list generated: ${marksoffreedomIshikawa2025OutputFilePath}`);
+
+  // marks of freedom tokyo 2025画像の内容を生成
+  const marksoffreedomTokyo2025Content = `export const marksoffreedomTokyo2025ImageList = ${JSON.stringify(shuffledMarksoffreedomTokyo2025ImageFiles)};`;
+  fs.writeFileSync(marksoffreedomTokyo2025OutputFilePath, marksoffreedomTokyo2025Content, 'utf8');
+  console.log(`Marks of freedom tokyo 2025 image list generated: ${marksoffreedomTokyo2025OutputFilePath}`);
 
   // slashsheep画像の内容を生成
   const slashsheepContent = `export const slashsheepImageList = ${JSON.stringify(shuffledSlashsheepImageFiles)};`;
