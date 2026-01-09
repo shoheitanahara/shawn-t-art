@@ -98,7 +98,7 @@ const MarksOfFreedomIshikawa2025: React.FC = () => {
       }}>
         <DialogContent className="max-w-2xl w-[90%] mx-auto">
           {selectedImage ? (
-            <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+            <Image src={selectedImage} alt="Selected" width={400} height={300} className="max-w-full h-auto" />
           ) : (
             <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
           )}
