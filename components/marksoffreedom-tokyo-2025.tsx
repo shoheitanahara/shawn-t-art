@@ -49,7 +49,7 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
         <>
           <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
             {images.map((image, index) => (
-              <Card key={index} className="m-4 cursor-pointer h-50 md:h-50 lg:h-50 object-contain" onClick={() => setSelectedImage(image)}>
+              <Card key={image} className="m-4 cursor-pointer h-50 md:h-50 lg:h-50 object-contain" onClick={() => setSelectedImage(image)}>
                 <CardContent className="grid gap-2 p-0">
                   <Image src={image} alt={`Image ${index}`} width={400} height={300} className="object-cover h-full" />
                 </CardContent>
