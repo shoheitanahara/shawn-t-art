@@ -14,9 +14,9 @@ export async function GET(request: Request) {
     
     const paginatedImageFiles = marksoffreedomSapporo2025ImageList.slice(startIndex, endIndex);
     
-    // paginatedImageFilesをランダムにシャッフル
-    const shuffledPaginatedImages = paginatedImageFiles.sort(() => Math.random() - 0.5);
-    const paginatedImages = shuffledPaginatedImages.map((file) => `/images/marksoffreedom/sapporo-2025/${file}`);
+    const paginatedImages = paginatedImageFiles.map(
+      (file) => `/images/marksoffreedom/sapporo-2025/${file}`,
+    );
 
     return NextResponse.json({ images: paginatedImages, totalPages }); // ページネーションされた画像のURLと総ページ数を返す
   } catch (error) {
