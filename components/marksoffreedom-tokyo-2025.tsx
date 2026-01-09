@@ -23,22 +23,36 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
   const [totalPages, setTotalPages] = useState<number>(1); // 追加: 総ページ数を管理
 
   useEffect(() => {
-    const fetchImages = async (page: number) => {
-      setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images/marksoffreedom-tokyo-2025?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
-      const data = await response.json(); // 変更: JSONを直接取得
-
-      if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
-        setImages(data.images); // 変更: 画像データを設定
-        setTotalPages(data.totalPages); // 追加: 総ページ数を設定
-      } else {
-        console.error('Error fetching images:', data.error);
+    const controller = new AbortController();
+  
+    const fetchImages = async () => {
+      try {
+        setLoading(true);
+  
+        const response = await fetch(
+          `/api/images/marksoffreedom-tokyo-2025?page=${currentPage}`,
+          { signal: controller.signal },
+        );
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  
+        const data = await response.json();
+        if (Array.isArray(data.images) && typeof data.totalPages === "number") {
+          setImages(data.images);
+          setTotalPages(data.totalPages);
+        } else {
+          console.error("Invalid response:", data);
+        }
+      } catch (error) {
+        if ((error as any)?.name === "AbortError") return;
+        console.error("Error fetching images:", error);
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
-      setLoading(false); // 追加: ローディング終了
     };
-    
-    fetchImages(currentPage); // 変更: 現在のページを引数として渡す
-  }, [currentPage]); // 変更: currentPageが変更されたときに再実行
+  
+    fetchImages();
+    return () => controller.abort();
+  }, [currentPage]);
 
   return (
     <div className="flex flex-col items-center justify-center">
