@@ -26,28 +26,22 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
     const controller = new AbortController();
   
     const fetchImages = async () => {
-      try {
-        setLoading(true);
-  
-        const response = await fetch(
-          `/api/images/marksoffreedom-tokyo-2025?page=${currentPage}`,
-          { signal: controller.signal },
-        );
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  
-        const data = await response.json();
-        if (Array.isArray(data.images) && typeof data.totalPages === "number") {
-          setImages(data.images);
-          setTotalPages(data.totalPages);
-        } else {
-          console.error("Invalid response:", data);
-        }
-      } catch (error) {
-        if ((error as any)?.name === "AbortError") return;
-        console.error("Error fetching images:", error);
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
+      setLoading(true);
+
+      const response = await fetch(
+        `/api/images/marksoffreedom-tokyo-2025?page=${currentPage}`,
+        { signal: controller.signal },
+      );
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+      if (Array.isArray(data.images) && typeof data.totalPages === "number") {
+        setImages(data.images);
+        setTotalPages(data.totalPages);
+      } else {
+        console.error("Invalid response:", data);
       }
+      setLoading(false);
     };
   
     fetchImages();
