@@ -45,20 +45,21 @@ export default function Home() {
   }, [currentPage]); // 変更: currentPageが変更されたときに再実行
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between pb-6">
+    // `id` を付与して `/#doubleslash` のようなURLから途中へジャンプできるようにする
+    <main id="top" className="flex min-h-screen flex-col items-center justify-between pb-6">
       <div className="flex flex-col items-center justify-center">
-        <div className="mb-6">
+        <div id="firstview" className="mb-6 scroll-mt-24">
           <Image src="/images/firstview/firstview.png" alt="Shawn T. art" width={900} height={600} className="object-cover" />
         </div>
 
-        <div className="container mx-auto mb-2 w-auto lg:w-2/3 lg:text-center">
+        <div id="intro" className="container mx-auto mb-2 w-auto lg:w-2/3 lg:text-center scroll-mt-24">
           <p>The Double Slash は、自由と抑圧のあいだにある現代人の葛藤を描いたシリーズです。</p>
           <p className="mt-6 lg:mt-2">The Double Slash explores the fragile balance between freedom and control in the modern age.</p>
         </div>
 
         <hr className="w-full mt-12 border-gray-300 mb-12" />
 
-        <div className="container mx-auto flex justify-center items-center mb-6">
+        <div id="doubleslash" className="container mx-auto flex justify-center items-center mb-6 scroll-mt-24">
           <h2 className="text-2xl font-bold">The Double Slash</h2>
         </div>
 
@@ -66,7 +67,10 @@ export default function Home() {
           <div className="text-lg h-[700px] md:h-[300px] flex items-center justify-center">Loading...</div>
         ) : (
           <>
-            <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
+            <div
+              id="doubleslash-gallery"
+              className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2 scroll-mt-24"
+            >
               {images.map((image, index) => (
                 <Card key={index} className="m-4 cursor-pointer h-80 md:h-64 lg:h-64 overflow-hidden" onClick={() => setSelectedImage(image)}>
                   <CardContent className="grid gap-4">
@@ -77,41 +81,43 @@ export default function Home() {
             </div>
           </>
         )}
-        <Pagination>
-          <PaginationContent className="gap-5">
-            <PaginationItem>
-              <PaginationLink 
-                onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined} // Firstボタン
-                className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
-              >
-                First
-              </PaginationLink> {/* 最初のページボタン */}
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationPrevious 
-                onClick={currentPage > 1 ? () => setCurrentPage(currentPage - 1) : undefined}
-                className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
-              /> {/* 前へボタン */}
-            </PaginationItem>
-            <PaginationItem>
-              <span>{currentPage}</span> {/* 現在のページを表示 */}
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext 
-                onClick={currentPage < totalPages ? () => setCurrentPage(currentPage + 1) : undefined} // 修正: 最後のページでのクリックを無効化
-                className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
-              /> {/* 次へボタン */}
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink 
-                onClick={currentPage < totalPages ? () => setCurrentPage(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
-                className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
-              >
-                Last
-              </PaginationLink> {/* 最後のページボタン */}
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+        <div id="doubleslash-pagination" className="scroll-mt-24">
+          <Pagination>
+            <PaginationContent className="gap-5">
+              <PaginationItem>
+                <PaginationLink 
+                  onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined} // Firstボタン
+                  className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+                >
+                  First
+                </PaginationLink> {/* 最初のページボタン */}
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationPrevious 
+                  onClick={currentPage > 1 ? () => setCurrentPage(currentPage - 1) : undefined}
+                  className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+                /> {/* 前へボタン */}
+              </PaginationItem>
+              <PaginationItem>
+                <span>{currentPage}</span> {/* 現在のページを表示 */}
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext 
+                  onClick={currentPage < totalPages ? () => setCurrentPage(currentPage + 1) : undefined} // 修正: 最後のページでのクリックを無効化
+                  className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+                /> {/* 次へボタン */}
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink 
+                  onClick={currentPage < totalPages ? () => setCurrentPage(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
+                  className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+                >
+                  Last
+                </PaginationLink> {/* 最後のページボタン */}
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
         <Dialog open={!!selectedImage} onOpenChange={(open) => { 
           if (!open) setSelectedImage(null);
         }}>
@@ -125,7 +131,7 @@ export default function Home() {
         </Dialog>
 
 
-        <div className="container mx-auto mb-6 md:mb-12 mt-6 lg:w-2/3">
+        <div id="doubleslash-description" className="container mx-auto mb-6 md:mb-12 mt-6 lg:w-2/3 scroll-mt-24">
           <p>&quot;The Double Slash&quot;</p>
           <p>Year: 2025</p>
           <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
@@ -145,15 +151,21 @@ export default function Home() {
 
         <hr className="w-full mt-12 border-gray-300 mb-12" />
 
-        <DoubleSlashSpam />
+        <section id="doubleslash-spam" className="w-full scroll-mt-24">
+          <DoubleSlashSpam />
+        </section>
 
         <hr className="w-full mt-12 border-gray-300 mb-12" />
 
-        <DoubleSlashLike />
+        <section id="doubleslash-like" className="w-full scroll-mt-24">
+          <DoubleSlashLike />
+        </section>
 
         <hr className="w-full mt-12 border-gray-300 mb-12" />
 
-        <CuratorsNotePage />
+        <section id="curators-note" className="w-full scroll-mt-24">
+          <CuratorsNotePage />
+        </section>
 
       </div>
     </main>
