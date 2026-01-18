@@ -34,6 +34,19 @@ const LinkPage = () => {
             </CardContent>
           </Card>
         </a>
+        <a href="https://meebits-runway.vercel.app/" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Meebits Runway</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center">
+                <Image src="/images/links/4274.png" alt="Spatial Logo" className="w-8 h-auto mr-4" width={32} height={32} />
+                <span>Meebits are art.</span>
+              </div>
+            </CardContent>
+          </Card>
+        </a>
         <a href="https://opensea.io/collection/the-double-slash" target="_blank" rel="noopener noreferrer" className="block w-full mb-4">
           <Card>
             <CardHeader>
