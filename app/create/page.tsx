@@ -5,10 +5,52 @@ import { Card } from '@/components/ui/card'; // Cardコンポーネントのイ�
 import { Button } from '@/components/ui/button'; // Buttonコンポーネントのインポート
 import QRCode from 'qrcode'; // QRコードライブラリのインポート
 
+type NftData = {
+    title: string;
+    owner: string;
+    creator: string;
+    imageUrl: string;
+};
+
+const isWalletAddress = (value: string): boolean => /^0x[a-fA-F0-9]{40}$/.test(value);
+
+const shortenWalletAddress = (address: string, head = 6, tail = 4): string => {
+    // 例: 0x123456…abcd
+    if (!isWalletAddress(address)) return address;
+    if (address.length <= head + tail + 1) return address;
+    return `${address.slice(0, head)}…${address.slice(-tail)}`;
+};
+
+const formatAccountLabel = (value: string): string => shortenWalletAddress(value);
+
+const drawImageContain = (
+    ctx: CanvasRenderingContext2D,
+    image: CanvasImageSource,
+    targetX: number,
+    targetY: number,
+    targetWidth: number,
+    targetHeight: number,
+    sourceWidth: number,
+    sourceHeight: number,
+) => {
+    // CSSの object-fit: contain 相当（比率維持・余白あり）
+    if (sourceWidth <= 0 || sourceHeight <= 0 || targetWidth <= 0 || targetHeight <= 0) return;
+
+    const scale = Math.min(targetWidth / sourceWidth, targetHeight / sourceHeight);
+    const drawWidth = sourceWidth * scale;
+    const drawHeight = sourceHeight * scale;
+
+    const dx = targetX + (targetWidth - drawWidth) / 2;
+    const dy = targetY + (targetHeight - drawHeight) / 2;
+
+    ctx.drawImage(image, dx, dy, drawWidth, drawHeight);
+};
+
 const ImageDownloader = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [url, setUrl] = useState('https://opensea.io/assets/ethereum/0x2eacf49b0c80d883cc699883e50a0ce10a453c7f/9'); // デフォルトのURLを設定
-    const [nftData, setNftData] = useState<{ title: string; owner: string; creator: string; imageUrl: string } | null>(null);
+    // デフォルトはオンチェーンでtokenURI/画像が取得できるNFT（Loot Bag #1）に設定
+    const [url, setUrl] = useState('https://opensea.io/item/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3258');
+    const [nftData, setNftData] = useState<NftData | null>(null);
     const [loading, setLoading] = useState(false); // ローディング状態の追加
 
     // コンポーネントがマウントされたときにデフォルトのURLでデータを取得
@@ -21,13 +63,20 @@ const ImageDownloader = () => {
         try {
             const response = await fetch(`/api/opensea?url=${encodeURIComponent(url)}`);
             if (!response.ok) { // レスポンスが正常か確認
-                throw new Error('Invalid OpenSea URL'); // エラーメッセージを表示
+                // APIが返すエラーメッセージを優先表示
+                try {
+                    const errorBody = await response.json();
+                    throw new Error(errorBody?.error ?? 'Failed to fetch NFT data');
+                } catch {
+                    throw new Error('Failed to fetch NFT data');
+                }
             }
-            const data = await response.json();
+            const data: NftData = await response.json();
             setNftData(data);
             await drawCanvas(data); // データ取得後に描画
-        } catch (error: any) {
-            alert(error.message); // エラーメッセージを表示
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : 'Unknown error';
+            alert(message); // エラーメッセージを表示
         } finally {
             setLoading(false); // ローディング終了
         }
@@ -60,7 +109,17 @@ const ImageDownloader = () => {
                     img.crossOrigin = 'Anonymous'; // CORS対応を追加
                     img.src = nftData.imageUrl; // NFTの画像URLを使用
                     img.onload = () => {
-                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height - 200);
+                        // 横長/縦長でも比率維持して収める（引き伸ばし防止）
+                        drawImageContain(
+                            ctx,
+                            img,
+                            0,
+                            0,
+                            canvas.width,
+                            canvas.height - 200,
+                            img.naturalWidth,
+                            img.naturalHeight,
+                        );
                         drawText(ctx, nftData); // テキスト描画を関数に分ける
                         ctx.drawImage(qrCodeImg, canvas.width - 175, canvas.height - 175, 150, 150);
                     };
@@ -82,14 +141,17 @@ const ImageDownloader = () => {
         ctx.font = 'bold 24px Inter, Poppins, sans-serif';
         ctx.fillText(nftData.title, 20, canvasRef.current!.height - 130);
         ctx.font = '20px Inter, Poppins, sans-serif';
-        ctx.fillText(`Created by ${nftData.creator}`, 26, canvasRef.current!.height - 95);
-        ctx.fillText(`Owned by ${nftData.owner}`, 26, canvasRef.current!.height - 50);
+        ctx.fillText(`Created by ${formatAccountLabel(nftData.creator)}`, 26, canvasRef.current!.height - 95);
+        ctx.fillText(`Owned by ${formatAccountLabel(nftData.owner)}`, 26, canvasRef.current!.height - 50);
     };
 
     return (
         <div className="max-w-2xl mx-auto pt-10 pb-20 px-5">
             <h2 className="text-2xl font-bold mb-4">Create your NFT showpiece</h2>
             <p className="text-gray-400 mb-4">Enter the OpenSea URL of the NFT you want to create.</p>
+            <p className="text-xs text-gray-400 mb-6">
+                対応チェーン（EVM）: Ethereum / Polygon / Base / Arbitrum / Optimism / ApeChain / Avalanche / BSC
+            </p>
             <div className="flex items-center mb-4"> {/* 横並びにするためのdivを追加 */}
                 <input 
                     type="text" 

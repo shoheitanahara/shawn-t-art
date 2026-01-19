@@ -1,69 +1,501 @@
-import { NextResponse } from 'next/server';
-import fetch from 'node-fetch';
+import { NextResponse } from "next/server";
+import {
+  createPublicClient,
+  getAddress,
+  http,
+  isAddress,
+  parseAbiItem,
+  zeroAddress,
+} from "viem";
+import {
+  apeChain,
+  arbitrum,
+  avalanche,
+  base,
+  bsc,
+  mainnet,
+  optimism,
+  polygon,
+} from "viem/chains";
+import type { Chain } from "viem/chains";
 
-// リクエストを送信する関数
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+// Buffer / RPCアクセスを使うためNode.jsランタイムで動かす
+export const runtime = "nodejs";
 
-const fetchData = async (url: string) => {
-    // await delay(5000); // 5秒待機
-    const response = await fetch(url, {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/89.0',
-            'Accept': 'application/json',
-            'Referer': 'https://opensea.io/'
-        }
-    });
-    return response;
+type NftResponse = {
+  title: string;
+  owner: string;
+  creator: string;
+  imageUrl: string;
 };
 
+const ERC721_LIKE_ABI = [
+  {
+    type: "function",
+    name: "name",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ type: "string" }],
+  },
+  {
+    type: "function",
+    name: "ownerOf",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "address" }],
+  },
+  {
+    type: "function",
+    name: "tokenURI",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "string" }],
+  },
+  // ERC1155互換（ERC721でtokenURIが無いコントラクトもあるのでフォールバック）
+  {
+    type: "function",
+    name: "uri",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "string" }],
+  },
+] as const;
+
+// 環境によってはcloudflare-ipfs.comがDNS解決できないため、ipfs.ioをデフォルトに
+const DEFAULT_IPFS_GATEWAY = "https://ipfs.io/ipfs/";
+
+function normalizeDecentralizedUri(uri: string): string {
+  const trimmed = uri.trim();
+  if (trimmed.startsWith("ipfs://")) {
+    const path = trimmed.replace("ipfs://", "").replace(/^ipfs\//, "");
+    return `${process.env.IPFS_GATEWAY_BASE ?? DEFAULT_IPFS_GATEWAY}${path}`;
+  }
+  if (trimmed.startsWith("ar://")) {
+    return `https://arweave.net/${trimmed.replace("ar://", "")}`;
+  }
+  return trimmed;
+}
+
+async function decodeTokenUriToJson(
+  tokenUri: string,
+  tokenId: bigint,
+): Promise<unknown> {
+  const normalizedTemplate = normalizeDecentralizedUri(tokenUri);
+
+  const urisToTry = (() => {
+    if (!normalizedTemplate.includes("{id}")) return [normalizedTemplate];
+
+    // ERC1155は実装により `{id}` の期待形式が揺れるため、複数パターンでフォールバックする
+    const candidates = [
+      // ERC1155仕様の一般形（32byte=64桁hex, 0x無し, lower）
+      normalizedTemplate.replaceAll("{id}", formatErc1155Id(tokenId)),
+      // 一部のコントラクトは10進tokenIdを使う
+      normalizedTemplate.replaceAll("{id}", tokenId.toString()),
+      // 0埋めなしhex
+      normalizedTemplate.replaceAll("{id}", tokenId.toString(16)),
+      // 0x付きhex
+      normalizedTemplate.replaceAll("{id}", `0x${tokenId.toString(16)}`),
+    ];
+    return Array.from(new Set(candidates));
+  })();
+
+  let lastStatus: number | null = null;
+
+  for (const url of urisToTry) {
+    if (url.startsWith("data:")) {
+      // 例: data:application/json;base64,xxxx / data:application/json;utf8,{...}
+      const commaIndex = url.indexOf(",");
+      if (commaIndex === -1) throw new Error("Invalid data URI");
+      const meta = url.slice(0, commaIndex);
+      const payload = url.slice(commaIndex + 1);
+
+      if (meta.includes(";base64")) {
+        const jsonText = Buffer.from(payload, "base64").toString("utf8");
+        return JSON.parse(jsonText);
+      }
+      return JSON.parse(decodeURIComponent(payload));
+    }
+
+    const res = await fetch(url, {
+      headers: { Accept: "application/json" },
+      next: { revalidate: 60 * 60 },
+    });
+
+    lastStatus = res.status;
+    if (!res.ok) continue;
+    return res.json();
+  }
+
+  throw new Error(
+    `Failed to fetch token metadata: ${lastStatus ?? "unknown"}`,
+  );
+}
+
+function pickImageUrl(metadata: any): string | null {
+  const raw =
+    metadata?.image ??
+    metadata?.image_url ??
+    metadata?.imageUrl ??
+    metadata?.animation_url ??
+    null;
+  if (typeof raw !== "string" || raw.trim() === "") return null;
+  return normalizeDecentralizedUri(raw);
+}
+
+function pickTitle(metadata: any, fallback: string): string {
+  const name = metadata?.name;
+  if (typeof name === "string" && name.trim() !== "") return name.trim();
+  return fallback;
+}
+
+function pickCreator(metadata: any): string | null {
+  const candidates = [
+    metadata?.creator,
+    metadata?.artist,
+    metadata?.author,
+    metadata?.createdBy,
+    metadata?.properties?.creator,
+    metadata?.properties?.artist,
+    metadata?.properties?.author,
+    metadata?.properties?.created_by,
+    metadata?.created_by,
+  ];
+  for (const value of candidates) {
+    if (typeof value === "string" && value.trim() !== "") return value.trim();
+  }
+  return null;
+}
+
+const ERC721_TRANSFER_EVENT = parseAbiItem(
+  "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+);
+
+async function findContractCreationBlock(params: {
+  client: ReturnType<typeof createPublicClient>;
+  contractAddress: `0x${string}`;
+}): Promise<bigint | null> {
+  const latest = await params.client.getBlockNumber();
+
+  let low = 0n;
+  let high = latest;
+
+  // コントラクトが存在しないアドレスの場合は早期return
+  const latestCode = await params.client.getBytecode({
+    address: params.contractAddress,
+    blockNumber: latest,
+  });
+  if (!latestCode || latestCode === "0x") return null;
+
+  // 二分探索で「初めてコードが現れるブロック」を探す
+  while (low < high) {
+    const mid = (low + high) / 2n;
+    const code = await params.client.getBytecode({
+      address: params.contractAddress,
+      blockNumber: mid,
+    });
+
+    if (code && code !== "0x") {
+      high = mid;
+    } else {
+      low = mid + 1n;
+    }
+  }
+
+  return low;
+}
+
+async function resolveCreatorFromContractDeployer(params: {
+  client: ReturnType<typeof createPublicClient>;
+  contractAddress: `0x${string}`;
+}): Promise<string | null> {
+  // Collectionの「Created by」に近い値として、コントラクト作成トランザクションのfrom（デプロイヤ）を採用する
+  // ※ 厳密な「作者」ではないが、ownerと同一になりにくく、APIキー無しで安定して取得できる
+  const creationBlock = await findContractCreationBlock(params).catch(() => null);
+  if (creationBlock === null) return null;
+
+  const block = await params.client.getBlock({
+    blockNumber: creationBlock,
+    includeTransactions: true,
+  });
+
+  const txs = block.transactions;
+  for (const tx of txs) {
+    // コントラクト作成txは `to` が null
+    if (tx.to !== null) continue;
+    const receipt = await params.client
+      .getTransactionReceipt({ hash: tx.hash })
+      .catch(() => null);
+    if (!receipt?.contractAddress) continue;
+    if (getAddress(receipt.contractAddress) !== params.contractAddress) continue;
+    return getAddress(tx.from);
+  }
+
+  return null;
+}
+
+async function resolveCreatorFromMintTransfer(params: {
+  client: ReturnType<typeof createPublicClient>;
+  contractAddress: `0x${string}`;
+  tokenId: bigint;
+}): Promise<string | null> {
+  // ERC721のmintは Transfer(from=0x0, to=?, tokenId) になることが多い
+  // 注意: ProviderによってはfromBlock=0が拒否されるので、その場合はnullにフォールバックする
+  const logs = await params.client
+    .getLogs({
+      address: params.contractAddress,
+      event: ERC721_TRANSFER_EVENT,
+      args: { from: zeroAddress, tokenId: params.tokenId },
+      fromBlock: 0n,
+      toBlock: "latest",
+    })
+    .catch(() => []);
+
+  if (logs.length === 0) return null;
+
+  const sorted = [...logs].sort((a, b) => {
+    const bnA = Number(a.blockNumber ?? 0n);
+    const bnB = Number(b.blockNumber ?? 0n);
+    if (bnA !== bnB) return bnA - bnB;
+    const liA = Number(a.logIndex ?? 0n);
+    const liB = Number(b.logIndex ?? 0n);
+    return liA - liB;
+  });
+
+  const to = sorted[0]?.args?.to;
+  if (!to) return null;
+  return getAddress(to);
+}
+
+function resolveChain(chainSegment: string) {
+  const segment = chainSegment.toLowerCase();
+  const normalized =
+    segment === "eth"
+      ? "ethereum"
+      : segment === "matic"
+        ? "polygon"
+        : segment === "arb"
+          ? "arbitrum"
+          : segment === "op"
+            ? "optimism"
+            : segment === "ape"
+              ? "apechain"
+              : segment === "avax"
+                ? "avalanche"
+                : segment === "bnb" || segment === "binance"
+                  ? "bsc"
+        : segment;
+
+  // 主要EVMチェーン（OpenSeaの `{chain}` と合わせる）
+  // NOTE: デフォルトRPCは「無料かつ比較的安定」を優先。必要に応じて環境変数で上書き。
+  const table: Record<
+    string,
+    { chain: Chain; rpcUrl: string }
+  > = {
+    ethereum: {
+      chain: mainnet,
+      rpcUrl: process.env.ETHEREUM_RPC_URL ?? "https://ethereum.publicnode.com",
+    },
+    polygon: {
+      chain: polygon,
+      rpcUrl: process.env.POLYGON_RPC_URL ?? "https://polygon-bor.publicnode.com",
+    },
+    base: {
+      chain: base,
+      rpcUrl: process.env.BASE_RPC_URL ?? "https://base.publicnode.com",
+    },
+    arbitrum: {
+      chain: arbitrum,
+      rpcUrl: process.env.ARBITRUM_RPC_URL ?? "https://arbitrum.publicnode.com",
+    },
+    optimism: {
+      chain: optimism,
+      rpcUrl: process.env.OPTIMISM_RPC_URL ?? "https://optimism.publicnode.com",
+    },
+    apechain: {
+      chain: apeChain,
+      rpcUrl: process.env.APECHAIN_RPC_URL ?? "https://rpc.apechain.com",
+    },
+    avalanche: {
+      chain: avalanche,
+      rpcUrl: process.env.AVALANCHE_RPC_URL ?? "https://avalanche.publicnode.com",
+    },
+    bsc: {
+      chain: bsc,
+      rpcUrl: process.env.BSC_RPC_URL ?? "https://bsc.publicnode.com",
+    },
+  };
+
+  return table[normalized] ?? null;
+}
+
+function parseOpenSeaAssetUrl(rawUrl: string): {
+  chainSegment: string;
+  contractAddress: `0x${string}`;
+  tokenId: bigint;
+} {
+  const parsed = new URL(rawUrl);
+  // OpenSeaは /assets/... と /item/... の両方が使われる
+  if (parsed.hostname !== "opensea.io" && parsed.hostname !== "www.opensea.io") {
+    throw new Error("Invalid OpenSea host");
+  }
+
+  // 例:
+  // - /assets/ethereum/0xabc.../123
+  // - /item/ethereum/0xabc.../123
+  const parts = parsed.pathname.split("/").filter(Boolean);
+  if (parts.length < 4) throw new Error("Invalid OpenSea asset URL path");
+
+  const kind = parts[0];
+  if (kind !== "assets" && kind !== "item") {
+    throw new Error("Invalid OpenSea asset URL path");
+  }
+
+  const chainSegment = parts[1];
+  const contract = parts[2];
+  const tokenIdRaw = parts[3];
+
+  if (!isAddress(contract)) throw new Error("Invalid contract address");
+
+  let tokenId: bigint;
+  try {
+    // OpenSeaは通常10進数
+    tokenId = BigInt(tokenIdRaw);
+  } catch {
+    throw new Error("Invalid tokenId");
+  }
+
+  return {
+    chainSegment,
+    contractAddress: getAddress(contract),
+    tokenId,
+  };
+}
+
+function formatErc1155Id(tokenId: bigint): string {
+  // ERC1155のURI仕様: {id} は 32byte(64桁)のlowercase hex（0x無し）
+  return tokenId.toString(16).padStart(64, "0").toLowerCase();
+}
+
+async function resolveTokenUri(params: {
+  client: ReturnType<typeof createPublicClient>;
+  contractAddress: `0x${string}`;
+  tokenId: bigint;
+}): Promise<string> {
+  const { client, contractAddress, tokenId } = params;
+
+  const tokenUri = await client
+    .readContract({
+      address: contractAddress,
+      abi: ERC721_LIKE_ABI,
+      functionName: "tokenURI",
+      args: [tokenId],
+    })
+    .catch(() => null);
+
+  if (typeof tokenUri === "string" && tokenUri.trim() !== "") {
+    return tokenUri;
+  }
+
+  const uri = await client
+    .readContract({
+      address: contractAddress,
+      abi: ERC721_LIKE_ABI,
+      functionName: "uri",
+      args: [tokenId],
+    })
+    .catch(() => null);
+
+  if (typeof uri === "string" && uri.trim() !== "") {
+    // ERC1155 `{id}` の置換形式はコントラクトごとに揺れるため、ここではテンプレートをそのまま返す。
+    // 実際の置換・フォールバックは decodeTokenUriToJson 側で行う。
+    return uri;
+  }
+
+  throw new Error(
+    "tokenURI/uri を取得できませんでした（未Mint/Lazy mint、またはコントラクト非対応の可能性があります）",
+  );
+}
+
 export async function GET(request: Request) {
-    const { searchParams } = new URL(request.url);
-    const url = searchParams.get('url');
+  const { searchParams } = new URL(request.url);
+  const url = searchParams.get("url");
 
-    // URLがnullまたは無効な場合の処理
-    if (!url || !url.startsWith('https://opensea.io/assets/')) {
-        console.log("catch: invalid url");
-        return NextResponse.json({ error: 'Valid OpenSea URL is required' }, { status: 400 });
+  if (!url) {
+    return NextResponse.json(
+      { error: "Valid OpenSea URL is required" },
+      { status: 400 },
+    );
+  }
+
+  try {
+    const { chainSegment, contractAddress, tokenId } = parseOpenSeaAssetUrl(url);
+    const resolved = resolveChain(chainSegment);
+    if (!resolved) {
+      return NextResponse.json(
+        { error: "Unsupported chain in OpenSea URL" },
+        { status: 400 },
+      );
     }
 
-    try {
-        console.log("catch: " + url);
-        const response = await fetchData(url);
+    const client = createPublicClient({
+      chain: resolved.chain,
+      transport: http(resolved.rpcUrl),
+    });
 
-        // レスポンスの状態を出力
-        console.log("catch: response status: " + response.status);
-        console.log("catch: response ok: " + response.ok);
+    const [collectionName, owner, tokenUri] = await Promise.all([
+      client
+        .readContract({
+          address: contractAddress,
+          abi: ERC721_LIKE_ABI,
+          functionName: "name",
+        })
+        .catch(() => null),
+      client
+        .readContract({
+          address: contractAddress,
+          abi: ERC721_LIKE_ABI,
+          functionName: "ownerOf",
+          args: [tokenId],
+        })
+        .catch(() => null),
+      resolveTokenUri({ client, contractAddress, tokenId }),
+    ]);
 
-        if (!response.ok) {
-            console.log("catch: response not ok");
-            return NextResponse.json({ error: 'Network response was not ok' }, { status: 500 });
-        }
-        const html = await response.text();
-
-        // HTMLから必要なデータを抽出
-        const titleMatch = html.match(/<h1.*?title="(.*?)">/);
-        const title = titleMatch ? titleMatch[1] : 'Unknown Title';
-
-        const ownerMatch = html.match(/Owned by<!-- -->&nbsp;<span class="sc-beff130f-0 hksMfk"><a.*?><div.*?>(\w+)<\/div><\/a><\/span>/);
-        const owner = ownerMatch ? ownerMatch[1].trim() : 'Unknown Owner';
-
-        const creatorMatch = html.match(/href="\/[a-zA-Z0-9_]+\/created"><span class="text-sm leading-sm font-semibold sc-b6bd9c33-0 bqzFos" data-id="TextBody">([^<]+)<\/span>/);
-        const creator = creatorMatch ? creatorMatch[1].trim() : 'Unknown Creator';
-
-        const imageUrlMatch = html.match(/<img.*?class="Image--image".*?src="(.*?)"/);
-        const imageUrl = imageUrlMatch ? imageUrlMatch[1] : '';
-
-        // CORSヘッダーをOpenSeaのオリジンに設定
-        const responseJson = NextResponse.json({
-            title,
-            owner,
-            creator,
-            imageUrl,
-        });
-
-        return responseJson;
-    } catch (error) {
-        console.error("Fetch error:", error); // エラーログ
-        return NextResponse.json({ error: 'An error occurred while fetching data' }, { status: 500 });
+    const metadata = await decodeTokenUriToJson(tokenUri, tokenId);
+    const image = pickImageUrl(metadata);
+    if (!image) {
+      return NextResponse.json(
+        { error: "Failed to resolve NFT image from metadata" },
+        { status: 502 },
+      );
     }
+
+    const fallbackTitle = `${collectionName ?? "NFT"} #${tokenId.toString()}`;
+    const title = pickTitle(metadata, fallbackTitle);
+    const creator =
+      pickCreator(metadata) ??
+      (await resolveCreatorFromContractDeployer({ client, contractAddress })) ??
+      (await resolveCreatorFromMintTransfer({ client, contractAddress, tokenId })) ??
+      (typeof owner === "string" ? owner : null) ??
+      "Unknown Creator";
+
+    const responseBody: NftResponse = {
+      title,
+      owner: typeof owner === "string" ? owner : "Unknown Owner",
+      creator,
+      // キャンバス合成時のCORS/tainted canvas対策として同一オリジンで画像を配信
+      imageUrl: image.startsWith("data:")
+        ? image
+        : `/api/image?src=${encodeURIComponent(image)}`,
+    };
+
+    return NextResponse.json(responseBody);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error("NFT fetch error:", error);
+    return NextResponse.json(
+      { error: message },
+      { status: 500 },
+    );
+  }
 }
