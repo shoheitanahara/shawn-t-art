@@ -23,6 +23,23 @@ const shortenWalletAddress = (address: string, head = 6, tail = 4): string => {
 
 const formatAccountLabel = (value: string): string => shortenWalletAddress(value);
 
+const drawKeyValueLine = (
+    ctx: CanvasRenderingContext2D,
+    params: {
+        label: string;
+        value: string;
+        x: number;
+        y: number;
+        labelWidth: number;
+        gap: number;
+    },
+) => {
+    // ラベル列 + 値列に分けて、見た目を揃える
+    const { label, value, x, y, labelWidth, gap } = params;
+    ctx.fillText(label, x, y);
+    ctx.fillText(value, x + labelWidth + gap, y);
+};
+
 const drawImageContain = (
     ctx: CanvasRenderingContext2D,
     image: CanvasImageSource,
@@ -45,6 +62,15 @@ const drawImageContain = (
 
     ctx.drawImage(image, dx, dy, drawWidth, drawHeight);
 };
+
+const loadImage = (src: string, crossOrigin: boolean): Promise<HTMLImageElement> =>
+    new Promise((resolve, reject) => {
+        const img = new Image();
+        if (crossOrigin) img.crossOrigin = 'Anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('Image failed to load'));
+        img.src = src;
+    });
 
 const ImageDownloader = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -100,49 +126,73 @@ const ImageDownloader = () => {
                 ctx.fillStyle = '#000';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                const qrCodeDataUrl = await QRCode.toDataURL(url);
-                const qrCodeImg = new Image();
-                qrCodeImg.src = qrCodeDataUrl;
+                // QR生成と画像読み込みを並列化して、体感を短縮する
+                try {
+                    const [qrImg, nftImg] = await Promise.all([
+                        QRCode.toDataURL(url).then((dataUrl) => loadImage(dataUrl, false)),
+                        loadImage(nftData.imageUrl, true),
+                    ]);
 
-                qrCodeImg.onload = () => {
-                    const img = new Image();
-                    img.crossOrigin = 'Anonymous'; // CORS対応を追加
-                    img.src = nftData.imageUrl; // NFTの画像URLを使用
-                    img.onload = () => {
-                        // 横長/縦長でも比率維持して収める（引き伸ばし防止）
-                        drawImageContain(
-                            ctx,
-                            img,
-                            0,
-                            0,
-                            canvas.width,
-                            canvas.height - 200,
-                            img.naturalWidth,
-                            img.naturalHeight,
-                        );
-                        drawText(ctx, nftData); // テキスト描画を関数に分ける
-                        ctx.drawImage(qrCodeImg, canvas.width - 175, canvas.height - 175, 150, 150);
-                    };
-
-                    img.onerror = () => {
-                        console.error('Image failed to load');
-                    };
-                };
-
-                qrCodeImg.onerror = () => {
-                    console.error('QR Code failed to load');
-                };
+                    // 横長/縦長でも比率維持して収める（引き伸ばし防止）
+                    drawImageContain(
+                        ctx,
+                        nftImg,
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height - 200,
+                        nftImg.naturalWidth,
+                        nftImg.naturalHeight,
+                    );
+                    drawText(ctx, nftData);
+                    ctx.drawImage(qrImg, canvas.width - 175, canvas.height - 175, 150, 150);
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
     };
 
     const drawText = (ctx: CanvasRenderingContext2D, nftData: any) => {
         ctx.fillStyle = 'white';
+        const canvasHeight = canvasRef.current!.height;
+        const leftPadding = 26;
+
+        // 3行（タイトル / Created / Owned）の間隔を均等にする
+        const bottomLineY = canvasHeight - 50;
+        const lineGap = 40; // ベースライン間隔
+        const createdLineY = bottomLineY - lineGap;
+        const titleLineY = bottomLineY - lineGap * 2;
+
+        // タイトル
         ctx.font = 'bold 24px Inter, Poppins, sans-serif';
-        ctx.fillText(nftData.title, 20, canvasRef.current!.height - 130);
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText(nftData.title, 20, titleLineY);
+
+        // キーバリュー（ラベルの開始位置を揃える）
         ctx.font = '20px Inter, Poppins, sans-serif';
-        ctx.fillText(`Created by ${formatAccountLabel(nftData.creator)}`, 26, canvasRef.current!.height - 95);
-        ctx.fillText(`Owned by ${formatAccountLabel(nftData.owner)}`, 26, canvasRef.current!.height - 50);
+
+        const createdLabel = 'Created by';
+        const ownedLabel = 'Owned by';
+        const labelWidth = Math.max(ctx.measureText(createdLabel).width, ctx.measureText(ownedLabel).width);
+        const gap = 10;
+
+        drawKeyValueLine(ctx, {
+            label: createdLabel,
+            value: formatAccountLabel(nftData.creator),
+            x: leftPadding,
+            y: createdLineY,
+            labelWidth,
+            gap,
+        });
+        drawKeyValueLine(ctx, {
+            label: ownedLabel,
+            value: formatAccountLabel(nftData.owner),
+            x: leftPadding,
+            y: bottomLineY,
+            labelWidth,
+            gap,
+        });
     };
 
     return (

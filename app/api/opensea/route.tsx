@@ -22,6 +22,36 @@ import type { Chain } from "viem/chains";
 // Buffer / RPCアクセスを使うためNode.jsランタイムで動かす
 export const runtime = "nodejs";
 
+type CacheEntry<T> = {
+  expiresAt: number;
+  value: Promise<T>;
+};
+
+// Next.jsのNode.jsランタイムではプロセスが生きている間はメモリが保持されるため、
+// 同一コントラクト/同一tokenへの繰り返しアクセスがかなり高速化される。
+const metadataCache = new Map<string, CacheEntry<unknown>>();
+const deployerCache = new Map<string, CacheEntry<string | null>>();
+
+function getOrSetCache<T>(
+  map: Map<string, CacheEntry<T>>,
+  key: string,
+  ttlMs: number,
+  factory: () => Promise<T>,
+): Promise<T> {
+  const now = Date.now();
+  const existing = map.get(key);
+  if (existing && existing.expiresAt > now) return existing.value;
+
+  const value = factory().catch((error) => {
+    // 失敗結果をキャッシュし続けない
+    map.delete(key);
+    throw error;
+  });
+
+  map.set(key, { expiresAt: now + ttlMs, value });
+  return value;
+}
+
 type NftResponse = {
   title: string;
   owner: string;
@@ -80,6 +110,8 @@ async function decodeTokenUriToJson(
   tokenUri: string,
   tokenId: bigint,
 ): Promise<unknown> {
+  const cacheKey = `${tokenUri}::${tokenId.toString()}`;
+  return getOrSetCache(metadataCache, cacheKey, 60 * 60 * 1000, async () => {
   const normalizedTemplate = normalizeDecentralizedUri(tokenUri);
 
   const urisToTry = (() => {
@@ -129,6 +161,7 @@ async function decodeTokenUriToJson(
   throw new Error(
     `Failed to fetch token metadata: ${lastStatus ?? "unknown"}`,
   );
+  });
 }
 
 function pickImageUrl(metadata: any): string | null {
@@ -208,6 +241,11 @@ async function resolveCreatorFromContractDeployer(params: {
   client: ReturnType<typeof createPublicClient>;
   contractAddress: `0x${string}`;
 }): Promise<string | null> {
+  const chainId = params.client.chain?.id ?? 0;
+  const cacheKey = `${chainId}:${params.contractAddress.toLowerCase()}`;
+
+  // deployerは不変なので長めにキャッシュ（24h）
+  return getOrSetCache(deployerCache, cacheKey, 24 * 60 * 60 * 1000, async () => {
   // Collectionの「Created by」に近い値として、コントラクト作成トランザクションのfrom（デプロイヤ）を採用する
   // ※ 厳密な「作者」ではないが、ownerと同一になりにくく、APIキー無しで安定して取得できる
   const creationBlock = await findContractCreationBlock(params).catch(() => null);
@@ -231,6 +269,7 @@ async function resolveCreatorFromContractDeployer(params: {
   }
 
   return null;
+  });
 }
 
 async function resolveCreatorFromMintTransfer(params: {
