@@ -59,6 +59,20 @@ type NftResponse = {
   imageUrl: string;
 };
 
+const CRYPTOPUNKS_CONTRACT = getAddress(
+  "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+);
+
+const CRYPTOPUNKS_ABI = [
+  {
+    type: "function",
+    name: "punkIndexToAddress",
+    stateMutability: "view",
+    inputs: [{ name: "punkIndex", type: "uint256" }],
+    outputs: [{ type: "address" }],
+  },
+] as const;
+
 const ERC721_LIKE_ABI = [
   {
     type: "function",
@@ -480,6 +494,30 @@ export async function GET(request: Request) {
       chain: resolved.chain,
       transport: http(resolved.rpcUrl),
     });
+
+    // CryptoPunksはERC721のtokenURI/ownerOfに非対応なため、専用処理で対応
+    if (contractAddress === CRYPTOPUNKS_CONTRACT && resolved.chain.id === mainnet.id) {
+      const owner = await client
+        .readContract({
+          address: contractAddress,
+          abi: CRYPTOPUNKS_ABI,
+          functionName: "punkIndexToAddress",
+          args: [tokenId],
+        })
+        .catch(() => null);
+
+      const larvaLabsImageUrl = `https://www.larvalabs.com/cryptopunks/cryptopunk${tokenId.toString()}.png`;
+
+      const responseBody: NftResponse = {
+        title: `CryptoPunk #${tokenId.toString()}`,
+        owner: typeof owner === "string" ? getAddress(owner) : "Unknown Owner",
+        // APIキー無しで「作者」を厳密に確定するのは難しいので、プロジェクト名を表示
+        creator: "Larva Labs",
+        imageUrl: `/api/image?src=${encodeURIComponent(larvaLabsImageUrl)}`,
+      };
+
+      return NextResponse.json(responseBody);
+    }
 
     const [collectionName, owner, tokenUri] = await Promise.all([
       client

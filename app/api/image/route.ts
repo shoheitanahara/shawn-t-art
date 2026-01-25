@@ -6,6 +6,8 @@ export const runtime = "nodejs";
 const DEFAULT_ALLOWED_HOSTS = new Set<string>([
   // OpenSea/CDN
   "i.seadn.io",
+  // CryptoPunks
+  "www.larvalabs.com",
   // IPFS gateways
   "ipfs.io",
   "cloudflare-ipfs.com",
