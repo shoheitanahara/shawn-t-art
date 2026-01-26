@@ -59,6 +59,10 @@ type NftResponse = {
   imageUrl: string;
 };
 
+function isWalletAddress(value: string): boolean {
+  return /^0x[a-fA-F0-9]{40}$/.test(value);
+}
+
 const CRYPTOPUNKS_CONTRACT = getAddress(
   "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
 );
@@ -549,8 +553,15 @@ export async function GET(request: Request) {
 
     const fallbackTitle = `${collectionName ?? "NFT"} #${tokenId.toString()}`;
     const title = pickTitle(metadata, fallbackTitle);
+    // APIキーなしで「作者」を厳密に確定するのは難しいため、表示としては
+    // OpenSeaのコレクション名に近い「コントラクト名」を優先する。
+    // メタデータ由来の creator がウォレットアドレスっぽい場合は採用しない。
+    const creatorFromMetadata = pickCreator(metadata);
     const creator =
-      pickCreator(metadata) ??
+      (creatorFromMetadata && !isWalletAddress(creatorFromMetadata)
+        ? creatorFromMetadata
+        : null) ??
+      (collectionName ?? null) ??
       (await resolveCreatorFromContractDeployer({ client, contractAddress })) ??
       (await resolveCreatorFromMintTransfer({ client, contractAddress, tokenId })) ??
       (typeof owner === "string" ? owner : null) ??

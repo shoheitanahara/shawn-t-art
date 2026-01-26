@@ -8,6 +8,8 @@ const DEFAULT_ALLOWED_HOSTS = new Set<string>([
   "i.seadn.io",
   // CryptoPunks
   "www.larvalabs.com",
+  // Based Ape Gang
+  "cdn.basedapes.wtf",
   // IPFS gateways
   "ipfs.io",
   "cloudflare-ipfs.com",
