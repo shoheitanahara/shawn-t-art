@@ -1,0 +1,1 @@
+export const slashcowImageList = ["slashcow01.png","slashcow02.png","slashcow03.png","slashcow04.png","slashcow05.png","slashcow06.png"];

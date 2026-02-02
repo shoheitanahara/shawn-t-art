@@ -1,11 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
+import Image from "next/image";
+import React, { useEffect, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card"; // Cardコンポーネントをインポート
-import { useEffect, useState } from "react";
-import {  
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Pagination,
   PaginationContent,
@@ -13,83 +9,159 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
+} from "@/components/ui/pagination";
 
-const SlashAnimal: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
-  const [slashSheepImages, setSlashSheepImages] = useState<string[]>([]); // ここで初期値を空の配列に設定
+type ImagesApiResponse = {
+  images?: string[];
+  totalPages?: number;
+  error?: string;
+};
+
+type AnimalGallerySectionProps = {
+  title: string;
+  apiPath: string; // 例: "/api/images/slashsheep"
+  footer: React.ReactNode;
+};
+
+async function fetchImagesPage(
+  apiPath: string,
+  page: number,
+  signal: AbortSignal,
+): Promise<{ images: string[]; totalPages: number }> {
+  const response = await fetch(`${apiPath}?page=${page}`, { signal });
+  const data = (await response.json()) as ImagesApiResponse;
+
+  if (!response.ok) {
+    throw new Error(data.error || `Failed to fetch images: ${response.status}`);
+  }
+
+  if (!Array.isArray(data.images) || typeof data.totalPages !== "number") {
+    throw new Error("Invalid API response shape.");
+  }
+
+  return { images: data.images, totalPages: data.totalPages };
+}
+
+const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
+  title,
+  apiPath,
+  footer,
+}) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [images, setImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true); // 追加: ローディング状態を管理
-  const [totalPages, setTotalPages] = useState<number>(1); // 追加: 総ページ数を管理
+  const [loading, setLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(1);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchSlashSheepImages = async (page: number) => {
-      setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images/slashsheep?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
-      const data = await response.json(); // 変更: JSONを直接取得
+    const controller = new AbortController();
+    setLoading(true);
+    setErrorMessage(null);
 
-      if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
-        setSlashSheepImages(data.images); // 変更: 画像データを設定
-        setTotalPages(data.totalPages); // 追加: 総ページ数を設定
-      } else {
-        console.error('Error fetching images:', data.error);
-      }
-      setLoading(false); // 追加: ローディング終了
-    };
-    
-    fetchSlashSheepImages(currentPage); // 変更: 現在のページを引数として渡す
-  }, [currentPage]); // 変更: currentPageが変更されたときに再実行
+    fetchImagesPage(apiPath, currentPage, controller.signal)
+      .then(({ images, totalPages }) => {
+        setImages(images);
+        setTotalPages(totalPages);
+      })
+      .catch((error: unknown) => {
+        if (controller.signal.aborted) return;
+        const message =
+          error instanceof Error ? error.message : "Failed to load images.";
+        console.error("Error fetching images:", error);
+        setErrorMessage(message);
+        setImages([]);
+        setTotalPages(1);
+      })
+      .finally(() => {
+        if (controller.signal.aborted) return;
+        setLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [apiPath, currentPage]);
+
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+  const paginationLabel = useMemo(
+    () => `${currentPage} / ${totalPages}`,
+    [currentPage, totalPages],
+  );
 
   return (
-    <div className="flex flex-col items-center justify-center mb-6">
+    <section className="w-full flex flex-col items-center justify-center">
       <div className="container mx-auto flex justify-center items-center mt-6 mb-2">
-        <h2 className="text-2xl font-bold">Slash Sheep</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
       </div>
 
-      {loading ? ( // 追加: ローディング中の表示
+      {loading ? (
         <div className="text-lg h-[700px] md:h-[300px] flex items-center justify-center">Loading...</div>
+      ) : errorMessage ? (
+        <div className="text-lg h-[200px] flex items-center justify-center text-red-600">
+          {errorMessage}
+        </div>
       ) : (
-        <>
-          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2">
-            {slashSheepImages.map((slashSheepImage, index) => (
-              <Card key={index} className="m-4 cursor-pointer h-64 overflow-hidden" onClick={() => setSelectedImage(slashSheepImage)}>
-                <CardContent className="grid gap-4">
-                  <Image src={slashSheepImage} alt={`Image ${index}`} width={500} height={300} className="object-cover" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </>
+        <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 md:grid-cols-2">
+          {images.map((imageUrl, index) => (
+            <Card
+              key={`${imageUrl}-${index}`}
+              className="m-4 cursor-pointer h-64 overflow-hidden"
+              onClick={() => setSelectedImage(imageUrl)}
+            >
+              <CardContent className="grid gap-4">
+                <Image
+                  src={imageUrl}
+                  alt={`${title} Image ${index + 1}`}
+                  width={500}
+                  height={300}
+                  className="object-cover"
+                />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       )}
       <Pagination>
         <PaginationContent className="gap-5">
           <PaginationItem>
             <PaginationLink 
-              onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined} // Firstボタン
-              className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+              onClick={!isFirstPage ? () => setCurrentPage(1) : undefined} // Firstボタン
+              className={`cursor-pointer ${isFirstPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              aria-disabled={isFirstPage}
             >
               First
             </PaginationLink> {/* 最初のページボタン */}
           </PaginationItem>
           <PaginationItem>
             <PaginationPrevious 
-              onClick={currentPage > 1 ? () => setCurrentPage(currentPage - 1) : undefined}
-              className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+              onClick={
+                !isFirstPage
+                  ? () => setCurrentPage((p) => Math.max(1, p - 1))
+                  : undefined
+              }
+              className={`cursor-pointer ${isFirstPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              aria-disabled={isFirstPage}
             /> {/* 前へボタン */}
           </PaginationItem>
           <PaginationItem>
-            <span>{currentPage}</span> {/* 現在のページを表示 */}
+            <span>{paginationLabel}</span> {/* 現在のページを表示 */}
           </PaginationItem>
           <PaginationItem>
             <PaginationNext 
-              onClick={currentPage < totalPages ? () => setCurrentPage(currentPage + 1) : undefined} // 修正: 最後のページでのクリックを無効化
-              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+              onClick={
+                !isLastPage
+                  ? () => setCurrentPage((p) => Math.min(totalPages, p + 1))
+                  : undefined
+              } // 修正: 最後のページでのクリックを無効化
+              className={`cursor-pointer ${isLastPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              aria-disabled={isLastPage}
             /> {/* 次へボタン */}
           </PaginationItem>
           <PaginationItem>
             <PaginationLink 
-              onClick={currentPage < totalPages ? () => setCurrentPage(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
-              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`} // 変更: スタイルを修正
+              onClick={!isLastPage ? () => setCurrentPage(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
+              className={`cursor-pointer ${isLastPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              aria-disabled={isLastPage}
             >
               Last
             </PaginationLink> {/* 最後のページボタン */}
@@ -101,14 +173,32 @@ const SlashAnimal: React.FC = () => {
       }}>
         <DialogContent className="max-w-xl w-[90%] mx-auto">
           {selectedImage ? (
-            <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+            <Image
+              src={selectedImage}
+              alt={`${title} Selected`}
+              width={800}
+              height={600}
+              className="max-w-full h-auto"
+            />
           ) : (
             <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
           )}
         </DialogContent>
       </Dialog>
 
-      <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
+      {footer}
+    </section>
+  );
+};
+
+const SlashAnimal: React.FC = () => {
+  return (
+    <div className="flex flex-col items-center justify-center mb-6">
+      <AnimalGallerySection
+        title="Slash Sheep"
+        apiPath="/api/images/slashsheep"
+        footer={
+          <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
         <p>&quot;Slash Sheep&quot;</p>
         <p>Year: 2026</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
@@ -144,7 +234,32 @@ const SlashAnimal: React.FC = () => {
         <p className="mt-4">
          Freedom does not roar. Sometimes, it rests in silence.
         </p>
-      </div>
+          </div>
+        }
+      />
+
+      <div className="w-full max-w-5xl my-10 border-t border-gray-200" />
+
+      <AnimalGallerySection
+        title="Slash Cow"
+        apiPath="/api/images/slashcow"
+        footer={
+          <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
+            <p>&quot;Slash Cow&quot;</p>
+            <p>Year: 2026</p>
+            <p>
+              Creator:{" "}
+              <a
+                href="https://x.com/shawn_t_art"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @shawn_t_art
+              </a>
+            </p>
+          </div>
+        }
+      />
     </div>
   );
 };
