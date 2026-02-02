@@ -458,53 +458,6 @@ Happy Mutant Monday!
 Happy Mutant Monday!
 Happy Mutant Monday! `,
             },
-
-            {
-                id: "garga",
-                title: "Garga",
-                artist: "Shawn T. Art",
-                year: "2025",
-                coverSrc: "/music/covers/Hiphop.png",
-                audioSrc: "/music/tracks/Garga.mp3",
-                lyrics: `(Verse 1)
-    From blockchain corners to the Otherside shine,
-    Garga’s got the vision, yo, his stars align,
-    ApeCoin stackin’, he’s writin’ the code,
-    Future’s lookin’ dope, watch him pave the road,
-    Community’s hyped, they’re ridin’ his wave,
-    NFT hustle, he’s bold and brave,
-    From Vegas ink dreams to the digital crown,
-    Garga’s buildin’ empires, never backin’ down! 
-    
-    (Chorus)
-    Garga! Garga! King of the chain,
-    ApeCoin poppin’, he’s changin’ the game,
-    Bored Apes risin’, they’re callin’ his name,
-    CryptoGarga’s the flame, yo, he’s bringin’ the fame!
-    
-    Crew’s got his back, yeah, the fam’s full force,
-    Garga’s droppin’ wisdom, settin’ trends, no remorse,
-    “$APE treasury dreams,” he’s callin’ the shots,
-    Buildin’ up the vault with them Bored Ape lots,
-    He’s spittin’ new moves, got the blockchain lit,
-    Every tweet he drops, yo, it’s hit after hit,
-    From pixelated vibes to the crypto throne,
-    Garga’s leadin’ the pack, he’s bad to the bone! 
-    
-    (Chorus)
-    Garga! Garga! King of the chain,
-    ApeCoin poppin’, he’s changin’ the game,
-    Bored Apes risin’, they’re callin’ his name,
-    CryptoGarga’s the flame, yo, he’s bringin’ the fame!
-    
-    (Outro)
-    Word on the street, @CryptoGarga
-    ’s the champ,
-    Lightin’ up the future with his blockchain stamp,
-    From ‘80s hip-hop to the crypto frontier,
-    Garga’s droppin’ bars, yo, the crowd’s gonna cheer!`,
-                },
-    
     
             {
                 id: "cultureneverdies",

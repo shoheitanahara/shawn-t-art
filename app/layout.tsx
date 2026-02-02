@@ -78,6 +78,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/apparel">Apparel</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
+                      <Link href="https://meebits-runway.vercel.app/">Meebits Runway & GIF</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
                       <Link href="/event">Event</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
