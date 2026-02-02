@@ -63,7 +63,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <Link href="/marksoffreedom">Marks of Freedom</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link href="/slashsheep">Slash Sheep</Link>
+                      <Link href="/slashanimal">Slash Animal</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link href="/slashsheep-3d">Slash Sheep 3D</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Link href="/music">Music</Link>

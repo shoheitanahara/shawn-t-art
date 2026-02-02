@@ -15,9 +15,9 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 import SlashSheepModel from "@/components/slashsheep-model";
-import SlashSheepModelBlack from "@/components/slashsheep-model-black";
+// import SlashSheepModelBlack from "@/components/slashsheep-model-black";
 
-const SlashSheep: React.FC = () => {
+const SlashSheep3d: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページを管理
   const [images, setImages] = useState<string[]>([]); // ここで初期値を空の配列に設定
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -27,7 +27,7 @@ const SlashSheep: React.FC = () => {
   useEffect(() => {
     const fetchImages = async (page: number) => {
       setLoading(true); // 追加: ローディング開始
-      const response = await fetch(`/api/images/slashsheep?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
+      const response = await fetch(`/api/images/slashsheep-3d?page=${page}`); // 変更: ページ番号をクエリパラメータとして追加
       const data = await response.json(); // 変更: JSONを直接取得
 
       if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
@@ -53,9 +53,9 @@ const SlashSheep: React.FC = () => {
         <SlashSheepModel />
       </div>
 
-      <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
+      {/* <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
         <SlashSheepModelBlack />
-      </div>
+      </div> */}
 
 
       <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
@@ -161,4 +161,4 @@ const SlashSheep: React.FC = () => {
   );
 };
 
-export default SlashSheep;
+export default SlashSheep3d;

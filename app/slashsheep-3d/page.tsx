@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import SlashSheep from "@/components/slashsheep";
-import SlashSheepModel from "@/components/slashsheep-model";
+import SlashSheep from "@/components/slashsheep-3d";
 
 const SlashSheepPage = () => {
   return (

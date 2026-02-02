@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     
     const paginatedImageFiles = slashsheepImageList.slice(startIndex, endIndex);
     
-    const paginatedImages = paginatedImageFiles.map((file) => `/images/slashanimal/slashsheep/${file}`);
+    const paginatedImages = paginatedImageFiles.map((file) => `/images/slashsheep-3d/${file}`);
 
     return NextResponse.json({ images: paginatedImages, totalPages }); // ページネーションされた画像のURLと総ページ数を返す
   } catch (error) {
