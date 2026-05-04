@@ -36,6 +36,14 @@ const collections: ImageCollection[] = [
     exportConstName: 'doubleslashLikeImageList',
   },
   {
+    imagesDir: path.join(projectRoot, 'public/images/doubleslash-denim'),
+    outputFilePath: path.join(
+      projectRoot,
+      'app/api/images/doubleslash-denim/data.ts',
+    ),
+    exportConstName: 'doubleslashDenimImageList',
+  },
+  {
     imagesDir: path.join(projectRoot, 'public/images/marksoffreedom/sapporo-2025'),
     outputFilePath: path.join(
       projectRoot,

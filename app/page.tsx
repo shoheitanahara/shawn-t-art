@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination"
 import DoubleSlashSpam from "@/components/doubleslash-spam"; 
 import DoubleSlashLike from "@/components/doubleslash-like";
+import DoubleSlashDenim from "@/components/doubleslash-denim";
 import CuratorsNotePage from "@/components/curators-note";
 
 export default function Home() {
@@ -159,6 +160,12 @@ export default function Home() {
 
         <section id="doubleslash-like" className="w-full scroll-mt-24">
           <DoubleSlashLike />
+        </section>
+
+        <hr className="w-full mt-12 border-gray-300 mb-12" />
+
+        <section id="doubleslash-denim" className="w-full scroll-mt-24">
+          <DoubleSlashDenim />
         </section>
 
         <hr className="w-full mt-12 border-gray-300 mb-12" />
