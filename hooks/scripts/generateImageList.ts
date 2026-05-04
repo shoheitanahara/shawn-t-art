@@ -68,7 +68,7 @@ const collections: ImageCollection[] = [
     exportConstName: 'marksoffreedomTokyo2025ImageList',
   },
   {
-    imagesDir: path.join(projectRoot, 'public/images/slashsheep'),
+    imagesDir: path.join(projectRoot, 'public/images/slashanimal/slashsheep'),
     outputFilePath: path.join(projectRoot, 'app/api/images/slashsheep/data.ts'),
     exportConstName: 'slashsheepImageList',
   },
@@ -79,7 +79,7 @@ export default function generateImageList() {
     if (!fs.existsSync(dirPath)) return [];
     return fs
       .readdirSync(dirPath)
-      .filter((file) => /\.(jpg|jpeg|png|gif)$/i.test(file))
+      .filter((file) => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
       .sort((a, b) => a.localeCompare(b));
   };
 
