@@ -25,9 +25,9 @@ const PhilosophyPage: FC = () => {
         <hr className="w-full mt-12 border-gray-300 mb-6" />
 
         <h3 className="text-lg font-bold">3. Silence Over Noise</h3>
-        <p className="italic">In a world of endless sound, I choose silence. My works do not shout — they breathe. Every empty space is a voice, and every pause is a protest against chaos.</p>
+        <p className="italic">In a world of endless sound, I choose silence. My works do not shout — they breathe. I refuse the madness of being loud just to be noticed. Every empty space is a voice, and every pause is a protest against chaos.</p>
         <p>騒ぎではなく、静けさで時代を語る。</p>
-        <p>音に満ちた世界の中で、私は沈黙を選びます。私の作品は叫びません。呼吸します。空白は声であり、静止は混乱に対する小さな抵抗です。</p>
+        <p>音に満ちた世界の中で、私は沈黙を選びます。私の作品は叫びません。呼吸します。注目を集めるための「狂気」や「叫び」を拒絶すること。空白は声であり、静止は混乱に対する小さな抵抗です。</p>
 
         <hr className="w-full mt-12 border-gray-300 mb-6" />
 
