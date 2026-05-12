@@ -24,28 +24,38 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-  
+
     const fetchImages = async () => {
       setLoading(true);
+      try {
+        const response = await fetch(
+          `/api/images/marksoffreedom-tokyo-2025?page=${currentPage}`,
+          { signal: controller.signal },
+        );
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-      const response = await fetch(
-        `/api/images/marksoffreedom-tokyo-2025?page=${currentPage}`,
-        { signal: controller.signal },
-      );
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (controller.signal.aborted) return;
 
-      const data = await response.json();
-      if (Array.isArray(data.images) && typeof data.totalPages === "number") {
-        setImages(data.images);
-        setTotalPages(data.totalPages);
-      } else {
-        console.error("Invalid response:", data);
+        if (Array.isArray(data.images) && typeof data.totalPages === "number") {
+          setImages(data.images);
+          setTotalPages(data.totalPages);
+        } else {
+          console.error("Invalid response:", data);
+        }
+      } catch (err) {
+        const aborted =
+          (err instanceof DOMException && err.name === "AbortError") ||
+          (err instanceof Error && err.name === "AbortError");
+        if (aborted) return;
+        console.error(err);
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
-      setLoading(false);
     };
-  
-    fetchImages();
-    return () => controller.abort();
+
+    void fetchImages();
+    return () => controller.abort("useEffect cleanup");
   }, [currentPage]);
 
   return (

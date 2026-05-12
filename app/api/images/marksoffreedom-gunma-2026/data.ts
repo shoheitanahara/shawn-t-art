@@ -1,0 +1,1 @@
+export const marksoffreedomGunma2026ImageList = ["mof_gunma_1.png","mof_gunma_2.png","mof_gunma_3.png","mof_gunma_4.png","mof_gunma_5.png","mof_gunma_6.png","mof_gunma_7.png","mof_gunma_8.png","mof_gunma_9.png"];
