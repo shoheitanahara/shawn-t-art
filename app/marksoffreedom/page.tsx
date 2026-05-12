@@ -28,24 +28,6 @@ const MarksOfFreedomPage = () => {
 
       <MarksOfFreedomTokyo2026 />
 
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <MarksOfFreedomGunma2026 />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <MarksOfFreedomTokyo2025 />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <MarksOfFreedomIshikawa2025 />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-      <MarksOfFreedomSapporo2025 />
-
-      <hr className="w-full mt-12 border-gray-300 mb-12" />
-
       <div className="w-auto mx-auto lg:w-2/3 mb-6 md:mb-12 mt-6 text-left">
         <p className="text-lg">― 現実世界に残された、自由の痕跡 ―</p>
         <p className="text-lg border-l-4 border-gray-500 pl-4 my-4">自由を感じた瞬間に、シャッターを切る。</p>
@@ -60,7 +42,7 @@ const MarksOfFreedomPage = () => {
           それは、The Double Slash で描いてきた「自由と制約のあいだにある線」を、現実の空間と時間の中で捉えようとする試みでもあります。
         </p>
         <p className="mt-4">
-          世界はノイズに満ちている。だからこそ、私は静けさの中に語られるものを信じたい。
+          世界はノイズに満ちている。だからこそ、まだそこに残る静かな兆しを探している。
         </p>
         <p className="mt-4">
           この写真群は、自由を肯定しながらも、その自由がどのように制御され、どこにまだ息づいているのかを見つめる行為です。
@@ -96,8 +78,7 @@ const MarksOfFreedomPage = () => {
 
         <p className="mt-4">
           The world is filled with noise.
-          That is why I choose to believe in what is spoken through silence.
-
+          That is why I look for the quiet signs that still remain.
         </p>
 
         <p className="mt-4">
@@ -106,6 +87,37 @@ const MarksOfFreedomPage = () => {
           and still quietly alive within our constructed world.
         </p>
       </div>
+
+      <hr className="w-full mt-16 border-neutral-700 mb-12" />
+
+      <section aria-labelledby="mof-archive-heading" className="w-full">
+        <h3
+          id="mof-archive-heading"
+          className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500 mb-10 text-center md:text-left"
+        >
+          Archive / Selected Series
+        </h3>
+
+        <div className="w-full mt-12 border-neutral-700 mb-12">
+          <MarksOfFreedomGunma2026 />
+        </div>
+
+        <hr className="w-full mt-12 border-neutral-700 mb-12" />
+
+        <MarksOfFreedomTokyo2025 />
+
+        <hr className="w-full mt-12 border-neutral-700 mb-12" />
+
+        <MarksOfFreedomIshikawa2025 />
+
+        <hr className="w-full mt-12 border-neutral-700 mb-12" />
+
+        <MarksOfFreedomSapporo2025 />
+      </section>
+
+      <hr className="w-full mt-12 border-neutral-700 mb-12" />
+
+      
     </main>
   );
 };

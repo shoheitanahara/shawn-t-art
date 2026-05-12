@@ -107,7 +107,10 @@ const MarksOfFreedomSapporo2025: React.FC = () => {
 
       <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
         <p>&quot;Marks of Freedom - Sapporo 2025&quot;</p>
-        <p>Year: 2025</p>
+        <p className="mt-1 text-sm italic text-neutral-400">
+          Snow, distance, and the edge of the grid.
+        </p>
+        <p className="mt-2">Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
       </div>
     </div>

@@ -157,7 +157,10 @@ const MarksOfFreedomGunma2026: React.FC = () => {
 
       <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
         <p>&quot;Marks of Freedom - Gunma 2026&quot;</p>
-        <p>Year: 2026</p>
+        <p className="mt-1 text-sm italic text-neutral-400">
+          Quiet traces found outside the center.
+        </p>
+        <p className="mt-2">Year: 2026</p>
         <p>
           Creator:{" "}
           <a

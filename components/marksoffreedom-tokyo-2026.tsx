@@ -1,175 +1,168 @@
-import React from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { useEffect, useState } from "react";
+import { marksoffreedomTokyo2026ImageList } from "@/app/api/images/marksoffreedom-tokyo-2026/data";
 import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+
+const TOKYO_2026_BASE = "/images/marksoffreedom/tokyo-2026";
 
 const MarksOfFreedomTokyo2026: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [images, setImages] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [totalPages, setTotalPages] = useState<number>(1);
+  const imageUrls = useMemo(
+    () =>
+      marksoffreedomTokyo2026ImageList.map(
+        (file) => `${TOKYO_2026_BASE}/${file}`,
+      ),
+    [],
+  );
 
-  useEffect(() => {
-    const controller = new AbortController();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
-    const fetchImages = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `/api/images/marksoffreedom-tokyo-2026?page=${currentPage}`,
-          { signal: controller.signal },
-        );
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  const total = imageUrls.length;
+  const activeSrc = imageUrls[activeIndex] ?? "";
 
-        const data = await response.json();
-        if (controller.signal.aborted) return;
+  const goPrev = useCallback(() => {
+    setActiveIndex((i) => (i - 1 + total) % total);
+  }, [total]);
 
-        if (Array.isArray(data.images) && typeof data.totalPages === "number") {
-          setImages(data.images);
-          setTotalPages(data.totalPages);
-        } else {
-          console.error("Invalid response:", data);
-        }
-      } catch (err) {
-        const aborted =
-          (err instanceof DOMException && err.name === "AbortError") ||
-          (err instanceof Error && err.name === "AbortError");
-        if (aborted) return;
-        console.error(err);
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
-      }
-    };
+  const goNext = useCallback(() => {
+    setActiveIndex((i) => (i + 1) % total);
+  }, [total]);
 
-    void fetchImages();
-    return () => controller.abort("useEffect cleanup");
-  }, [currentPage]);
+  if (total === 0) {
+    return (
+      <div className="w-full max-w-5xl mx-auto py-12 text-center text-muted-foreground">
+        No images yet.
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      {loading ? (
-        <div className="text-lg h-[566px] md:h-[260px] lg:h-[250px] flex items-center justify-center">
-          Loading...
-        </div>
-      ) : (
-        <>
-          <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
-            {images.map((image, index) => (
-              <Card
-                key={image}
-                className="m-4 cursor-pointer h-50 md:h-50 lg:h-50 object-contain"
-                onClick={() => setSelectedImage(image)}
-              >
-                <CardContent className="grid gap-2 p-0">
-                  <Image
-                    src={image}
-                    alt={`Image ${index}`}
-                    width={800}
-                    height={600}
-                    className="object-cover h-full"
-                  />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </>
-      )}
-      <Pagination>
-        <PaginationContent className="gap-5">
-          <PaginationItem>
-            <PaginationLink
-              onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined}
-              className={`cursor-pointer ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-              First
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={
-                currentPage > 1 ? () => setCurrentPage(currentPage - 1) : undefined
-              }
-              className={`cursor-pointer ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-            />
-          </PaginationItem>
-          <PaginationItem>
-            <span>{currentPage}</span>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext
-              onClick={
-                currentPage < totalPages
-                  ? () => setCurrentPage(currentPage + 1)
-                  : undefined
-              }
-              className={`cursor-pointer ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-            />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              onClick={
-                currentPage < totalPages
-                  ? () => setCurrentPage(totalPages)
-                  : undefined
-              }
-              className={`cursor-pointer ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-              Last
-            </PaginationLink>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-      <Dialog
-        open={!!selectedImage}
-        onOpenChange={(open) => {
-          if (!open) setSelectedImage(null);
-        }}
-      >
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
-          {selectedImage ? (
-            <Image
-              src={selectedImage}
-              alt="Selected"
-              width={800}
-              height={600}
-              className="max-w-full h-auto"
-            />
-          ) : (
-            <div className="text-lg h-[400px] flex items-center justify-center">
-              Loading...
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+    <section
+      className="w-full max-w-5xl mx-auto flex flex-col items-stretch"
+      aria-labelledby="mof-featured-heading"
+    >
+      <header className="mb-6 text-center md:text-left">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500 mb-2">
+          Featured Series
+        </p>
+        <h3
+          id="mof-featured-heading"
+          className="text-2xl md:text-3xl font-semibold tracking-tight"
+        >
+          Marks of Freedom — Tokyo 2026
+        </h3>
+        <p className="mt-2 text-sm md:text-base italic text-neutral-400">
+          The city breathes between control and accident.
+        </p>
+      </header>
 
-      <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
-        <p>&quot;Marks of Freedom - Tokyo 2026&quot;</p>
+      <button
+        type="button"
+        className="relative w-full overflow-hidden rounded-sm border border-neutral-800 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+        onClick={() => setLightbox(activeSrc)}
+        aria-label="Open featured image larger"
+      >
+        <Image
+          src={activeSrc}
+          alt={`Tokyo 2026 — ${activeIndex + 1} of ${total}`}
+          width={1600}
+          height={1067}
+          priority
+          className="w-full h-auto object-contain max-h-[min(78vh,920px)]"
+          sizes="(max-width: 768px) 100vw, min(1120px, 90vw)"
+        />
+      </button>
+
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-3 md:justify-between">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="rounded border border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-900 transition-colors"
+          >
+            Prev
+          </button>
+          <span className="text-sm text-neutral-500 tabular-nums px-2">
+            {activeIndex + 1} / {total}
+          </span>
+          <button
+            type="button"
+            onClick={goNext}
+            className="rounded border border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-900 transition-colors"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className="text-xs uppercase tracking-widest text-neutral-500 mb-3 text-center md:text-left">
+          Series
+        </p>
+        <ul className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-3">
+          {imageUrls.map((src, i) => (
+            <li key={src}>
+              <button
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className={`relative h-16 w-24 overflow-hidden rounded border transition-opacity md:h-20 md:w-32 ${
+                  i === activeIndex
+                    ? "border-neutral-100 opacity-100 ring-1 ring-neutral-400"
+                    : "border-neutral-800 opacity-70 hover:opacity-100"
+                }`}
+                aria-label={`View image ${i + 1}`}
+                aria-current={i === activeIndex ? "true" : undefined}
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="w-full mt-8 pt-6 border-t border-neutral-800 text-sm text-neutral-400">
         <p>Year: 2026</p>
-        <p>
+        <p className="mt-1">
           Creator:{" "}
           <a
             href="https://x.com/shawn_t_art"
             target="_blank"
             rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-neutral-200"
           >
             @shawn_t_art
           </a>
         </p>
       </div>
-    </div>
+
+      <Dialog
+        open={!!lightbox}
+        onOpenChange={(open) => {
+          if (!open) setLightbox(null);
+        }}
+      >
+        <DialogContent className="max-w-5xl w-[95vw] mx-auto border-neutral-800 bg-black p-2">
+          {lightbox ? (
+            <Image
+              src={lightbox}
+              alt="Expanded"
+              width={1600}
+              height={1067}
+              className="max-h-[85vh] w-auto max-w-full mx-auto object-contain"
+            />
+          ) : null}
+        </DialogContent>
+      </Dialog>
+    </section>
   );
 };
 
