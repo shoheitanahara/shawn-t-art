@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import MarksOfFreedomTokyo2026 from "@/components/marksoffreedom-tokyo-2026";
 import MarksOfFreedomGunma2026 from "@/components/marksoffreedom-gunma-2026";
 import MarksOfFreedomSapporo2025 from "@/components/marksoffreedom-sapporo-2025";
 import MarksOfFreedomIshikawa2025 from "@/components/marksoffreedom-ishikawa-2025";
@@ -24,6 +25,10 @@ const MarksOfFreedomPage = () => {
         <p className="text-lg mt-4">自由を感じた瞬間に、シャッターを切る。</p>
         <p className="text-lg italic">I press the shutter at the moment I feel free.</p>
       </div>
+
+      <MarksOfFreedomTokyo2026 />
+
+      <hr className="w-full mt-12 border-gray-300 mb-12" />
 
       <MarksOfFreedomGunma2026 />
 
