@@ -78,7 +78,7 @@ const MarksOfFreedomPage = () => {
 
         <p className="mt-4">
           The world is filled with noise.
-          That is why I look for the quiet signs that still remain.
+          That is why I choose to believe in what is spoken through silence.
         </p>
 
         <p className="mt-4">
