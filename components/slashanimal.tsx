@@ -21,6 +21,8 @@ type AnimalGallerySectionProps = {
   title: string;
   apiPath: string; // 例: "/api/images/slashsheep"
   footer: React.ReactNode;
+  /** アンカーリンク用（例: slashcow） */
+  sectionId?: string;
 };
 
 async function fetchImagesPage(
@@ -46,6 +48,7 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
   title,
   apiPath,
   footer,
+  sectionId,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState<string[]>([]);
@@ -89,7 +92,10 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
   );
 
   return (
-    <section className="w-full flex flex-col items-center justify-center">
+    <section
+      id={sectionId}
+      className={`w-full flex flex-col items-center justify-center${sectionId ? " scroll-mt-24" : ""}`}
+    >
       <div className="container mx-auto flex justify-center items-center mt-6 mb-2">
         <h2 className="text-2xl font-bold">{title}</h2>
       </div>
@@ -197,6 +203,7 @@ const SlashAnimal: React.FC = () => {
       <AnimalGallerySection
         title="Slash Sheep"
         apiPath="/api/images/slashsheep"
+        sectionId="slashsheep"
         footer={
           <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
         <p>&quot;Slash Sheep&quot;</p>
@@ -243,6 +250,7 @@ const SlashAnimal: React.FC = () => {
       <AnimalGallerySection
         title="Slash Cow"
         apiPath="/api/images/slashcow"
+        sectionId="slashcow"
         footer={
           <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
             <p>&quot;Slash Cow&quot;</p>
