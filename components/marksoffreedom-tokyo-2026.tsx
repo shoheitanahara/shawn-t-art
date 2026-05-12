@@ -72,9 +72,6 @@ const MarksOfFreedomTokyo2026: React.FC = () => {
           >
             Marks of Freedom — Tokyo 2026
           </h3>
-          <p className="mt-2 text-sm md:text-base italic text-neutral-400">
-            The city breathes between control and accident.
-          </p>
         </header>
 
         <Card
@@ -169,13 +166,13 @@ const MarksOfFreedomTokyo2026: React.FC = () => {
           if (!open) setSelectedImage(null);
         }}
       >
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
+        <DialogContent className="max-w-5xl w-[90%] mx-auto">
           {selectedImage ? (
             <Image
               src={selectedImage}
               alt="Selected"
-              width={800}
-              height={600}
+              width={2000}
+              height={1500}
               className="max-w-full h-auto"
             />
           ) : (

@@ -114,9 +114,9 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
       <Dialog open={!!selectedImage} onOpenChange={(open) => { 
         if (!open) setSelectedImage(null);
       }}>
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
+        <DialogContent className="max-w-5xl w-[90%] mx-auto">
           {selectedImage ? (
-            <Image src={selectedImage} alt="Selected" width={800} height={600} className="max-w-full h-auto" />
+            <Image src={selectedImage} alt="Selected" width={2000} height={1500} className="max-w-full h-auto" />
           ) : (
             <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
           )}
@@ -125,9 +125,6 @@ const MarksOfFreedomTokyo2025: React.FC = () => {
 
       <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
         <p>&quot;Marks of Freedom - Tokyo 2025&quot;</p>
-        <p className="mt-1 text-sm italic text-neutral-400">
-          Order, reflection, and the line between stillness and drift.
-        </p>
         <p className="mt-2">Year: 2025</p>
         <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
       </div>

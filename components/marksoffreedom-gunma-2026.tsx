@@ -138,13 +138,13 @@ const MarksOfFreedomGunma2026: React.FC = () => {
           if (!open) setSelectedImage(null);
         }}
       >
-        <DialogContent className="max-w-2xl w-[90%] mx-auto">
+        <DialogContent className="max-w-5xl w-[90%] mx-auto">
           {selectedImage ? (
             <Image
               src={selectedImage}
               alt="Selected"
-              width={800}
-              height={600}
+              width={2000}
+              height={1500}
               className="max-w-full h-auto"
             />
           ) : (
@@ -157,9 +157,6 @@ const MarksOfFreedomGunma2026: React.FC = () => {
 
       <div className="w-full lg:w-2/3 mb-6 md:mb-12 mt-6">
         <p>&quot;Marks of Freedom - Gunma 2026&quot;</p>
-        <p className="mt-1 text-sm italic text-neutral-400">
-          Quiet traces found outside the center.
-        </p>
         <p className="mt-2">Year: 2026</p>
         <p>
           Creator:{" "}
