@@ -18,6 +18,12 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        /** キャプション・ラベル用（Selected Works の角ラベルなど） */
+        xs: ["12px", { lineHeight: "1rem" }],
+        /** 本文の下限を 14px に固定（`text-sm` 全体で統一） */
+        sm: ["14px", { lineHeight: "1.375rem" }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

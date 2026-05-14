@@ -49,7 +49,7 @@ function SectionShell({
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10 lg:gap-14">
           <header className="md:col-span-3 lg:col-span-3 flex flex-col gap-5 md:pt-1">
             <span
-              className={`text-5xl sm:text-6xl md:text-7xl font-extralight tabular-nums leading-none ${numTone}`}
+              className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight tabular-nums leading-none ${numTone}`}
             >
               {number}
             </span>
@@ -57,20 +57,20 @@ function SectionShell({
             <div>
               <h2
                 id={headingId}
-                className={`text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] ${titleTone}`}
+                className={`text-sm md:text-base lg:text-base font-semibold uppercase tracking-[0.2em] ${titleTone}`}
               >
                 {titleEn}
               </h2>
               {bodyJa ? (
                 <p
-                  className={`mt-3 text-xs sm:text-sm leading-relaxed max-w-[260px] ${muted}`}
+                  className={`mt-3 text-sm md:text-base leading-relaxed max-w-xs sm:max-w-sm ${muted}`}
                 >
                   {bodyJa}
                 </p>
               ) : null}
               {bodyEn ? (
                 <p
-                  className={`mt-2 text-xs sm:text-sm leading-relaxed max-w-[260px] ${mutedSoft}`}
+                  className={`mt-2 text-sm md:text-base leading-relaxed max-w-xs sm:max-w-sm ${mutedSoft}`}
                 >
                   {bodyEn}
                 </p>
@@ -78,7 +78,7 @@ function SectionShell({
               {leftLink ? (
                 <Link
                   href={leftLink.href}
-                  className={`inline-block mt-5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] border-b pb-0.5 transition-opacity hover:opacity-70 ${
+                  className={`inline-block mt-5 text-sm lg:text-base font-semibold uppercase tracking-[0.22em] border-b pb-0.5 transition-opacity hover:opacity-70 ${
                     variant === "dark"
                       ? "border-white/50 text-neutral-100"
                       : "border-neutral-900 text-neutral-900"
@@ -234,7 +234,7 @@ export function LandingPage() {
       >
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-14 items-start">
           <div className="space-y-8">
-            <blockquote className="space-y-6 text-lg md:text-xl font-light text-neutral-800 leading-relaxed">
+            <blockquote className="space-y-6 text-xl md:text-2xl lg:text-3xl font-light text-neutral-800 leading-relaxed">
               <p>
                 Technology is my brush.
                 <br />
@@ -246,14 +246,14 @@ export function LandingPage() {
                 It is dancing within them.
               </p>
             </blockquote>
-            <p className="text-sm text-neutral-600 leading-relaxed max-w-md">
+            <p className="text-sm md:text-base lg:text-base text-neutral-600 leading-relaxed max-w-md">
               テクノロジーは筆。感情はインク。
               <br />
               自由は、ルールからの逃亡ではなく、その枠のなかで踊ること。
             </p>
             <Link
               href="/philosophy"
-              className="inline-flex w-fit items-center rounded-md border border-neutral-900 bg-white px-5 py-3 text-sm font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100"
+              className="inline-flex w-fit items-center rounded-md border border-neutral-900 bg-white px-5 py-3 text-sm md:text-base font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100"
             >
               Read full philosophy →
             </Link>
@@ -306,17 +306,17 @@ export function LandingPage() {
       >
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-14 items-center">
           <div className="space-y-6">
-            <p className="text-neutral-800 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-lg text-neutral-800 leading-relaxed">
               ストリートカルチャーの熱とデジタル表現の精度を交差させながら、自由と抑圧、抵抗と順応の狭間にある「人間らしさ」を探っています。
             </p>
-            <p className="text-sm text-neutral-600 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-base text-neutral-600 leading-relaxed">
               Crossing street culture's heat with the precision of digital
               expression, I look for what feels human — in the narrow space
               between freedom and oppression, resistance and adaptation.
             </p>
             <Link
               href="/about"
-              className="inline-block text-xs font-semibold uppercase tracking-[0.2em] border-b border-neutral-900 pb-1 text-neutral-900 hover:opacity-70 transition-opacity"
+              className="inline-block text-sm md:text-base font-semibold uppercase tracking-[0.2em] border-b border-neutral-900 pb-1 text-neutral-900 hover:opacity-70 transition-opacity"
             >
               Read more →
             </Link>
@@ -368,7 +368,7 @@ function Tile({
         sizes={sizes}
       />
       <span
-        className={`absolute left-3 bottom-3 px-2 py-1 text-[10px] uppercase tracking-widest ${labelTone}`}
+        className={`absolute left-3 bottom-3 px-2 py-1 text-xs uppercase tracking-widest ${labelTone}`}
       >
         {label}
       </span>
@@ -412,16 +412,16 @@ function WorldCard({
       />
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end px-6 pb-7 pt-20 md:px-8 md:pb-9 md:pt-24 lg:px-9 lg:pb-10">
-        <h3 className="mb-3 text-[11px] font-bold uppercase leading-tight tracking-[0.2em] text-white md:text-xs md:tracking-[0.22em]">
+        <h3 className="mb-3 text-sm md:text-sm lg:text-base font-bold uppercase leading-tight tracking-[0.2em] text-white md:tracking-[0.22em]">
           {title}
         </h3>
-        <p className="mb-2 text-[13px] font-light leading-snug tracking-wide text-white/92 md:text-sm">
+        <p className="mb-2 text-sm md:text-base lg:text-base font-light leading-snug tracking-wide text-white/92">
           {subtitleJa}
         </p>
-        <p className="mb-8 max-w-[98%] text-[11px] font-light leading-relaxed text-white/58 md:text-xs md:leading-relaxed">
+        <p className="mb-8 max-w-full text-sm md:text-sm lg:text-base font-light leading-relaxed text-white/60 md:leading-relaxed">
           {subtitleEn}
         </p>
-        <span className="inline-flex w-fit items-center gap-1.5 border-b border-white/35 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-white transition-[gap,border-color,color] duration-300 ease-out group-hover:gap-2.5 group-hover:border-white/70 group-hover:text-white">
+        <span className="inline-flex w-fit items-center gap-1.5 border-b border-white/35 pb-0.5 text-sm md:text-sm lg:text-base font-semibold uppercase tracking-[0.28em] text-white transition-[gap,border-color,color] duration-300 ease-out group-hover:gap-2.5 group-hover:border-white/70 group-hover:text-white">
           Explore
           <span aria-hidden className="translate-x-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
             →
@@ -446,11 +446,11 @@ function ZineCard({
       href={href}
       className="group block border border-white/10 px-5 py-8 md:py-10 hover:border-white/25 transition-colors"
     >
-      <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-100 mb-2">
+      <h3 className="text-sm md:text-base lg:text-base font-semibold uppercase tracking-[0.18em] text-neutral-100 mb-2">
         {title}
       </h3>
-      <p className="text-xs text-neutral-300 mb-6">{subtitle}</p>
-      <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-neutral-200">
+      <p className="text-sm md:text-base text-neutral-300 mb-6">{subtitle}</p>
+      <span className="text-sm md:text-base font-semibold uppercase tracking-[0.25em] text-neutral-200">
         Explore →
       </span>
     </Link>
