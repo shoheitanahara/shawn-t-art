@@ -24,18 +24,16 @@ function SectionShell({
 }) {
   const surface =
     variant === "dark"
-      ? "bg-background text-foreground border-gray-800"
-      : "bg-white text-neutral-900 border-neutral-200";
+      ? "bg-background text-white border-zinc-800"
+      : "bg-white text-zinc-950 border-zinc-200";
 
   const muted =
-    variant === "dark" ? "text-neutral-300" : "text-neutral-600";
+    variant === "dark" ? "text-white/90" : "text-zinc-800";
   const mutedSoft =
-    variant === "dark" ? "text-neutral-400" : "text-neutral-500";
+    variant === "dark" ? "text-white/75" : "text-zinc-700";
 
-  const numTone =
-    variant === "dark" ? "text-neutral-100" : "text-neutral-900";
-  const titleTone =
-    variant === "dark" ? "text-neutral-100" : "text-neutral-900";
+  const numTone = variant === "dark" ? "text-white" : "text-zinc-950";
+  const titleTone = variant === "dark" ? "text-white" : "text-zinc-950";
 
   const headingId = id ? `${id}-heading` : undefined;
 
@@ -80,8 +78,8 @@ function SectionShell({
                   href={leftLink.href}
                   className={`inline-block mt-5 text-sm lg:text-base font-semibold uppercase tracking-[0.22em] border-b pb-0.5 transition-opacity hover:opacity-70 ${
                     variant === "dark"
-                      ? "border-white/50 text-neutral-100"
-                      : "border-neutral-900 text-neutral-900"
+                      ? "border-white/50 text-white"
+                      : "border-zinc-900 text-zinc-950"
                   }`}
                 >
                   {leftLink.label}
@@ -102,7 +100,7 @@ export function LandingPage() {
       {/* Hello — 横いっぱい 1 枚 + 下に短文（番号なし） */}
       <section
         id="hello"
-        className="max-w-5xl mx-auto border-b border-gray-800 bg-background scroll-mt-24"
+        className="max-w-5xl mx-auto border-b border-zinc-800 bg-background scroll-mt-24"
         aria-label="Hello"
       >
         <div className="w-full">
@@ -234,7 +232,7 @@ export function LandingPage() {
       >
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-14 items-start">
           <div className="space-y-8">
-            <blockquote className="space-y-6 text-xl md:text-2xl lg:text-3xl font-light text-neutral-800 leading-relaxed">
+            <blockquote className="space-y-6 text-xl md:text-2xl lg:text-3xl font-light text-zinc-950 leading-relaxed">
               <p>
                 Technology is my brush.
                 <br />
@@ -246,19 +244,19 @@ export function LandingPage() {
                 It is dancing within them.
               </p>
             </blockquote>
-            <p className="text-sm md:text-base lg:text-base text-neutral-600 leading-relaxed max-w-md">
+            <p className="text-sm md:text-base lg:text-base text-zinc-800 leading-relaxed max-w-md">
               テクノロジーは筆。感情はインク。
               <br />
               自由は、ルールからの逃亡ではなく、その枠のなかで踊ること。
             </p>
             <Link
               href="/philosophy"
-              className="inline-flex w-fit items-center rounded-md border border-neutral-900 bg-white px-5 py-3 text-sm md:text-base font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100"
+              className="inline-flex w-fit items-center rounded-md border border-zinc-950 bg-white px-5 py-3 text-sm md:text-base font-medium text-zinc-950 shadow-sm transition-colors hover:bg-zinc-100"
             >
               Read full philosophy →
             </Link>
           </div>
-          <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:max-w-none lg:mx-0 border border-neutral-200 bg-neutral-100">
+          <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:max-w-none lg:mx-0 border border-zinc-200 bg-zinc-100">
             <Image
               src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00007.jpg"
               alt=""
@@ -306,22 +304,22 @@ export function LandingPage() {
       >
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-14 items-center">
           <div className="space-y-6">
-            <p className="text-base md:text-lg lg:text-lg text-neutral-800 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-lg text-zinc-950 leading-relaxed">
               ストリートカルチャーの熱とデジタル表現の精度を交差させながら、自由と抑圧、抵抗と順応の狭間にある「人間らしさ」を探っています。
             </p>
-            <p className="text-sm md:text-base lg:text-base text-neutral-600 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-base text-zinc-800 leading-relaxed">
               Crossing street culture's heat with the precision of digital
               expression, I look for what feels human — in the narrow space
               between freedom and oppression, resistance and adaptation.
             </p>
             <Link
               href="/about"
-              className="inline-block text-sm md:text-base font-semibold uppercase tracking-[0.2em] border-b border-neutral-900 pb-1 text-neutral-900 hover:opacity-70 transition-opacity"
+              className="inline-block text-sm md:text-base font-semibold uppercase tracking-[0.2em] border-b border-zinc-950 pb-1 text-zinc-950 hover:opacity-70 transition-opacity"
             >
               Read more →
             </Link>
           </div>
-          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none border border-neutral-200 bg-neutral-100">
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none border border-zinc-200 bg-zinc-100">
             <Image
               src="/images/about/icon.jpg"
               alt=""
@@ -353,12 +351,12 @@ function Tile({
 }) {
   const labelTone =
     variant === "light"
-      ? "bg-white/90 text-neutral-900"
-      : "bg-background/80 text-foreground";
+      ? "bg-white/90 text-zinc-950"
+      : "bg-black/75 text-white";
   return (
     <Link
       href={href}
-      className={`group relative overflow-hidden border border-neutral-300 ${className}`}
+      className={`group relative overflow-hidden border border-zinc-300 ${className}`}
     >
       <Image
         src={src}
@@ -393,7 +391,7 @@ function WorldCard({
     <Link
       href={href}
       aria-label={`${title} — Explore`}
-      className="group relative isolate block aspect-[3/5] w-full overflow-hidden border border-white/[0.12] bg-neutral-950 shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset] transition-[border-color,box-shadow] duration-500 ease-out hover:border-white/22 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_24px_48px_-24px_rgba(0,0,0,0.6)]"
+      className="group relative isolate block aspect-[3/5] w-full overflow-hidden border border-white/[0.12] bg-black shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset] transition-[border-color,box-shadow] duration-500 ease-out hover:border-white/22 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_24px_48px_-24px_rgba(0,0,0,0.6)]"
     >
       <Image
         src={imageSrc}
@@ -415,10 +413,10 @@ function WorldCard({
         <h3 className="mb-3 text-sm md:text-sm lg:text-base font-bold uppercase leading-tight tracking-[0.2em] text-white md:tracking-[0.22em]">
           {title}
         </h3>
-        <p className="mb-2 text-sm md:text-base lg:text-base font-light leading-snug tracking-wide text-white/92">
+        <p className="mb-2 text-sm md:text-base lg:text-base font-light leading-snug tracking-wide text-white">
           {subtitleJa}
         </p>
-        <p className="mb-8 max-w-full text-sm md:text-sm lg:text-base font-light leading-relaxed text-white/60 md:leading-relaxed">
+        <p className="mb-8 max-w-full text-sm md:text-sm lg:text-base font-light leading-relaxed text-white/75 md:leading-relaxed">
           {subtitleEn}
         </p>
         <span className="inline-flex w-fit items-center gap-1.5 border-b border-white/35 pb-0.5 text-sm md:text-sm lg:text-base font-semibold uppercase tracking-[0.28em] text-white transition-[gap,border-color,color] duration-300 ease-out group-hover:gap-2.5 group-hover:border-white/70 group-hover:text-white">
@@ -446,11 +444,11 @@ function ZineCard({
       href={href}
       className="group block border border-white/10 px-5 py-8 md:py-10 hover:border-white/25 transition-colors"
     >
-      <h3 className="text-sm md:text-base lg:text-base font-semibold uppercase tracking-[0.18em] text-neutral-100 mb-2">
+      <h3 className="text-sm md:text-base lg:text-base font-semibold uppercase tracking-[0.18em] text-white mb-2">
         {title}
       </h3>
-      <p className="text-sm md:text-base text-neutral-300 mb-6">{subtitle}</p>
-      <span className="text-sm md:text-base font-semibold uppercase tracking-[0.25em] text-neutral-200">
+      <p className="text-sm md:text-base text-white/80 mb-6">{subtitle}</p>
+      <span className="text-sm md:text-base font-semibold uppercase tracking-[0.25em] text-white">
         Explore →
       </span>
     </Link>
