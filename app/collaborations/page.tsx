@@ -1,11 +1,41 @@
-
 import React from "react";
-import Image from 'next/image'
+import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Zines / Collaborations",
+};
 
 const CollaborationsPage = () => {
   return (
     <main className="px-6 md:px-24 pb-6">
-      <h2 className="text-2xl font-bold text-center mb-4">Collaborations</h2>
+      <h1 className="text-3xl font-bold text-center mb-10">
+        Zines / Collaborations
+      </h1>
+
+      <section
+        className="mx-auto mb-12 max-w-3xl space-y-4 text-center md:text-left"
+        aria-labelledby="zines-status-heading"
+      >
+        <h2
+          id="zines-status-heading"
+          className="text-2xl font-bold text-center"
+        >
+          Zines
+        </h2>
+        <p className="leading-relaxed text-foreground/90">
+          Zine（紙や編集物としてのエディション）は現在{" "}
+          <strong>制作・準備中</strong>です。
+        </p>
+        <p className="leading-relaxed text-foreground/80">
+          Printed zines and editions are currently{" "}
+          <strong>in production</strong>. 
+        </p>
+      </section>
+
+      <hr className="mb-12 w-full border-gray-300" />
+
+      <h2 className="mb-8 text-2xl font-bold text-center">Collaborations</h2>
       <div className="flex flex-col items-center justify-between">
         <h2 className="text-2xl font-bold text-center mb-4">UndeadBear x The Double Slash</h2>
         <div className="w-full lg:w-2/3 mb-8">

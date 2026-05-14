@@ -172,9 +172,9 @@ export function LandingPage() {
               variant="light"
             />
             <Tile
-              href="/slashanimal#slashcow"
-              label="Slash Animal"
-              src="/images/slashanimal/slashcow/slashcow04.png"
+              href="/marksoffreedom"
+              label="Marks of Freedom"
+              src="/images/marksoffreedom/gunma-2026/mof_gunma_6.png"
               className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
               sizes="33vw"
               variant="light"
@@ -270,11 +270,11 @@ export function LandingPage() {
         </div>
       </SectionShell>
 
-      {/* 04 ZINES */}
+      {/* 04 ZINES / COLLABORATIONS */}
       <SectionShell
         id="zines"
         number="04"
-        titleEn="Zines / Exhibitions"
+        titleEn="Zines / Collaborations"
         variant="dark"
         bodyJa="記録し、残し、共有するために。"
         bodyEn="To record, to leave, to share."
@@ -284,13 +284,13 @@ export function LandingPage() {
           <div className="grid sm:grid-cols-3 gap-4 md:gap-5">
             <ZineCard
               href="/collaborations"
-              title="Zines / Editions"
-              subtitle="ジン・エディション"
+              title="Zines / Collaborations"
+              subtitle="ジン・コラボレーション"
             />
             <ZineCard href="/event" title="Exhibitions" subtitle="展示" />
             <ZineCard
               href="/apparel"
-              title="Posters / Prints"
+              title="Apparel / Prints"
               subtitle="アパレル・プリント"
             />
           </div>

@@ -66,7 +66,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <Link href="/music">Music</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href="/collaborations">Collaborations</Link>
+                  <Link href="/collaborations">Zines / Collab</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link href="/apparel">Apparel</Link>
@@ -90,33 +90,23 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </DropdownMenu>
         </nav>
         {children}
-        <footer className="bg-gray-800 text-white px-6 md:px-24 py-8 md:py-10 text-sm">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <nav className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
-              <a
-                href="https://www.instagram.com/shawn_t_art/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/85 hover:text-white transition-colors"
+        <footer className="border-t border-border bg-background px-6 py-8 text-sm text-foreground md:px-24 md:py-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2 md:justify-start">
+              <Link
+                href="/links"
+                className="text-foreground transition-opacity hover:opacity-80"
               >
-                Instagram
-              </a>
-              <a
-                href="https://x.com/shawn_t_art"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/85 hover:text-white transition-colors"
-              >
-                X
-              </a>
-              <Link href="/links" className="text-white/85 hover:text-white transition-colors">
-                Contact / Links
+                SNS / Links
               </Link>
-              <span className="text-white/50 cursor-not-allowed" title="Coming soon">
+              <span
+                className="cursor-not-allowed text-foreground/45"
+                title="Coming soon"
+              >
                 Shop
               </span>
             </nav>
-            <p className="text-center md:text-right text-white/70">
+            <p className="text-center text-foreground md:text-right">
               &copy; {new Date().getUTCFullYear()} Shawn T. Art All rights reserved.
             </p>
           </div>
