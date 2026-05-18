@@ -5,11 +5,12 @@ export const metadata: Metadata = {
   title: "About",
 };
 
-const proseBlock = "space-y-4 text-sm leading-relaxed md:text-base md:leading-relaxed";
+const proseBlock =
+  "space-y-4 text-base leading-relaxed md:text-lg md:leading-relaxed";
 const sectionTitle =
-  "text-lg font-bold tracking-tight md:text-xl";
+  "text-xl font-bold tracking-tight md:text-2xl";
 const listClass =
-  "list-none space-y-1 border-l border-border pl-4 text-foreground/90";
+  "list-none space-y-1 border-l border-border pl-4 text-base text-foreground/90 md:text-lg";
 
 function TensionList({ items }: { items: string[] }) {
   return (
@@ -37,13 +38,13 @@ export default function AboutPage() {
             />
           </div>
           <div className="min-w-0 space-y-3 pt-1">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground md:text-base">
               Shawn T. Art
             </p>
-            <h1 className="text-2xl font-bold leading-tight md:text-3xl">
+            <h1 className="text-3xl font-bold leading-tight">
               Art Between Freedom and Control
             </h1>
-            <p className="text-base italic text-foreground/90 md:text-lg">
+            <p className="text-lg italic text-foreground/90 md:text-xl">
               「Every Star Starts as a Nobody」
             </p>
           </div>
@@ -65,7 +66,7 @@ export default function AboutPage() {
             <p>
               ストリートカルチャーの熱、
               <br />
-              都市に残るノイズ、
+              都市に残る痕跡、
               <br />
               そしてデジタル表現の精度を交差させながら、
               <br />
@@ -140,7 +141,7 @@ export default function AboutPage() {
               <br />
               視覚だけでなく聴覚を通しても
               <br />
-              “Freedom and Control” のテーマを表現。
+              “Freedom and Control” というテーマを表現。
             </p>
             <p>
               初期Web3シーンにも深く関わりながら、
@@ -152,8 +153,10 @@ export default function AboutPage() {
           </div>
 
           <blockquote className="border-l-2 border-foreground/30 pl-5 space-y-3 not-italic">
-            <p className="text-sm text-muted-foreground">モットーは、</p>
-            <p className="text-base font-medium italic md:text-lg">
+            <p className="text-sm text-muted-foreground md:text-base">
+              モットーは、
+            </p>
+            <p className="text-lg font-medium italic md:text-xl">
               「Every Star Starts as a Nobody」
             </p>
             <p className={proseBlock}>
@@ -163,7 +166,7 @@ export default function AboutPage() {
             </p>
           </blockquote>
 
-          <p className="text-base leading-relaxed md:text-lg">
+          <p className="text-lg leading-relaxed md:text-xl">
             Shawn T. Art は、
             <br />
             テクノロジーと人間性のあいだに残る、
@@ -179,7 +182,7 @@ export default function AboutPage() {
         >
           <p
             id="about-en-heading"
-            className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+            className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground md:text-base"
           >
             English Version
           </p>
@@ -189,13 +192,12 @@ export default function AboutPage() {
             <p>
               Shawn T. Art is a Japanese artist and musician exploring the
               relationship between freedom, control, technology, and human
-              emotion in contemporary society.
+              emotion in modern society.
             </p>
             <p>
-              Blending the raw energy of street culture, the silence hidden
-              inside urban environments, and the precision of digital
-              expression, his work searches for traces of humanity that remain
-              between resistance and conformity.
+              Blending the energy of street culture, traces left in urban spaces,
+              and the precision of digital expression, his work searches for
+              human feelings that remain between resistance and conformity.
             </p>
           </div>
 
@@ -210,75 +212,76 @@ export default function AboutPage() {
                 "freedom and control",
                 "noise and silence",
                 "beauty and discomfort",
-                "censorship and persistence",
+                "censorship and resistance",
               ]}
             />
-            <p>The Double Slash does not deny what lies beneath it.</p>
+            <p>The Double Slash does not try to erase what is underneath.</p>
             <p>
-              Instead, covering becomes a way to reveal presence — a paradoxical
-              act that emphasizes what cannot completely disappear.
+              Instead, covering becomes a way to reveal presence — showing that
+              some emotions and memories cannot completely disappear.
             </p>
           </div>
 
           <div className={proseBlock}>
             <p>
-              Through the photography series Marks of Freedom, Shawn documents
-              accidental lines, scars, shadows, walls, streets, and traces hidden
-              inside everyday urban landscapes.
+              Through the photography series Marks of Freedom, Shawn captures
+              accidental lines, scars, shadows, walls, streets, and small traces
+              hidden inside everyday urban landscapes.
             </p>
+            <p>These works are not made to explain the world.</p>
             <p>
-              These works are not intended to explain the world, but to discover
-              quiet signs of freedom already existing within it.
+              They exist to discover quiet signs of freedom already hidden
+              within it.
             </p>
           </div>
 
           <div className={proseBlock}>
             <p>
-              Shawn actively incorporates AI and digital technology into his
-              creative process — not simply as tools for efficiency, but as
-              creative partners for rediscovering humanity itself.
+              Shawn also uses AI and digital technology as part of his creative
+              process — not only as tools for efficiency, but as creative
+              partners that help rediscover humanity.
             </p>
             <p>
-              As technology continues to reshape society, his practice explores
-              how emotion, imperfection, warmth, and contradiction can still
-              survive inside digital culture.
+              As technology continues to change society, his work explores how
+              emotion, warmth, imperfection, and contradiction can still exist
+              inside digital culture.
             </p>
           </div>
 
           <div className={proseBlock}>
             <p>
               Beyond visual art, Shawn expands this philosophy through Mutant
-              HipHop, a project merging music, identity, and Web3 culture to
-              express themes of freedom and control through sound as well as
+              HipHop, a project that combines music, identity, and Web3 culture
+              to express themes of freedom and control through sound as well as
               visuals.
             </p>
             <p>
               As an early participant in Web3 culture, he also documents the
-              evolving relationship between NFTs, digital ownership, community,
-              and contemporary artistic expression.
+              changing relationship between NFTs, digital ownership, community,
+              and modern artistic expression.
             </p>
           </div>
 
           <blockquote className="border-l-2 border-foreground/30 pl-5 space-y-3 not-italic">
-            <p className="text-sm text-muted-foreground">
-              Anchored by the motto,
+            <p className="text-sm text-muted-foreground md:text-base">
+              Guided by the motto,
             </p>
-            <p className="text-base font-medium italic md:text-lg">
+            <p className="text-lg font-semibold md:text-xl">
               “Every Star Starts as a Nobody,”
             </p>
             <p>
-              his work seeks not fame, but the preservation of emotion,
-              contradiction, silence, and hope as a living archive of our time.
+              his work is not focused on fame, but on preserving emotion,
+              contradiction, silence, and hope as records of our time.
             </p>
           </blockquote>
 
-          <p className="text-base leading-relaxed md:text-lg">
-            Shawn T. Art continues to explore the fragile space between technology
+          <p className="text-lg leading-relaxed md:text-xl">
+            Shawn T. Art continues to explore the quiet space between technology
             and humanity.
           </p>
         </section>
 
-        <footer className="mt-14 space-y-4 border-t border-border pt-10 text-sm leading-relaxed text-muted-foreground">
+        <footer className="mt-14 space-y-4 border-t border-border pt-10 text-sm leading-relaxed text-muted-foreground md:text-base">
           <p className="italic">
             すべての画像や音楽は私たちのオリジナルであり、無断使用や権利侵害は厳禁です。これに違反した場合、法的措置を講じることがありますので、ご了承ください。
           </p>
