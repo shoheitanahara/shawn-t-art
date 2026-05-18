@@ -321,10 +321,10 @@ export function LandingPage() {
           </div>
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none border border-zinc-200 bg-zinc-100">
             <Image
-              src="/images/about/icon.jpg"
-              alt=""
+              src="/images/about/portrait.png"
+              alt="Shawn T. Art"
               fill
-              className="object-cover object-top grayscale contrast-125"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 90vw, 45vw"
             />
           </div>

@@ -4,8 +4,17 @@ import Image from 'next/image'
 const AboutPage: FC = () => {
   return (
     <div className="container mx-auto px-8 md:px-8 py-8 max-w-4xl">
-      <div className="flex items-center mb-8">
-        <Image src="/images/about/icon.jpg" alt="Icon" className="w-16 h-16 mr-4 lg:w-32 lg:h-32 lg:mr-12" width={128} height={128} />
+      <div className="mb-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <div className="relative aspect-[4/5] w-32 shrink-0 overflow-hidden sm:w-36 lg:w-44">
+          <Image
+            src="/images/about/portrait.png"
+            alt="Shawn T. Art"
+            fill
+            className="object-cover object-center grayscale contrast-110"
+            sizes="(max-width: 640px) 128px, 176px"
+            priority
+          />
+        </div>
         <h1 className="text-3xl font-bold">Shawn T. Art</h1>
       </div>
       
