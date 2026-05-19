@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '@/app/globals.css';
 import Link from 'next/link';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { SiteMenu } from '@/components/site-menu';
 
 // RootLayoutPropsの型を定義
 interface RootLayoutProps {
@@ -35,59 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             Shawn T. Art
           </Link>
-          <DropdownMenu>
-            <div className="flex items-center border rounded-md">
-              <DropdownMenuTrigger className="flex items-center space-x-2 md:space-x-4 py-2 px-4">
-                Menu
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black">
-                <DropdownMenuItem>
-                  <Link href="/about">About</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/philosophy">Philosophy</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/thedoubleslash">The Double Slash</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/motion">Motion</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/marksoffreedom">Marks of Freedom</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/slashanimal">Slash Animal</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/slashsheep-3d">Slash Sheep 3D</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/music">Music</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/collaborations">Zines / Collab</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/apparel">Apparel</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="https://meebits-runway.vercel.app/">
-                    Meebits Runway & GIF
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/event">Event</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/links">Links</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/nft-manifest">NFT Manifest</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </div>
-          </DropdownMenu>
+          <SiteMenu />
         </nav>
         {children}
         <footer className="border-t border-border bg-background px-6 py-8 text-sm text-foreground md:px-24 md:py-10">
