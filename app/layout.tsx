@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '@/app/globals.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import { SiteMenu } from '@/components/site-menu';
 
@@ -31,9 +32,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <nav className="flex w-full items-center justify-between px-6 pt-5 pb-6 md:px-24 md:pb-12">
           <Link
             href="/"
-            className="text-2xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80"
+            className="inline-flex shrink-0 transition-opacity hover:opacity-80"
+            aria-label="Shawn T. Art — Home"
           >
-            Shawn T. Art
+            <Image
+              src="/images/logo/shawn-t-art-logo.png"
+              alt="Shawn T. Art"
+              width={335}
+              height={110}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
           <SiteMenu />
         </nav>
