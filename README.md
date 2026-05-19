@@ -80,8 +80,23 @@ app/                 # ページ・レイアウト・App Router の API（app/ap
 components/          # UI・ギャラリー・3D などのコンポーネント
 public/images/       # 静的画像アセット
 hooks/               # ビルド前スクリプト（画像リスト自動生成）
-memory-bank/         # プロジェクト用メモ・ドキュメント
+memory-bank/         # 設計・ブランド・運用ドキュメント（索引: memory-bank/README.md）
 ```
+
+### Memory Bank（`memory-bank/`）
+
+AI・開発向けの文脈ドキュメント。セットアップ手順は本 README、判断基準は memory-bank を参照。
+
+| ファイル | 内容 |
+|----------|------|
+| `README.md` | 索引・読む順序 |
+| `art-director.md` | ブランド・哲学・作品方向性 |
+| `site-architecture.md` | ルート・メニュー・ページ分類 |
+| `design-system.md` | Web UI・レイアウトパターン |
+| `tech-stack.md` | 技術スタック・shadcn 規約 |
+| `content-guidelines.md` | 文言・表記 |
+| `image-workflow.md` | 画像追加・ビルド前生成 |
+| `progress.md` | バックログ・完成度 |
 
 ### 主なページ（`app/`）
 
