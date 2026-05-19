@@ -6,6 +6,10 @@
 
 ```
 public/images/
+├── apparel/
+│   ├── 2026ss/          # T シャツ + デザイン（*-tee.png / *-design.png）
+│   ├── 2025ss/          # Tulip Tee 系
+│   └── 2025aw/          # Tulip Sweatshirt 系
 ├── firstview/           # トップ・DS ファーストビュー（手動参照）
 ├── doubleslash/
 ├── doubleslash-spam/
