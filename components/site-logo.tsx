@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const LOGO_SRC = "/images/logo/shawn-t-art-logo.png";
 const LOGO_WIDTH = 335;
-const LOGO_HEIGHT = 110;
+const LOGO_HEIGHT = 111;
 
 type SiteLogoProps = {
   size?: "header" | "footer";
