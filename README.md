@@ -15,13 +15,13 @@
 ## 技術スタック
 
 - [Next.js](https://nextjs.org/) 16（App Router）
-- React 18 / TypeScript 5
-- Tailwind CSS 3、Radix UI、shadcn/ui 系コンポーネント
+- React 19 / TypeScript 6
+- Tailwind CSS 4、Radix UI、shadcn/ui 系コンポーネント
 - `@google/model-viewer`（3D）、`viem`（ブロックチェーン RPC）、`qrcode`
 
 ## 必要条件
 
-- **Node.js** `v22.9.0`（`.nvmrc` 参照。`nvm use` 推奨）
+- **Node.js** `v24`（`.nvmrc` 参照。`nvm use` 推奨）
 - **npm**（`package-lock.json` あり）
 
 ## セットアップ

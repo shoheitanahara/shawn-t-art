@@ -557,15 +557,17 @@ export async function GET(request: Request) {
     // OpenSeaのコレクション名に近い「コントラクト名」を優先する。
     // メタデータ由来の creator がウォレットアドレスっぽい場合は採用しない。
     const creatorFromMetadata = pickCreator(metadata);
-    const creator =
-      (creatorFromMetadata && !isWalletAddress(creatorFromMetadata)
+    let creator =
+      creatorFromMetadata && !isWalletAddress(creatorFromMetadata)
         ? creatorFromMetadata
-        : null) ??
-      (collectionName ?? null) ??
-      (await resolveCreatorFromContractDeployer({ client, contractAddress })) ??
-      (await resolveCreatorFromMintTransfer({ client, contractAddress, tokenId })) ??
-      (typeof owner === "string" ? owner : null) ??
-      "Unknown Creator";
+        : collectionName;
+
+    if (!creator) {
+      creator =
+        (await resolveCreatorFromContractDeployer({ client, contractAddress })) ??
+        (await resolveCreatorFromMintTransfer({ client, contractAddress, tokenId })) ??
+        (typeof owner === "string" ? owner : "Unknown Creator");
+    }
 
     const responseBody: NftResponse = {
       title,

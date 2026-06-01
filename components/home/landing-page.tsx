@@ -308,7 +308,7 @@ export function LandingPage() {
               ストリートカルチャーの熱とデジタル表現の精度を交差させながら、自由と抑圧、抵抗と順応の狭間にある「人間らしさ」を探っています。
             </p>
             <p className="text-sm md:text-base lg:text-base text-zinc-800 leading-relaxed">
-              Crossing street culture's heat with the precision of digital
+              Crossing street culture&apos;s heat with the precision of digital
               expression, I look for what feels human — in the narrow space
               between freedom and oppression, resistance and adaptation.
             </p>

@@ -4,11 +4,11 @@
 
 | 項目 | バージョン・備考 |
 |------|------------------|
-| Node.js | `v22.9.0`（`.nvmrc`） |
+| Node.js | `v24`（`.nvmrc`） |
 | Next.js | 16（App Router） |
-| React | 18 |
-| TypeScript | 5 |
-| Tailwind CSS | 3 + `tailwindcss-animate` |
+| React | 19 |
+| TypeScript | 6 |
+| Tailwind CSS | 4 + `@tailwindcss/postcss` |
 | UI | **shadcn/ui（Radix UI）** |
 | 3D | `@google/model-viewer` |
 | チェーン | `viem`（OpenSea API） |

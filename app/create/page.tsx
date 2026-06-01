@@ -82,9 +82,11 @@ const ImageDownloader = () => {
     // コンポーネントがマウントされたときにデフォルトのURLでデータを取得
     useEffect(() => {
         fetchNFTData(url);
+        // 初期表示時だけデフォルトURLを読み込む
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const fetchNFTData = async (url: string) => {
+    async function fetchNFTData(url: string) {
         setLoading(true); // ローディング開始
         try {
             const response = await fetch(`/api/opensea?url=${encodeURIComponent(url)}`);
@@ -106,7 +108,7 @@ const ImageDownloader = () => {
         } finally {
             setLoading(false); // ローディング終了
         }
-    };
+    }
 
     const downloadImage = () => {
         const canvas = canvasRef.current;
@@ -118,7 +120,7 @@ const ImageDownloader = () => {
         }
     };
 
-    const drawCanvas = async (nftData: any) => { // 引数にデータを追加
+    async function drawCanvas(nftData: any) { // 引数にデータを追加
         const canvas = canvasRef.current;
         if (canvas && nftData) {
             const ctx = canvas.getContext('2d');
@@ -151,9 +153,9 @@ const ImageDownloader = () => {
                 }
             }
         }
-    };
+    }
 
-    const drawText = (ctx: CanvasRenderingContext2D, nftData: any) => {
+    function drawText(ctx: CanvasRenderingContext2D, nftData: any) {
         ctx.fillStyle = 'white';
         const canvasHeight = canvasRef.current!.height;
         const leftPadding = 26;
@@ -193,7 +195,7 @@ const ImageDownloader = () => {
             labelWidth,
             gap,
         });
-    };
+    }
 
     return (
         <div className="max-w-2xl mx-auto pt-10 pb-20 px-5">
