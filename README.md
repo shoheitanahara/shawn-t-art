@@ -16,7 +16,7 @@
 
 - [Next.js](https://nextjs.org/) 16（App Router）
 - React 19 / TypeScript 6
-- Tailwind CSS 4、Radix UI、shadcn/ui 系コンポーネント
+- Tailwind CSS 3（shadcn/ui 互換のため v3 系維持）、Radix UI、shadcn/ui 系コンポーネント
 - `@google/model-viewer`（3D）、`viem`（ブロックチェーン RPC）、`qrcode`
 
 ## 必要条件

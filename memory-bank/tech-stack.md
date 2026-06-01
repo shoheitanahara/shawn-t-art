@@ -8,7 +8,7 @@
 | Next.js | 16（App Router） |
 | React | 19 |
 | TypeScript | 6 |
-| Tailwind CSS | 4 + `@tailwindcss/postcss` |
+| Tailwind CSS | 3.4 系 + `tailwindcss-animate`（shadcn/ui 互換のため v3 系維持） |
 | UI | **shadcn/ui（Radix UI）** |
 | 3D | `@google/model-viewer` |
 | チェーン | `viem`（OpenSea API） |
