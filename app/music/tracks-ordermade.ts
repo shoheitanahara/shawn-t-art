@@ -356,4 +356,13 @@ Kappy — one bite tell the origin easy
 Kappy — say “Thank you — Li”, feel happy
 Last word ring worldwide — Kappy`,
       },
+
+    {
+      id: "count-with-meebs",
+      title: "COUNT WITH MEEBS",
+      artist: "Shawn T. Art",
+      year: "2026",
+      coverSrc: "/music/covers/ordermade/COUNT WITH MEEBS.png",
+      audioSrc: "/music/tracks/ordermade/COUNT WITH MEEBS.mp3",
+    },
 ];
