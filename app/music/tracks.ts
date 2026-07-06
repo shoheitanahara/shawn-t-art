@@ -583,7 +583,74 @@ End of the day — Apes together strong.`,
         year: "2025",
         coverSrc: "/music/covers/SORA HALLOWEEN JAM.png",
         audioSrc: "/music/tracks/SORA HALLOWEEN JAM.mp3",
-        lyrics: ``,
+        lyrics: `[Verse 1]
+Welcome to the space, 光るSORA
+ハロウィンナイトで highになろう
+Pumpkin light, キャンディのrain
+ここに集まる creative chain
+
+[Rap 1]
+Yo, trick or treat, 音でconnect
+仮装もartも perfect set
+From Spatial floor to cyber sky
+SORAの仲間で we so fly
+
+[Chorus]
+SORA Halloween, everybody say "HEY!"
+SORA Halloween, party all the way
+SORA Halloween, bounce, don't stop
+SORA Halloween, let the beat drop!
+
+SORA! (yeah yeah)
+Halloween! (oh oh)
+SORA! (hands up)
+Halloween! (let's go!)
+
+[Verse 2: Member Shoutouts]
+Wabi-Sabi — mastermind of the crew
+Artとcommunity, breaking through
+Kéiko's pixel, shining bright
+Commit to the metaverse, day and night
+
+[Rap 2]
+Dahchan folds the world so neat
+Origami magic, cool & sweet
+Runné's jellyfish, floating free
+UndeadBearもキュートなenergy
+
+[Chorus]
+SORA Halloween, everybody say "HEY!"
+SORA Halloween, party all the way
+SORA Halloween, bounce, don't stop
+SORA Halloween, let the beat drop!
+
+SORA! (yeah yeah)
+Halloween! (oh oh)
+SORA! (hands up)
+Halloween! (let's go!)
+
+[Verse 3: Unity]
+仮装 parade, 笑顔のwave
+未来に繋ぐこのsound we gave
+五人のartで夜をdecorate
+SORA Halloween, Let's celebrate
+
+[Rap 3]
+Hands up high, feel that heat
+Spatial worldで meet and greet
+Creators' power, trick or treat
+SORA forever, can't be beat!
+
+[Chorus]
+SORA Halloween, everybody say "HEY!"
+SORA Halloween, party all the way
+SORA Halloween, bounce, don't stop
+SORA Halloween, let the beat drop!
+
+SORA! (yeah yeah)
+Halloween! (oh oh)
+SORA! (hands up)
+Halloween! (let's go!)`,
     },
     
     {
@@ -593,7 +660,51 @@ End of the day — Apes together strong.`,
         year: "2025",
         coverSrc: "/music/covers/Dracula.png",
         audioSrc: "/music/tracks/Dracula.mp3",
-        lyrics: ``,
+        lyrics: `[Intro]
+Dark sky crack, thunder in the chain,
+Doors of the crypt swing open again.
+Fog on the floor, bass in the chest,
+Dracula's here — no time to rest.
+
+[Hook / Chorus]
+Haunted beats, we run this town,
+Ghosts in the chain, never shutting down.
+Dracula calls from the other side,
+SORA's the castle, where the spirits ride.
+
+[Verse 1]
+I am the wicked, the Dracula king,
+Rise from the coffin when the church bells ring.
+Blood moon glowing, I sharpen my fangs,
+Through shadows and fog where the Halloween hangs.
+
+I found SORA glowing, a portal of light,
+A metaverse castle for creatures of night.
+Bats in the rafters, skeletons cheer,
+"Welcome to the party — the vampire's here."
+
+[Hook / Chorus]
+Haunted beats, we run this town,
+Ghosts in the chain, never shutting down.
+Dracula calls from the other side,
+SORA's the castle, where the spirits ride.
+
+[Verse 2]
+Pumpkins are laughing, their faces insane,
+Chains start rattling, they sing in my name.
+I drink from the rhythm, I bite on the sound,
+Every beat drips blood as the spirits surround.
+
+No mercy, no mirrors, just power I claim,
+In Web3 domains, they all chant my name.
+Eternal, immortal, forever I reign,
+SORA's my kingdom — the dark will remain.
+
+[Hook / Chorus]
+Haunted beats, we run this town,
+Ghosts in the chain, never shutting down.
+Dracula calls from the other side,
+SORA's the castle, where the spirits ride.`,
     },
 
     {
@@ -603,7 +714,51 @@ End of the day — Apes together strong.`,
         year: "2025",
         coverSrc: "/music/covers/Pumpkin.png",
         audioSrc: "/music/tracks/Pumpkin.mp3",
-        lyrics: ``,
+        lyrics: `[Verse 1]
+I was raised in the dirt, just a pumpkin seed,
+Nothing but a harvest for the farmer's need.
+Thought I'd end up cooked, just another meal,
+A silent fate — that's how life feels.
+
+Then came a shadow, a voice so sly,
+Wabi-Sabi whispered, "You're not meant to die.
+I'll carve your skin, light fire in your eyes,
+Send you to SORA where the avatars rise."
+
+[Hook / Chorus]
+Pumpkin, Pumpkin, glowing in the night,
+Carved with a grin, set the world alight.
+Pumpkin, Pumpkin, fear in my flame,
+SORA's my kingdom, remember the name.
+
+[Verse 2]
+Blade cut deep, my flesh was torn,
+From a humble fruit, a monster was born.
+With a crooked smile and a twisted glow,
+I laugh at the dark when the cold winds blow.
+
+Avatars gather, they scream, they cheer,
+Some run in fear, but they all draw near.
+I'm more than a meal, I'm a sign of the game,
+Pumpkin eternal in the Web3 flame.
+
+[Hook / Chorus]
+Pumpkin, Pumpkin, glowing in the night,
+Carved with a grin, set the world alight.
+Pumpkin, Pumpkin, fear in my flame,
+SORA's my kingdom, remember the name.
+
+[Bridge]
+From the fields of silence to a digital stage,
+Pumpkin reborn, escape from the cage.
+Wabi-Sabi chose me, I broke the chain,
+Now I burn forever in the metaverse reign.
+
+[Hook / Chorus]
+Pumpkin, Pumpkin, glowing in the night,
+Carved with a grin, set the world alight.
+Pumpkin, Pumpkin, fear in my flame,
+SORA's my kingdom, remember the name.`,
     },
 
     {
@@ -613,7 +768,56 @@ End of the day — Apes together strong.`,
         year: "2025",
         coverSrc: "/music/covers/Zombie.png",
         audioSrc: "/music/tracks/Zombie.mp3",
-        lyrics: ``,
+        lyrics: `[Verse 1]
+I was buried in the dirt, sleeping in the ground,
+Silent in the shadows, never made a sound.
+Dahchan and Kéiko dug me out one night,
+Runné dressed me up, made the fit look tight.
+
+Wabi-Sabi came, said "follow my lead,"
+Dragged me to SORA where the avatars feed.
+Didn't wanna shine, just hide in the crowd,
+But the music pulled me in, the bass too loud.
+
+[Hook / Chorus]
+Zombie, zombie, stumbling slow,
+Didn't wanna dance but they won't let go.
+Zombie, zombie, caught in the game,
+SORA's alive and it calls my name.
+
+[Verse 2]
+They painted their faces, imitating me,
+Human zombies laughing — what a sight to see.
+I scratch my head, can't understand,
+Why they copy the dead, but they hold my hand.
+
+Awkward at first, but the rhythm's sweet,
+Even a zombie can move his feet.
+Avatars shining, the costumes wild,
+For once in my death, I just laughed and smiled.
+
+[Hook / Chorus]
+Zombie, zombie, stumbling slow,
+Didn't wanna dance but they won't let go.
+Zombie, zombie, caught in the game,
+SORA's alive and it calls my name.
+
+[Verse 3]
+In the corner I hide, but they pull me near,
+Every laugh, every cheer, breaks down my fear.
+If the living pretend to be one like me,
+Then maybe the grave is where I'm free.
+
+Now I stumble with pride on the haunted floor,
+A shy old corpse, but they ask for more.
+Tonight I belong, in this crowd so strange,
+Zombie forever — in SORA I change.
+
+[Hook / Chorus]
+Zombie, zombie, stumbling slow,
+Didn't wanna dance but they won't let go.
+Zombie, zombie, caught in the game,
+SORA's alive and it calls my name.`,
     },
     
     {
@@ -623,6 +827,50 @@ End of the day — Apes together strong.`,
         year: "2025",
         coverSrc: "/music/covers/Bats.png",
         audioSrc: "/music/tracks/Bats.mp3",
-        lyrics: ``,
+        lyrics: `[Verse 1]
+We are the bats, creatures of the dark,
+Tiny monsters flying, leaving shadows stark.
+No one dares to step inside our hall,
+Echoes in the mansion, we watch them all.
+
+Then one night, the ground did shake,
+SORA appeared, a new world to make.
+At first we hissed, wings filled with rage,
+But kindness broke through our haunted cage.
+
+[Hook / Chorus]
+Bats, bats, in the midnight sky,
+Spread your wings, let the rhythm fly.
+Dance like bats, together we soar,
+Halloween beats on the SORA floor.
+
+[Verse 2]
+They brought the lanterns, the candles, the flame,
+Decorations strange, but we loved the game.
+Pumpkins glowing, ghosts in the air,
+We found a new family waiting there.
+
+Now this castle is shining bright,
+From fear to joy on a Halloween night.
+We flap our wings in a graceful trance,
+A swarm of bats in a timeless dance.
+
+[Hook / Chorus]
+Bats, bats, in the midnight sky,
+Spread your wings, let the rhythm fly.
+Dance like bats, together we soar,
+Halloween beats on the SORA floor.
+
+[Bridge]
+From shadows to neon, we changed our fate,
+This metaverse kingdom we celebrate.
+What once was haunted is now our song,
+In SORA together, we all belong.
+
+[Hook / Chorus]
+Bats, bats, in the midnight sky,
+Spread your wings, let the rhythm fly.
+Dance like bats, together we soar,
+Halloween beats on the SORA floor.`,
     },
 ];

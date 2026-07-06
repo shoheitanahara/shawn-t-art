@@ -364,5 +364,92 @@ Last word ring worldwide — Kappy`,
       year: "2026",
       coverSrc: "/music/covers/ordermade/COUNT WITH MEEBS.png",
       audioSrc: "/music/tracks/ordermade/COUNT WITH MEEBS.mp3",
+      lyrics: `[Chorus]
+Count with Meebs! One, two, three!
+Count with Meebs! Four, five, six!
+Count with Meebs! Seven, eight, nine!
+Ten Meebs win! Oh, yeah we all win!
+
+[1]
+One Meeb, yeah, the game has just begun,
+(Count to one!) Jump up high and have some fun!
+Shoots the ball, watch it spin, get it done,
+Come along, come along, and count to one!
+
+[2]
+Two Meebs pass the ball to me and you,
+(Count to two!) Lace up matching shiny shoes!
+Move the ball, there is nothing we can't do,
+Come along, come along, and count to two!
+
+[3]
+Three Meebs clapping, making up a beat,
+(Count to three!) Dribble fast and move your feet!
+Pass it down the court, man, it looks so sweet,
+Come along, come along, and count to three!
+
+[4]
+Four Meebs step right out onto the floor,
+(Count to four!) Bounce it once and ask for more!
+Dashing to the hoop, watch them get a score,
+Come along, come along, and count to four!
+
+[5]
+Five Meebs hit the court, feeling so alive,
+(Count to five!) Take a drive and high five!
+Jumping to the sky, watch the ball arrive,
+Come along, come along, and count to five!
+
+[Chorus]
+Count with Meebs! One, two, three!
+Count with Meebs! Four, five, six!
+Count with Meebs! Seven, eight, nine!
+Ten Meebs win! Oh, yeah we all win!
+
+Count with Meebs! One, two, three!
+Count with Meebs! Four, five, six!
+Count with Meebs! Seven, eight, nine!
+Ten Meebs win! Oh, yeah we all win!
+
+[6]
+Six Meebs jumping right into the mix,
+(Count to six!) Swishy kicks and magic tricks!
+Tapping on the toes, picking up the sticks,
+Come along, come along, and count to six!
+
+[7]
+Seven Meebs, reaching up to heaven,
+(Count to seven!) Live it twenty-four seven!
+In the house, now we keep it even,
+Come along, come along, and count to seven!
+
+[8]
+Eight Meebs spinning round, feeling really great,
+(Count to eight!) Do not wait, elevate!
+Want to play some more, so we stay up late,
+Come along, come along, and count to eight!
+
+[9]
+Nine Meebs jumping up, right on time,
+(Count to nine!) See them shine, in a line!
+Dancing to the rhythm, looking really fine,
+Come along, come along, and count to nine!
+
+[10]
+Ten Meebs, here we go, do it once again,
+(Count to ten!) Tell a friend, tell them when!
+Lift the trophy high, to the perfect ten,
+Come along, come along, and count to ten!
+
+[Chorus]
+Count with Meebs! One, two, three!
+Count with Meebs! Four, five, six!
+Count with Meebs! Seven, eight, nine!
+Ten Meebs win! Oh, yeah we all win!
+
+Count with Meebs! One, two, three!
+Count with Meebs! Four, five, six!
+Count with Meebs! Seven, eight, nine!
+Ten Meebs win! Oh, yeah we all win!`,
     },
 ];
