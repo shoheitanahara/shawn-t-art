@@ -58,6 +58,11 @@ const menuSections: MenuSection[] = [
         external: true,
       },
       {
+        href: "https://find-the-meebits.vercel.app/8th-street",
+        label: "8th Street",
+        external: true,
+      },
+      {
         href: "https://meebits-runway.vercel.app/",
         label: "Meebits Runway & GIF",
         external: true,

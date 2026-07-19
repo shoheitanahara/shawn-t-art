@@ -217,6 +217,30 @@ const LinkPage = () => {
 
         <LinkSection title="Meebits Commitment">
           <a
+            href="https://find-the-meebits.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full"
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>Find the Meebits</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center">
+                  <Image
+                    src="/images/links/4274.png"
+                    alt=""
+                    className="mr-4 h-auto w-8"
+                    width={32}
+                    height={32}
+                  />
+                  <span>Find the Meebits.</span>
+                </div>
+              </CardContent>
+            </Card>
+          </a>
+          <a
             href="https://find-the-meebits.vercel.app/8th-street"
             target="_blank"
             rel="noopener noreferrer"
