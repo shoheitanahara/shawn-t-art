@@ -53,18 +53,8 @@ const menuSections: MenuSection[] = [
       { href: "/nft-manifest", label: "NFT Manifest" },
       { href: "/links", label: "Links" },
       {
-        href: "https://find-the-meebits.vercel.app/",
-        label: "Find the Meebits",
-        external: true,
-      },
-      {
-        href: "https://find-the-meebits.vercel.app/8th-street",
-        label: "8th Street",
-        external: true,
-      },
-      {
-        href: "https://meebits-runway.vercel.app/",
-        label: "Meebits Runway & GIF",
+        href: "https://meebits-park.com/",
+        label: "Meebits Park",
         external: true,
       },
     ],
