@@ -161,32 +161,6 @@ const LinkPage = () => {
 
         <LinkSection title="Project">
           <a
-            href="https://www.spatial.io/s/sora-Halloween-ver-66bca7d4d0fe4cae0ac8cc9c?share=142495709783127535"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full"
-          >
-            <Card>
-              <CardHeader>
-                <CardTitle>SORA — Spatial Metaverse</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center">
-                  <Image
-                    src="/images/links/spatial.jpeg"
-                    alt=""
-                    className="mr-4 h-auto w-8"
-                    width={32}
-                    height={32}
-                  />
-                  <span>
-                    SORA creator team is building a metaverse for the culture.
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          </a>
-          <a
             href="https://nft.hexanft.com/users/mDZaBv93VPorsU/issued/SORA%20Halloween%202025"
             target="_blank"
             rel="noopener noreferrer"
