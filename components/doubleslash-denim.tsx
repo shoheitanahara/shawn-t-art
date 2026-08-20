@@ -1,11 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+"use client";
+
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Pagination,
   PaginationContent,
@@ -13,14 +11,14 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
+} from "@/components/ui/pagination";
 
-const DoubleSlashDenim: React.FC = () => {
+const DoubleSlashDenim = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [totalPages, setTotalPages] = useState<number>(1);
+  const [loading, setLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchImages = async (page: number) => {
@@ -28,11 +26,11 @@ const DoubleSlashDenim: React.FC = () => {
       const response = await fetch(`/api/images/doubleslash-denim?page=${page}`);
       const data = await response.json();
 
-      if (Array.isArray(data.images) && typeof data.totalPages === 'number') {
+      if (Array.isArray(data.images) && typeof data.totalPages === "number") {
         setImages(data.images);
         setTotalPages(data.totalPages);
       } else {
-        console.error('Error fetching images:', data.error);
+        console.error("Error fetching images:", data.error);
       }
       setLoading(false);
     };
@@ -42,20 +40,20 @@ const DoubleSlashDenim: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="container mx-auto flex justify-center items-center mb-6">
+      <div className="container mx-auto mb-6 flex items-center justify-center">
         <h2 className="text-2xl font-bold">The Double Slash - WWII Denim</h2>
       </div>
 
       {loading ? (
-        <div className="text-lg h-[700px] md:h-[300px] flex items-center justify-center">
+        <div className="flex h-[700px] items-center justify-center text-lg md:h-[300px]">
           Loading...
         </div>
       ) : (
-        <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2">
+        <div className="z-10 grid w-full max-w-2xl grid-cols-1 items-center justify-between font-mono text-sm md:grid-cols-2">
           {images.map((image, index) => (
             <Card
-              key={index}
-              className="m-4 cursor-pointer h-80 md:h-64 lg:h-64 overflow-hidden"
+              key={image}
+              className="m-4 h-80 cursor-pointer overflow-hidden md:h-64 lg:h-64"
               onClick={() => setSelectedImage(image)}
             >
               <CardContent className="grid gap-4">
@@ -64,7 +62,7 @@ const DoubleSlashDenim: React.FC = () => {
                   alt={`Image ${index}`}
                   width={500}
                   height={300}
-                  className="object-cover h-full"
+                  className="h-full object-cover"
                 />
               </CardContent>
             </Card>
@@ -77,15 +75,19 @@ const DoubleSlashDenim: React.FC = () => {
           <PaginationItem>
             <PaginationLink
               onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined}
-              className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`cursor-pointer ${currentPage === 1 ? "cursor-not-allowed opacity-50" : ""}`}
             >
               First
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationPrevious
-              onClick={currentPage > 1 ? () => setCurrentPage(currentPage - 1) : undefined}
-              className={`cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={
+                currentPage > 1
+                  ? () => setCurrentPage(currentPage - 1)
+                  : undefined
+              }
+              className={`cursor-pointer ${currentPage === 1 ? "cursor-not-allowed opacity-50" : ""}`}
             />
           </PaginationItem>
           <PaginationItem>
@@ -93,14 +95,22 @@ const DoubleSlashDenim: React.FC = () => {
           </PaginationItem>
           <PaginationItem>
             <PaginationNext
-              onClick={currentPage < totalPages ? () => setCurrentPage(currentPage + 1) : undefined}
-              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={
+                currentPage < totalPages
+                  ? () => setCurrentPage(currentPage + 1)
+                  : undefined
+              }
+              className={`cursor-pointer ${currentPage === totalPages ? "cursor-not-allowed opacity-50" : ""}`}
             />
           </PaginationItem>
           <PaginationItem>
             <PaginationLink
-              onClick={currentPage < totalPages ? () => setCurrentPage(totalPages) : undefined}
-              className={`cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={
+                currentPage < totalPages
+                  ? () => setCurrentPage(totalPages)
+                  : undefined
+              }
+              className={`cursor-pointer ${currentPage === totalPages ? "cursor-not-allowed opacity-50" : ""}`}
             >
               Last
             </PaginationLink>
@@ -114,28 +124,28 @@ const DoubleSlashDenim: React.FC = () => {
           if (!open) setSelectedImage(null);
         }}
       >
-        <DialogContent className="max-w-xl w-[90%] mx-auto">
+        <DialogContent className="mx-auto w-[90%] max-w-xl">
           {selectedImage ? (
             <Image
               src={selectedImage}
               alt="Selected"
               width={800}
               height={600}
-              className="max-w-full h-auto"
+              className="h-auto max-w-full"
             />
           ) : (
-            <div className="text-lg h-[400px] flex items-center justify-center">
+            <div className="flex h-[400px] items-center justify-center text-lg">
               Loading...
             </div>
           )}
         </DialogContent>
       </Dialog>
 
-      <div className="container mx-auto w-auto lg:w-2/3 mb-6 md:mb-12 mt-6">
+      <div className="container mx-auto mb-6 mt-6 w-full px-0 lg:w-2/3 md:mb-12">
         <p>&quot;The Double Slash - WWII Denim&quot;</p>
         <p>Year: 2026</p>
         <p>
-          Creator:{' '}
+          Creator:{" "}
           <a
             href="https://x.com/shawn_t_art"
             target="_blank"
@@ -175,4 +185,3 @@ const DoubleSlashDenim: React.FC = () => {
 };
 
 export default DoubleSlashDenim;
-

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The Double Slash",
   description:
-    "The Double Slash — a series on the tension between freedom and control. Gallery, editions, and curator’s note.",
+    "The Double Slash — current works in photography, collage, and hand-drawn // marks.",
 };
 
 export default function TheDoubleSlashLayout({

@@ -1,252 +1,95 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-import DoubleSlashSpam from "@/components/doubleslash-spam";
-import DoubleSlashLike from "@/components/doubleslash-like";
-import DoubleSlashDenim from "@/components/doubleslash-denim";
-import CuratorsNotePage from "@/components/curators-note";
+import Link from "next/link";
+import { DoubleSlashV2WorkBlock } from "@/components/doubleslash/v2-work";
+import { FromV1ToV2 } from "@/components/doubleslash/from-v1-to-v2";
+import { doubleslashV2Works, v2Intro } from "@/app/thedoubleslash/data";
 
 export default function TheDoubleSlashPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [images, setImages] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [totalPages, setTotalPages] = useState<number>(1);
-
-  useEffect(() => {
-    const fetchImages = async (page: number) => {
-      setLoading(true);
-      const response = await fetch(`/api/images/doubleslash?page=${page}`);
-      const data = await response.json();
-
-      if (Array.isArray(data.images) && typeof data.totalPages === "number") {
-        setImages(data.images);
-        setTotalPages(data.totalPages);
-      } else {
-        console.error("Error fetching images:", data.error);
-      }
-      setLoading(false);
-    };
-
-    fetchImages(currentPage);
-  }, [currentPage]);
-
   return (
     <main
       id="top"
-      className="flex min-h-screen flex-col items-center justify-between pb-6"
+      className="flex min-h-screen w-full flex-col items-center justify-between px-6 pb-6 md:px-12"
     >
-      <div className="flex flex-col items-center justify-center">
-        <div id="firstview" className="mb-6 scroll-mt-24">
+      <div className="flex w-full max-w-5xl flex-col items-center justify-center">
+        <div id="firstview" className="mb-6 w-full scroll-mt-24">
           <Image
             src="/images/firstview/firstview.png"
             alt="Shawn T. art"
             width={900}
             height={600}
-            className="object-cover"
+            className="mx-auto h-auto w-full max-w-[900px] object-contain"
+            priority
           />
         </div>
 
         <div
           id="intro"
-          className="container mx-auto mb-2 w-auto lg:w-2/3 lg:text-center scroll-mt-24"
+          className="mb-2 w-full scroll-mt-24 text-left lg:w-2/3 lg:text-center"
         >
           <p>
             The Double Slash
             は、自由と抑圧のあいだにある現代人の葛藤を描いたシリーズです。
           </p>
-          <p className="mt-6 lg:mt-2">
+          <p className="mt-4 lg:mt-2">
             The Double Slash explores the fragile balance between freedom and
             control in the modern age.
           </p>
         </div>
 
-        <hr className="w-full mt-12 border-gray-300 mb-12" />
+        <hr className="mb-12 mt-12 w-full border-gray-300" />
 
         <div
-          id="doubleslash"
-          className="container mx-auto flex justify-center items-center mb-6 scroll-mt-24"
+          id="v2"
+          className="mb-6 flex w-full scroll-mt-24 items-center justify-center"
         >
-          <h2 className="text-2xl font-bold">The Double Slash</h2>
+          <h2 className="text-center text-2xl font-bold">{v2Intro.title}</h2>
         </div>
 
-        {loading ? (
-          <div className="text-lg h-[700px] md:h-[300px] flex items-center justify-center">
-            Loading...
+        <div className="mb-6 w-full lg:w-2/3">
+          {v2Intro.ja.map((text) => (
+            <p key={text} className="mt-4 first:mt-0">
+              {text}
+            </p>
+          ))}
+          {v2Intro.en.map((text) => (
+            <p key={text} className="mt-4">
+              {text}
+            </p>
+          ))}
+        </div>
+
+        <hr className="mb-12 mt-12 w-full border-gray-300" />
+
+        {doubleslashV2Works.map((work, index) => (
+          <div key={work.id} className="w-full">
+            <DoubleSlashV2WorkBlock work={work} />
+            {index < doubleslashV2Works.length - 1 ? (
+              <hr className="mb-12 mt-12 w-full border-gray-300" />
+            ) : null}
           </div>
-        ) : (
-          <>
-            <div
-              id="doubleslash-gallery"
-              className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 flex md:grid-cols-2 lg:grid-cols-2 scroll-mt-24"
-            >
-              {images.map((image, index) => (
-                <Card
-                  key={index}
-                  className="m-4 cursor-pointer h-80 md:h-64 lg:h-64 overflow-hidden"
-                  onClick={() => setSelectedImage(image)}
-                >
-                  <CardContent className="grid gap-4">
-                    <Image
-                      src={image}
-                      alt={`Image ${index}`}
-                      width={500}
-                      height={300}
-                      className="object-cover h-full"
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </>
-        )}
-        <div id="doubleslash-pagination" className="scroll-mt-24">
-          <Pagination>
-            <PaginationContent className="gap-5">
-              <PaginationItem>
-                <PaginationLink
-                  onClick={currentPage > 1 ? () => setCurrentPage(1) : undefined}
-                  className={`cursor-pointer ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-                >
-                  First
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationPrevious
-                  onClick={
-                    currentPage > 1
-                      ? () => setCurrentPage(currentPage - 1)
-                      : undefined
-                  }
-                  className={`cursor-pointer ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-                />
-              </PaginationItem>
-              <PaginationItem>
-                <span>{currentPage}</span>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext
-                  onClick={
-                    currentPage < totalPages
-                      ? () => setCurrentPage(currentPage + 1)
-                      : undefined
-                  }
-                  className={`cursor-pointer ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-                />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink
-                  onClick={
-                    currentPage < totalPages
-                      ? () => setCurrentPage(totalPages)
-                      : undefined
-                  }
-                  className={`cursor-pointer ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-                >
-                  Last
-                </PaginationLink>
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div>
-        <Dialog
-          open={!!selectedImage}
-          onOpenChange={(open) => {
-            if (!open) setSelectedImage(null);
-          }}
-        >
-          <DialogContent className="max-w-xl w-[90%] mx-auto">
-            {selectedImage ? (
-              <Image
-                src={selectedImage}
-                alt="Selected"
-                width={800}
-                height={600}
-                className="max-w-full h-auto"
-              />
-            ) : (
-              <div className="text-lg h-[400px] flex items-center justify-center">
-                Loading...
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+        ))}
 
-        <div
-          id="doubleslash-description"
-          className="container mx-auto mb-6 md:mb-12 mt-6 lg:w-2/3 scroll-mt-24"
-        >
-          <p>&quot;The Double Slash&quot;</p>
-          <p>Year: 2025</p>
+        <hr className="mb-12 mt-12 w-full border-gray-300" />
+
+        <FromV1ToV2 />
+
+        <hr className="mb-12 mt-12 w-full border-gray-300" />
+
+        <div className="mb-12 w-full text-center lg:w-2/3">
           <p>
-            Creator:{" "}
-            <a
-              href="https://x.com/shawn_t_art"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @shawn_t_art
-            </a>
+            初期の探求作品（V1）は、別ページでご覧いただけます。
           </p>
-          <p className="mt-4">
-            The Double Slash
-            は「自由」と「抑圧」のあいだにある緊張を探るシリーズです。
-            壊れやすい美しさの上に引かれた二重の黒い線は、覆い隠すと同時に、その存在をより鮮烈に浮かび上がらせます。
-            黒い線は検閲や制限を象徴しながらも、同時に消し去れない抵抗の痕跡です。美は覆われても透けて見え、抑圧されるほどに強く存在を主張します。
-            この二重線は装飾ではなく、現代社会の矛盾を映すシンボルであり、作家自身のアイコンです。観る者はその線を通して「奪われる自由」と「消えない力」を読み取るでしょう。
+          <p className="mt-2">
+            Earlier exploration works (V1) are on a separate page.
           </p>
-          <p className="mt-4">
-            The Double Slash is a series about the tension between freedom and
-            oppression. Two black lines are drawn over fragile beauty. They try
-            to cover it, but at the same time make it stand out even more.
-            These lines symbolize censorship and control, yet they also show
-            the traces of resistance that cannot be erased. Beauty can still be
-            seen through the cover, and the more it is oppressed, the stronger
-            it insists on its presence. The double slash is not decoration. It
-            is a symbol of the contradictions of today’s society and has become
-            the artist’s own icon. Through these lines, viewers can feel both
-            the freedom that is taken away and the power that refuses to
-            disappear.
+          <p className="mt-6">
+            <Link href="/thedoubleslash/v1" className="underline underline-offset-4">
+              The Double Slash (V1)
+            </Link>
           </p>
         </div>
-
-        <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-        <section id="doubleslash-spam" className="w-full scroll-mt-24">
-          <DoubleSlashSpam />
-        </section>
-
-        <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-        <section id="doubleslash-like" className="w-full scroll-mt-24">
-          <DoubleSlashLike />
-        </section>
-
-        <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-        <section id="doubleslash-denim" className="w-full scroll-mt-24">
-          <DoubleSlashDenim />
-        </section>
-
-        <hr className="w-full mt-12 border-gray-300 mb-12" />
-
-        <section id="curators-note" className="w-full scroll-mt-24">
-          <CuratorsNotePage />
-        </section>
       </div>
     </main>
   );

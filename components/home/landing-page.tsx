@@ -146,17 +146,17 @@ export function LandingPage() {
               variant="light"
             />
             <Tile
-              href="/thedoubleslash#doubleslash-spam"
+              href="/thedoubleslash#v2-rose"
               label="The Double Slash"
-              src="/images/doubleslash-spam/spam1.png"
+              src="/images/doubleslash-v2/rose/rose-05.png"
               className="col-span-6 md:col-span-5 md:col-start-8 md:row-start-1 min-h-[160px] md:min-h-[190px]"
               sizes="42vw"
               variant="light"
             />
             <Tile
-              href="/thedoubleslash#doubleslash-denim"
+              href="/thedoubleslash#v2-spam"
               label="The Double Slash"
-              src="/images/doubleslash-denim/Denim1.png"
+              src="/images/doubleslash-v2/spam/spam-01.png"
               className="col-span-6 md:col-span-5 md:col-start-8 md:row-start-2 min-h-[160px] md:min-h-[190px]"
               sizes="42vw"
               variant="light"
@@ -211,7 +211,7 @@ export function LandingPage() {
             title="The Double Slash"
             subtitleEn="A mark between freedom and oppression — not denial."
             subtitleJa="自由と抑圧のあいだの記号。「否定」ではない。"
-            imageSrc="/images/doubleslash/flower01.png"
+            imageSrc="/images/doubleslash-v2/spam/spam-01.png"
           />
           <WorldCard
             href="/slashanimal"
