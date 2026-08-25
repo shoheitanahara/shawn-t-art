@@ -80,14 +80,14 @@ export const doubleslashV2Works: DoubleSlashV2Work[] = [
     id: "denim",
     title: "The Double Slash — WWII Denim",
     year: "2026",
-    mainImage: "/images/doubleslash-v2/denim/denim-01.png",
+    mainImage: "/images/doubleslash-v2/denim/denim-02.png",
     variations: [
+      "/images/doubleslash-v2/denim/denim-02.png",
       "/images/doubleslash-v2/denim/denim-01.png",
       "/images/doubleslash-v2/denim/denim-06.png",
       "/images/doubleslash-v2/denim/denim-04.png",
       "/images/doubleslash-v2/denim/denim-03.png",
       "/images/doubleslash-v2/denim/denim-05.png",
-      "/images/doubleslash-v2/denim/denim-02.png",
     ],
     statement: {
       ja: [
@@ -129,7 +129,7 @@ export const doubleslashComparisons: DoubleSlashComparison[] = [
     motif: "WWII Denim",
     v1Image: "/images/doubleslash-denim/Denim1.png",
     v1Label: "WWII Denim / V1",
-    v2Image: "/images/doubleslash-v2/denim/denim-01.png",
+    v2Image: "/images/doubleslash-v2/denim/denim-02.png",
     v2Label: "WWII Denim / V2",
   },
 ];
