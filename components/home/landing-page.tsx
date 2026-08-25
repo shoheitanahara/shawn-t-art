@@ -165,24 +165,16 @@ export function LandingPage() {
               href="/marksoffreedom"
               label="Marks of Freedom"
               src="/images/marksoffreedom/sapporo-2025/marksoffreedom08.jpg"
-              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="33vw"
+              className="col-span-12 md:col-span-6 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
               variant="light"
             />
             <Tile
               href="/marksoffreedom"
               label="Marks of Freedom"
               src="/images/marksoffreedom/gunma-2026/mof_gunma_6.png"
-              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="33vw"
-              variant="light"
-            />
-            <Tile
-              href="/slashanimal#slashsheep"
-              label="Slash Animal"
-              src="/images/slashanimal/slashsheep/slashsheep01.png"
-              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="33vw"
+              className="col-span-12 md:col-span-6 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
               variant="light"
             />
           </div>
@@ -203,7 +195,7 @@ export function LandingPage() {
             href="/marksoffreedom"
             title="Marks of Freedom"
             subtitleEn="Traces of freedom found in everyday life."
-            subtitleJa="日常のなかに見つける、自由のあと。"
+            subtitleJa="日常のなかに見つける、自由の痕跡。"
             imageSrc="/images/marksoffreedom/tokyo-2026/tokyo01.png"
           />
           <WorldCard
@@ -216,8 +208,9 @@ export function LandingPage() {
           <WorldCard
             href="/slashanimal"
             title="Slash Animal"
-            subtitleEn="Quiet emotions living inside modern noise."
-            subtitleJa="現代のノイズの中にいる、静かな感情を持った存在。"
+            kicker="Sculpture Studies / 2026–Ongoing"
+            subtitleEn="AI-assisted visual studies for a future series of physical sculptures."
+            subtitleJa="将来の彫刻作品に向けたスタディ。"
             imageSrc="/images/slashanimal/slashsheep/slashsheep01.png"
           />
         </div>
@@ -377,12 +370,14 @@ function Tile({
 function WorldCard({
   href,
   title,
+  kicker,
   subtitleEn,
   subtitleJa,
   imageSrc,
 }: {
   href: string;
   title: string;
+  kicker?: string;
   subtitleEn: string;
   subtitleJa: string;
   imageSrc: string;
@@ -410,6 +405,11 @@ function WorldCard({
       />
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end px-6 pb-7 pt-20 md:px-8 md:pb-9 md:pt-24 lg:px-9 lg:pb-10">
+        {kicker ? (
+          <p className="mb-2 text-xs uppercase tracking-[0.18em] text-white/70">
+            {kicker}
+          </p>
+        ) : null}
         <h3 className="mb-3 text-sm md:text-sm lg:text-base font-bold uppercase leading-tight tracking-[0.2em] text-white md:tracking-[0.22em]">
           {title}
         </h3>

@@ -200,6 +200,20 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
 const SlashAnimal: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center mb-6">
+      <div className="container mx-auto mt-6 mb-8 flex flex-col items-center text-center">
+        <h1 className="text-2xl font-bold">Slash Animal</h1>
+        <p className="mt-3 text-sm uppercase tracking-[0.18em]">
+          Sculpture Studies / 2026–Ongoing
+        </p>
+        <div className="mx-auto mt-4 w-full lg:w-2/3">
+          <p>将来の彫刻作品に向けた視覚スタディ。</p>
+          <p className="mt-2">
+            AI-assisted visual studies for a future series of physical
+            sculptures.
+          </p>
+        </div>
+      </div>
+
       <AnimalGallerySection
         title="Slash Sheep"
         apiPath="/api/images/slashsheep"
