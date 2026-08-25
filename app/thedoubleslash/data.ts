@@ -76,6 +76,38 @@ export const doubleslashV2Works: DoubleSlashV2Work[] = [
       ],
     },
   },
+  {
+    id: "denim",
+    title: "The Double Slash — WWII Denim",
+    year: "2026",
+    mainImage: "/images/doubleslash-v2/denim/denim-01.png",
+    variations: [
+      "/images/doubleslash-v2/denim/denim-01.png",
+      "/images/doubleslash-v2/denim/denim-06.png",
+      "/images/doubleslash-v2/denim/denim-04.png",
+      "/images/doubleslash-v2/denim/denim-03.png",
+      "/images/doubleslash-v2/denim/denim-05.png",
+      "/images/doubleslash-v2/denim/denim-02.png",
+    ],
+    statement: {
+      ja: [
+        "大戦モデルのデニムは、いま古着市場で高い人気を持ち、ヴィンテージデニムを愛する私にとって憧れの象徴でもあります。",
+        "この作品に写っているのは、厳密には「1941年モデル」と呼ばれる、大戦モデルへの移行期を再現したレプリカです。1937年モデルのディテールを多く残しながら、大戦期に使われている厚い生地が使われています。",
+        "そしてこれは、私自身が長い時間をかけて履き潰してきたデニムでもあります。",
+        "リーバイスは戦時中、限られた資源が武器へと優先される中で、金属のリベットやバックルバックなど、様々なディテールを次第に簡略化していきました。私は、その制約の中で生まれた美しさに惹かれています。",
+        "しかし、その背景にある歴史を無視することはできません。",
+        "The Double Slash は、この憧れと葛藤を消すためのものではなく、そのまま受け止めるための印です。美しさと歴史、肯定できない感情と惹かれてしまう気持ちが同時に存在しているという、自己の中の矛盾をそのまま見つめるための作品です。",
+      ],
+      en: [
+        "WWII denim is highly valued in the vintage market today, and for me, as someone who loves vintage denim, it is also a symbol of admiration.",
+        "What appears in this work is, more precisely, a reproduction of what is known as the “1941 model,” a transitional model leading into WWII denim. It retains many of the details of the 1937 model while using the heavy denim fabric used during the wartime period.",
+        "This is also a pair of jeans that I myself wore for many years until it became worn through use.",
+        "During the war, as limited resources were prioritized for weapons, Levi’s gradually simplified various details such as metal rivets and the buckle back. I am drawn to the beauty that emerged from those constraints.",
+        "At the same time, I cannot ignore the history behind it.",
+        "The Double Slash is not meant to erase this admiration and conflict, but to accept them as they are. This work is about looking directly at the contradiction within myself: that beauty and history, feelings I cannot fully affirm and feelings I cannot help being drawn to, can exist at the same time.",
+      ],
+    },
+  },
 ];
 
 export const doubleslashComparisons: DoubleSlashComparison[] = [
@@ -92,6 +124,13 @@ export const doubleslashComparisons: DoubleSlashComparison[] = [
     v1Label: "SPAM / V1",
     v2Image: "/images/doubleslash-v2/spam/spam-01.png",
     v2Label: "SPAM / V2",
+  },
+  {
+    motif: "WWII Denim",
+    v1Image: "/images/doubleslash-denim/Denim1.png",
+    v1Label: "WWII Denim / V1",
+    v2Image: "/images/doubleslash-v2/denim/denim-01.png",
+    v2Label: "WWII Denim / V2",
   },
 ];
 
