@@ -13,6 +13,7 @@
 | 実装・コンポーネント・API | [tech-stack.md](./tech-stack.md) |
 | 文言・表記 | [content-guidelines.md](./content-guidelines.md) |
 | 画像の追加 | [image-workflow.md](./image-workflow.md) |
+| **Marks of Freedom（MOF）** | [marksoffreedom.md](./marksoffreedom.md) |
 | 何が終わっていて何が残っているか | [progress.md](./progress.md) |
 
 ## ファイル一覧
@@ -25,6 +26,7 @@
 | [tech-stack.md](./tech-stack.md) | 技術スタック・実装規約（shadcn 中心等） |
 | [content-guidelines.md](./content-guidelines.md) | 日英・固有名・トーン |
 | [image-workflow.md](./image-workflow.md) | 画像配置とビルド前リスト生成 |
+| [marksoffreedom.md](./marksoffreedom.md) | MOF 専用：data.ts・ギャラリー・サムネイル |
 | [progress.md](./progress.md) | 完成度・バックログ（随時更新） |
 
 ## 更新ルール
@@ -33,6 +35,8 @@
 - **UI パターンを増やしたら** → `design-system.md`（参照コンポーネントを明記）
 - **shadcn コンポーネントを追加したら** → `tech-stack.md`
 - **画像フォルダを増やしたら** → `image-workflow.md` + `hooks/scripts/generateImageList.ts`
+- **MOF の写真・キャプション・表示** → [marksoffreedom.md](./marksoffreedom.md) + `app/marksoffreedom/data.ts`
+- **MOF サムネイル** → `npm run generate-mof-thumbs`（[marksoffreedom.md](./marksoffreedom.md) 参照）
 - **スプリントの区切り** → `progress.md`
 
 ## 本番 URL

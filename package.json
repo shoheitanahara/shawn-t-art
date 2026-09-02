@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "ts-node --project tsconfig.build.json -r tsconfig-paths/register hooks/before.ts && next build",
+    "generate-mof-thumbs": "ts-node --project tsconfig.build.json -r tsconfig-paths/register hooks/scripts/generateMofThumbnails.ts",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write ."

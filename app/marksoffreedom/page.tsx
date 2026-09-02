@@ -1,23 +1,29 @@
 "use client";
 
-import MarksOfFreedomTokyo2026 from "@/components/marksoffreedom-tokyo-2026";
-import MarksOfFreedomGunma2026 from "@/components/marksoffreedom-gunma-2026";
-import MarksOfFreedomSapporo2025 from "@/components/marksoffreedom-sapporo-2025";
-import MarksOfFreedomIshikawa2025 from "@/components/marksoffreedom-ishikawa-2025";
-import MarksOfFreedomTokyo2025 from "@/components/marksoffreedom-tokyo-2025";
+import { getVisibleSeries } from "@/app/marksoffreedom/data";
 import { LazySection } from "@/components/marksoffreedom/lazy-section";
+import { MofSeriesGallery } from "@/components/marksoffreedom/series-gallery";
 
 const MarksOfFreedomPage = () => {
+  const featuredSeries = getVisibleSeries("featured");
+  const archiveSeries = getVisibleSeries("archive");
+
   return (
     <main className="w-full px-6 pb-6 lg:mx-auto lg:w-3/4 md:px-12">
       <h2 className="mb-4 text-center text-3xl font-bold">Marks of Freedom</h2>
 
       <div className="mx-auto mb-6 mt-6 w-auto text-center lg:w-2/3 md:mb-12">
         <p className="mt-4 text-lg">自由を感じた瞬間に、シャッターを切る。</p>
-        <p className="text-lg italic">I press the shutter at the moment I feel free.</p>
+        <p className="text-lg italic">I press the shutter when I feel freedom.</p>
       </div>
 
-      <MarksOfFreedomTokyo2026 />
+      {featuredSeries.map((series) => (
+        <MofSeriesGallery
+          key={series.id}
+          series={series}
+          sectionLabel="Featured Series"
+        />
+      ))}
 
       <div className="mx-auto mb-6 mt-6 w-auto text-left lg:w-2/3 md:mb-12">
         <p className="text-lg">― 現実世界に残された、自由の痕跡 ―</p>
@@ -40,9 +46,10 @@ const MarksOfFreedomPage = () => {
           Marks of Freedom は、日常の風景に残された、自由の痕跡を探す写真シリーズである。
         </p>
         <p className="mt-4">
-          形づくられた世界の中に、
-          <br />
-          ふと自由が立ち上がる瞬間がある。
+          構造物、光と影、空間の区切り、その中にある生命。
+        </p>
+        <p className="mt-4">
+          人間によって形づくられた世界の中で、ふと自由が立ち上がる瞬間がある。
         </p>
         <p className="mt-4">私は、その小さな自由を拾い集めている。</p>
         <p className="mt-4">
@@ -52,8 +59,13 @@ const MarksOfFreedomPage = () => {
         </p>
 
         <p className="mt-12 text-lg italic">
-          Freedom does not exist outside control.
+          — Traces of freedom left in the real world —
         </p>
+        <p className="my-4 border-l-4 border-gray-500 pl-4 text-lg">
+          I press the shutter when I feel freedom.
+        </p>
+
+        <p className="mt-4">Freedom does not exist outside control.</p>
 
         <p className="mt-4">
           Our lives are surrounded by countless forms of control — society,
@@ -71,9 +83,12 @@ const MarksOfFreedomPage = () => {
           everyday scenes.
         </p>
         <p className="mt-4">
-          In a world that has already been shaped,
-          <br />
-          there are moments when freedom suddenly appears.
+          Structures, light and shadow, divided spaces, and the life within
+          them.
+        </p>
+        <p className="mt-4">
+          In a world shaped by human hands, there are moments when freedom
+          suddenly appears.
         </p>
         <p className="mt-4">I collect those small moments of freedom.</p>
         <p className="mt-4">
@@ -83,40 +98,31 @@ const MarksOfFreedomPage = () => {
         </p>
       </div>
 
-      <hr className="mb-12 mt-16 w-full border-neutral-700" />
+      {archiveSeries.length > 0 ? (
+        <>
+          <hr className="mb-12 mt-16 w-full border-neutral-700" />
 
-      <section aria-labelledby="mof-archive-heading" className="w-full">
-        <h3
-          id="mof-archive-heading"
-          className="mb-10 text-center text-xs font-medium uppercase tracking-[0.2em] text-neutral-500 md:text-left"
-        >
-          Archive / Selected Series
-        </h3>
+          <section aria-labelledby="mof-archive-heading" className="w-full">
+            <h3
+              id="mof-archive-heading"
+              className="mb-10 text-center text-xs font-medium uppercase tracking-[0.2em] text-neutral-500 md:text-left"
+            >
+              Archive / Selected Series
+            </h3>
 
-        <div className="mb-12 mt-12 w-full border-neutral-700">
-          <LazySection>
-            <MarksOfFreedomGunma2026 />
-          </LazySection>
-        </div>
-
-        <hr className="mb-12 mt-12 w-full border-neutral-700" />
-
-        <LazySection>
-          <MarksOfFreedomTokyo2025 />
-        </LazySection>
-
-        <hr className="mb-12 mt-12 w-full border-neutral-700" />
-
-        <LazySection>
-          <MarksOfFreedomIshikawa2025 />
-        </LazySection>
-
-        <hr className="mb-12 mt-12 w-full border-neutral-700" />
-
-        <LazySection>
-          <MarksOfFreedomSapporo2025 />
-        </LazySection>
-      </section>
+            {archiveSeries.map((series, index) => (
+              <div key={series.id}>
+                {index > 0 ? (
+                  <hr className="mb-12 mt-12 w-full border-neutral-700" />
+                ) : null}
+                <LazySection>
+                  <MofSeriesGallery series={series} />
+                </LazySection>
+              </div>
+            ))}
+          </section>
+        </>
+      ) : null}
 
       <hr className="mb-12 mt-12 w-full border-neutral-700" />
     </main>

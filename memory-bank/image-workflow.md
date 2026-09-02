@@ -28,11 +28,30 @@ public/images/
 - 対応形式: `.jpg` `.jpeg` `.png` `.gif` `.webp`
 - ファイル名はソートされる（`localeCompare`）— 意図した順ならゼロ埋め番号推奨
 
-## ビルド前リスト生成
+## ビルド前スクリプト
 
-`npm run build` の先頭で `hooks/before.ts` → `hooks/scripts/generateImageList.ts` が実行される。
+`npm run build` の先頭で `hooks/before.ts` が実行される。
 
-### 登録済みコレクション（`generateImageList.ts` の `collections`）
+| スクリプト | 役割 |
+|------------|------|
+| `hooks/scripts/generateImageList.ts` | 各ギャラリーの `data.ts`（ファイル名リスト）を生成 |
+| `hooks/scripts/generateMofThumbnails.ts` | MOF 全シリーズの `thumbs/*.webp` を生成 |
+
+手動実行:
+
+```bash
+npm run generate-mof-thumbs   # MOF サムネイルのみ
+npx ts-node --project tsconfig.build.json -r tsconfig-paths/register hooks/before.ts  # 両方
+```
+
+### MOF サムネイル（Marks of Freedom）
+
+原寸 MOF 画像は非常に大きい（全シリーズ合計 ~270MB）。  
+ギャラリーのサムネイル帯は **`{seriesDir}/thumbs/{basename}.webp`**（256px WebP）を使う。
+
+詳細 → [marksoffreedom.md](./marksoffreedom.md)
+
+## 登録済みコレクション（`generateImageList.ts` の `collections`）
 
 | 画像ディレクトリ | 出力 `data.ts` | export 名 |
 |------------------|----------------|-----------|

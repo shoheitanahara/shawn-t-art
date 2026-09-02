@@ -64,15 +64,17 @@ lib/utils.ts      # cn() 等
 
 ## 画像・API
 
-- 一覧: `GET /api/images/<series>?page=1`
+- 一覧: `GET /api/images/<series>?page=1`（DS / SA 等。MOF は **data.ts 直読み** — [marksoffreedom.md](./marksoffreedom.md)）
 - リスト元: `app/api/images/<series>/data.ts`（ビルド前生成 — [image-workflow.md](./image-workflow.md)）
+- MOF サムネイル: `npm run generate-mof-thumbs` → `public/images/marksoffreedom/*/thumbs/*.webp`
 - プロキシ: `app/api/image/route.ts`
 - OpenSea: `app/api/opensea/route.ts`
 
 ## ビルド
 
 ```bash
-npm run build   # hooks/before.ts → next build
+npm run build              # generateImageList + generateMofThumbs → next build
+npm run generate-mof-thumbs  # MOF サムネイルのみ再生成
 npm run dev
 npm run lint
 npm run format  # Prettier

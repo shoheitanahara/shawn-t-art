@@ -7,6 +7,8 @@
 - [x] トップ `LandingPage`（SectionShell / 01〜05）
 - [x] メニュー案 A（`components/site-menu.tsx`）
 - [x] 3 Worlds 各ギャラリー・コンテンツ充実
+- [x] MOF 統一ギャラリー（`data.ts` + `MofSeriesGallery`、1枚表示）
+- [x] MOF サムネイル自動生成（`generate-mof-thumbs`、~724KB / 78枚）
 - [x] About（ある程度整った prose + 画像）
 - [x] memory-bank 最小構成
 
@@ -16,7 +18,9 @@
 |------|------|------|
 | 高 | Philosophy を design-system B 型へ | SectionShell 化 |
 | 高 | サブページの UI 温度統一 | C/D → A/B へ段階的に |
+| 中 | MOF 写真ごとキャプション追加 | `data.ts` overrides で随時 |
 | 中 | Slash Animal → `/slashsheep-3d` 導線 | メニューには載せない方針 |
+| 低 | 旧 MOF コンポーネント・API ルート削除 | 未使用（archive-gallery 等） |
 | 中 | The Double Slash → `/motion` 導線 | ページ内リンク |
 | 低 | 作品ページのみ sticky ヘッダー | 要検討（site-architecture 参照） |
 
