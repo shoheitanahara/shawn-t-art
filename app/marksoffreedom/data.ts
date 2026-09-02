@@ -58,9 +58,91 @@ export const mofSeries: MofSeries[] = [
     section: "featured",
     imageDir: "/images/marksoffreedom/tokyo-2026",
     photos: photosFromFiles(marksoffreedomTokyo2026ImageList, {
-      // Example:
-      // "tokyo03.png": { visible: false },
-      // "tokyo05.png": { caption: { ja: "...", en: "..." } },
+      "tokyo01.png": {
+        caption: {
+          ja: "工場地帯の航空写真の上に立つ。",
+          en: "Standing on an aerial photo of a factory area.",
+        },
+      },
+      "tokyo02.png": {
+        caption: {
+          ja: "とあるクラブの壁に飾られた書き初め。",
+          en: "New Year's calligraphy on the wall of a club.",
+        },
+      },
+      "tokyo03.png": {
+        caption: {
+          ja: "細かく区切られた街と広い空。",
+          en: "A city split into small blocks and a wide open sky.",
+        },
+      },
+      "tokyo04.png": {
+        caption: {
+          ja: "時代を遡ったようなガラス美術館。",
+          en: "A glass museum that feels like another time.",
+        },
+      },
+      "tokyo05.png": {
+        caption: {
+          ja: "広大な川と山の中に小さく潜む細道。",
+          en: "A narrow path hidden in a wide river and mountains.",
+        },
+      },
+      "tokyo06.png": {
+        caption: {
+          ja: "巨大なステンドグラス。",
+          en: "A huge stained-glass window.",
+        },
+      },
+      "tokyo07.png": {
+        caption: {
+          ja: "都会のバーでふと感じた静寂。",
+          en: "A sudden silence I felt in a city bar.",
+        },
+      },
+      "tokyo08.png": {
+        caption: {
+          ja: "オフィスビルの中にふと現れた彫刻。",
+          en: "A sculpture that suddenly appeared inside an office building.",
+        },
+      },
+      "tokyo09.png": {
+        caption: {
+          ja: "住宅街の中に現れた圧倒的建築。",
+          en: "Powerful architecture standing in a residential area.",
+        },
+      },
+      "tokyo10.png": {
+        caption: {
+          ja: "目黒川の桜並木。コントロールされた美しい生命。",
+          en: "Cherry trees along the Meguro River. Beautiful life, kept under control.",
+        },
+      },
+      "tokyo11.png": { visible: false },
+      "tokyo12.png": {
+        caption: {
+          ja: "完璧に制御されたツツジ。",
+          en: "Azaleas shaped with perfect control.",
+        },
+      },
+      "tokyo13.png": {
+        caption: {
+          ja: "ヴィンテージタバコ。",
+          en: "Vintage cigarettes.",
+        },
+      },
+      "tokyo14.png": {
+        caption: {
+          ja: "生きた山、硫黄の匂い。",
+          en: "A living mountain. The smell of sulfur.",
+        },
+      },
+      "tokyo15.png": {
+        caption: {
+          ja: "凛と立つキリン。",
+          en: "A giraffe standing tall and still.",
+        },
+      },
     }),
   },
   {
