@@ -99,20 +99,20 @@ export function MofSeriesGallery({ series, sectionLabel }: Props) {
         </header>
 
         <Card
-          className="m-4 cursor-pointer object-contain"
+          className="m-4 cursor-pointer overflow-hidden"
           onClick={() => setSelectedSrc(activeSrc)}
         >
-          <CardContent className="grid gap-2 p-0">
+          <CardContent className="p-0">
             <ImageWithLoading
               key={activeSrc}
               src={activeSrc}
               alt={`${series.title} — ${currentPage} of ${totalPages}`}
-              width={800}
-              height={600}
+              fill
               priority={activeIndex === 0}
               decoding="async"
-              wrapperClassName="relative min-h-[220px] w-full bg-neutral-950"
-              className="h-full max-h-[min(70vh,720px)] w-full object-cover"
+              sizes="(max-width: 768px) 100vw, 1024px"
+              wrapperClassName="relative aspect-[4/3] w-full bg-neutral-950"
+              className="object-cover"
             />
           </CardContent>
         </Card>
@@ -176,7 +176,7 @@ export function MofSeriesGallery({ series, sectionLabel }: Props) {
               return (
                 <li key={photo.file}>
                   <Card
-                    className={`h-16 w-24 shrink-0 cursor-pointer overflow-hidden border p-0 shadow-none transition-opacity md:h-20 md:w-32 ${
+                    className={`aspect-[4/3] w-24 shrink-0 cursor-pointer overflow-hidden border p-0 shadow-none transition-opacity md:w-32 ${
                       i === activeIndex
                         ? "border-neutral-100 opacity-100 ring-1 ring-neutral-400"
                         : "border-neutral-800 opacity-70 hover:opacity-100"
@@ -216,10 +216,10 @@ export function MofSeriesGallery({ series, sectionLabel }: Props) {
               key={selectedSrc}
               src={selectedSrc}
               alt="Selected"
-              width={2000}
-              height={1500}
-              wrapperClassName="relative min-h-[240px] w-full bg-neutral-950"
-              className="h-auto max-w-full"
+              fill
+              sizes="(max-width: 768px) 90vw, 1024px"
+              wrapperClassName="relative aspect-[4/3] w-full bg-neutral-950"
+              className="object-contain"
             />
           ) : null}
         </DialogContent>

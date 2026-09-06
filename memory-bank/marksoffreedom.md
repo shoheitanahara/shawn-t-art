@@ -89,9 +89,9 @@ photos: photosFromFiles(marksoffreedomTokyo2026ImageList, {
 
 ## ギャラリー UI（`MofSeriesGallery`）
 
-- **1枚ずつ** メイン表示 + First / Prev / Next / Last
-- サムネイル帯 — **軽量 WebP のみ**（原寸は読まない）
-- クリック → Dialog で原寸拡大
+- **1枚ずつ** メイン表示（`aspect-[4/3]`）+ First / Prev / Next / Last
+- サムネイル帯 — **4:3 の軽量 WebP**（原寸は読まない）
+- クリック → Dialog で拡大（枠も 4:3）
 - キャプションがあればメイン画像の下に日英表示
 - Archive は `LazySection` で初回表示を遅延
 
@@ -107,7 +107,7 @@ photos: photosFromFiles(marksoffreedomTokyo2026ImageList, {
 | 実行 | `npm run generate-mof-thumbs` |
 | ビルド | `hooks/before.ts` 内で `generateImageList` の直後に自動実行 |
 | 出力先 | `{seriesDir}/thumbs/{basename}.webp` |
-| 仕様 | 最大幅 256px、WebP quality 78、EXIF 回転補正 |
+| 仕様 | **4:3**（320×240）、WebP quality 78、cover クロップ、EXIF 回転補正 |
 | 再生成 | 原画像より古い thumb はスキップ（mtime 比較） |
 
 全 5 シリーズ・78 枚 → サムネイル合計 **約 724KB**。

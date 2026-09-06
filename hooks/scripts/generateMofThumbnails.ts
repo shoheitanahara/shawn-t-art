@@ -13,7 +13,8 @@ const MOF_SERIES_DIRS = [
   "public/images/marksoffreedom/sapporo-2025",
 ];
 
-const THUMB_MAX_WIDTH = 256;
+const THUMB_WIDTH = 320;
+const THUMB_HEIGHT = 240; // 4:3 — matches MOF photo works
 const THUMB_QUALITY = 78;
 
 const IMAGE_PATTERN = /\.(jpg|jpeg|png|gif|webp)$/i;
@@ -33,7 +34,12 @@ async function generateThumb(
 ): Promise<void> {
   await sharp(sourcePath)
     .rotate()
-    .resize({ width: THUMB_MAX_WIDTH, withoutEnlargement: true })
+    .resize({
+      width: THUMB_WIDTH,
+      height: THUMB_HEIGHT,
+      fit: "cover",
+      position: "centre",
+    })
     .webp({ quality: THUMB_QUALITY })
     .toFile(thumbPath);
 }
