@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { getVisibleSeries } from "@/app/marksoffreedom/data";
 import { LazySection } from "@/components/marksoffreedom/lazy-section";
 import { MofSeriesGallery } from "@/components/marksoffreedom/series-gallery";
@@ -125,6 +126,18 @@ const MarksOfFreedomPage = () => {
       ) : null}
 
       <hr className="mb-12 mt-12 w-full border-neutral-700" />
+
+      <section className="w-full pb-6 text-center">
+        <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+          Extra Work
+        </p>
+        <Link
+          href="/marksoffreedom/extra/visitor"
+          className="text-base underline underline-offset-4 hover:opacity-70"
+        >
+          Marks of Freedom — Extra: VISITOR
+        </Link>
+      </section>
     </main>
   );
 };

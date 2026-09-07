@@ -11,6 +11,7 @@ const MOF_SERIES_DIRS = [
   "public/images/marksoffreedom/tokyo-2025",
   "public/images/marksoffreedom/ishikawa-2025",
   "public/images/marksoffreedom/sapporo-2025",
+  "public/images/marksoffreedom/extra/visitor",
 ];
 
 const THUMB_WIDTH = 320;

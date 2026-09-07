@@ -84,6 +84,17 @@ const collections: ImageCollection[] = [
     exportConstName: 'marksoffreedomTokyo2026ImageList',
   },
   {
+    imagesDir: path.join(
+      projectRoot,
+      'public/images/marksoffreedom/extra/visitor',
+    ),
+    outputFilePath: path.join(
+      projectRoot,
+      'app/api/images/marksoffreedom-extra-visitor/data.ts',
+    ),
+    exportConstName: 'marksoffreedomExtraVisitorImageList',
+  },
+  {
     imagesDir: path.join(projectRoot, 'public/images/slashanimal/slashsheep'),
     outputFilePath: path.join(projectRoot, 'app/api/images/slashsheep/data.ts'),
     exportConstName: 'slashsheepImageList',

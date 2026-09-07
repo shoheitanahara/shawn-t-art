@@ -133,6 +133,17 @@ photos: photosFromFiles(marksoffreedomTokyo2026ImageList, {
 - [ ] `npm run generate-mof-thumbs` で thumb 生成
 - [ ] 本ファイル + [image-workflow.md](./image-workflow.md) を必要なら更新
 
+## Extra シリーズ
+
+| パス | 内容 |
+|------|------|
+| `/marksoffreedom/extra/visitor` | Marks of Freedom — Extra: VISITOR |
+
+- `section: "extra"` — メイン MOF ページの Featured / Archive には出ない
+- 画像: `public/images/marksoffreedom/extra/visitor/`
+- データ: `app/marksoffreedom/data.ts`（`id: "extra-visitor"`）
+- サムネイル: 他シリーズと同じ `generateMofThumbnails`
+
 ## マニフェスト文言
 
 長文は `app/marksoffreedom/page.tsx` 内。変更時は [content-guidelines.md](./content-guidelines.md) のトーンに合わせる。

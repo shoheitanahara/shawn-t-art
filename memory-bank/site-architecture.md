@@ -61,6 +61,7 @@
 | `/philosophy` | ARTIST | 公開 | D: 静的 prose（要 B 化） |
 | `/about` | ARTIST | 公開 | D: 静的 prose（やや整備済） |
 | `/marksoffreedom` | WORLDS | 公開 | C: MOF 専用ギャラリー（1枚表示 + data.ts）— [marksoffreedom.md](../memory-bank/marksoffreedom.md) |
+| `/marksoffreedom/extra/visitor` | 非掲載（MOF 末尾 Extra Work から） | 公開 | C: MOF Extra VISITOR |
 | `/thedoubleslash` | WORLDS | 公開 | C: ギャラリー + サブシリーズ |
 | `/slashanimal` | WORLDS | 公開 | C: ギャラリー（複数動物） |
 | `/motion` | MORE | 公開 | D: 動画一覧（DS 派生） |

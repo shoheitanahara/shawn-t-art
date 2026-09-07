@@ -3,6 +3,7 @@ import { marksoffreedomIshikawa2025ImageList } from "@/app/api/images/marksoffre
 import { marksoffreedomSapporo2025ImageList } from "@/app/api/images/marksoffreedom-sapporo-2025/data";
 import { marksoffreedomTokyo2025ImageList } from "@/app/api/images/marksoffreedom-tokyo-2025/data";
 import { marksoffreedomTokyo2026ImageList } from "@/app/api/images/marksoffreedom-tokyo-2026/data";
+import { marksoffreedomExtraVisitorImageList } from "@/app/api/images/marksoffreedom-extra-visitor/data";
 
 export type MofCaption = {
   ja?: string;
@@ -16,7 +17,7 @@ export type MofPhoto = {
   caption?: MofCaption;
 };
 
-export type MofSeriesSection = "featured" | "archive";
+export type MofSeriesSection = "featured" | "archive" | "extra";
 
 export type MofSeries = {
   id: string;
@@ -181,6 +182,15 @@ export const mofSeries: MofSeries[] = [
     imageDir: "/images/marksoffreedom/sapporo-2025",
     photos: photosFromFiles(marksoffreedomSapporo2025ImageList),
   },
+  {
+    id: "extra-visitor",
+    title: "Marks of Freedom — Extra: VISITOR",
+    year: "2026",
+    visible: true,
+    section: "extra",
+    imageDir: "/images/marksoffreedom/extra/visitor",
+    photos: photosFromFiles(marksoffreedomExtraVisitorImageList),
+  },
 ];
 
 export function getPhotoSrc(series: MofSeries, photo: MofPhoto): string {
@@ -204,4 +214,8 @@ export function getVisibleSeries(section?: MofSeriesSection): MofSeries[] {
       series.visible !== false &&
       (section === undefined || series.section === section),
   );
+}
+
+export function getSeriesById(id: string): MofSeries | undefined {
+  return mofSeries.find((series) => series.id === id);
 }
