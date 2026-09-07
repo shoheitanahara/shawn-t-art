@@ -165,16 +165,16 @@ export function LandingPage() {
               href="/marksoffreedom"
               label="Marks of Freedom"
               src="/images/marksoffreedom/sapporo-2025/marksoffreedom08.jpg"
-              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 50vw, 33vw"
               variant="light"
             />
             <Tile
               href="/marksoffreedom"
               label="Marks of Freedom"
-              src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00017.jpg "
-              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00017.jpg"
+              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 50vw, 33vw"
               variant="light"
             />
             <Tile
