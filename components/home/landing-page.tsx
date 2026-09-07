@@ -140,7 +140,7 @@ export function LandingPage() {
             <Tile
               href="/marksoffreedom"
               label="Marks of Freedom"
-              src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00017.jpg"
+              src="/images/marksoffreedom/gunma-2026/mof_gunma_6.png"
               className="col-span-12 md:col-span-7 md:row-span-2 min-h-[240px] md:min-h-[400px]"
               sizes="(max-width: 768px) 100vw, 58vw"
               variant="light"
@@ -165,16 +165,24 @@ export function LandingPage() {
               href="/marksoffreedom"
               label="Marks of Freedom"
               src="/images/marksoffreedom/sapporo-2025/marksoffreedom08.jpg"
-              className="col-span-12 md:col-span-6 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 100vw, 33vw"
               variant="light"
             />
             <Tile
               href="/marksoffreedom"
               label="Marks of Freedom"
-              src="/images/marksoffreedom/gunma-2026/mof_gunma_6.png"
-              className="col-span-12 md:col-span-6 md:row-start-3 min-h-[170px] md:min-h-[200px]"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00017.jpg "
+              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              variant="light"
+            />
+            <Tile
+              href="/marksoffreedom/extra/visitor"
+              label="Marks of Freedom - Extra"
+              src="/images/marksoffreedom/extra/visitor/hpst001.png"
+              className="col-span-12 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              sizes="(max-width: 768px) 100vw, 33vw"
               variant="light"
             />
           </div>
