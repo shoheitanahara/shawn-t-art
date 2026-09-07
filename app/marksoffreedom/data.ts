@@ -60,14 +60,14 @@ export const mofSeries: MofSeries[] = [
     photos: photosFromFiles(marksoffreedomTokyo2026ImageList, {
       "tokyo01.png": {
         caption: {
-          ja: "とあるクラブの壁に飾られた書き初め。",
-          en: "New Year's calligraphy on the wall of a club.",
+          ja: "工場地帯の航空写真の上に立つ。",
+          en: "Standing on an aerial photo of a factory area.",
         },
       },
       "tokyo02.png": {
         caption: {
-          ja: "工場地帯の航空写真の上に立つ。",
-          en: "Standing on an aerial photo of a factory area.",
+          ja: "とあるクラブの壁に飾られた書き初め。",
+          en: "New Year's calligraphy on the wall of a club.",
         },
       },
       "tokyo03.png": {
