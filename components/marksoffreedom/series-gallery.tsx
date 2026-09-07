@@ -123,7 +123,7 @@ export function MofSeriesGallery({ series, sectionLabel }: Props) {
               <p>{activePhoto.caption.ja}</p>
             ) : null}
             {activePhoto?.caption?.en ? (
-              <p className="text-neutral-400">{activePhoto.caption.en}</p>
+              <p>{activePhoto.caption.en}</p>
             ) : null}
           </div>
         ) : null}

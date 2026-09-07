@@ -7,7 +7,7 @@
 - トップのランディングページ（作品セクションへの導線）
 - 各シリーズ・企画ごとのギャラリーページ（画像の一覧・拡大表示・ページネーション）
 - Marks of Freedom、The Double Slash、Slash Animal など複数コレクション
-- Slash Sheep 3D（`@google/model-viewer` による 3D 表示）
+- Slash Animal（`@google/model-viewer` による Slash Sheep 3D 表示を含む）
 - Music、Apparel、Collaborations、Event などの静的コンテンツ
 - NFT Manifest、OpenSea 連携 API（`viem` によるチェーン RPC）
 - 画像プロキシ API（外部ホストの許可リスト対応）
@@ -105,7 +105,7 @@ AI・開発向けの文脈ドキュメント。セットアップ手順は本 RE
 | `/` | ランディング |
 | `/about`, `/philosophy` | プロフィール・思想 |
 | `/thedoubleslash`, `/marksoffreedom`, `/slashanimal` | 各シリーズ |
-| `/slashsheep-3d`, `/motion`, `/music` | 3D・モーション・音楽 |
+| `/motion`, `/music` | モーション・音楽 |
 | `/collaborations`, `/apparel`, `/event`, `/links` | コラボ・アパレル・イベント・リンク |
 | `/nft-manifest`, `/cryptostars`, `/create` | NFT 関連 |
 

@@ -10,6 +10,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import SlashSheepModel from "@/components/slashsheep-model";
 
 type ImagesApiResponse = {
   images?: string[];
@@ -19,8 +20,11 @@ type ImagesApiResponse = {
 
 type AnimalGallerySectionProps = {
   title: string;
-  apiPath: string; // 例: "/api/images/slashsheep"
+  /** 表示順の画像 API（例: 3D レンダー → 既存スタディ） */
+  apiPaths: string[];
   footer: React.ReactNode;
+  /** タイトル直下・ギャラリー前（例: 3D モデル） */
+  beforeGallery?: React.ReactNode;
   /** アンカーリンク用（例: slashcow） */
   sectionId?: string;
 };
@@ -44,11 +48,15 @@ async function fetchImagesPage(
   return { images: data.images, totalPages: data.totalPages };
 }
 
-const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
-  title,
+type PaginatedImageGalleryProps = {
+  apiPath: string;
+  altPrefix: string;
+};
+
+/** 1 API 分のページネーション付き画像グリッド */
+const PaginatedImageGallery: React.FC<PaginatedImageGalleryProps> = ({
   apiPath,
-  footer,
-  sectionId,
+  altPrefix,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState<string[]>([]);
@@ -92,32 +100,27 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
   );
 
   return (
-    <section
-      id={sectionId}
-      className={`w-full flex flex-col items-center justify-center${sectionId ? " scroll-mt-24" : ""}`}
-    >
-      <div className="container mx-auto flex justify-center items-center mt-6 mb-2">
-        <h2 className="text-2xl font-bold">{title}</h2>
-      </div>
-
+    <div className="mb-8 flex w-full flex-col items-center justify-center">
       {loading ? (
-        <div className="text-lg h-[700px] md:h-[300px] flex items-center justify-center">Loading...</div>
+        <div className="flex h-[700px] items-center justify-center text-lg md:h-[300px]">
+          Loading...
+        </div>
       ) : errorMessage ? (
-        <div className="text-lg h-[200px] flex items-center justify-center text-red-600">
+        <div className="flex h-[200px] items-center justify-center text-lg text-red-600">
           {errorMessage}
         </div>
       ) : (
-        <div className="z-10 w-full max-w-2xl items-center justify-between font-mono text-sm grid grid-cols-1 md:grid-cols-2">
+        <div className="z-10 grid w-full max-w-2xl grid-cols-1 items-center justify-between font-mono text-sm md:grid-cols-2">
           {images.map((imageUrl, index) => (
             <Card
               key={`${imageUrl}-${index}`}
-              className="m-4 cursor-pointer h-64 overflow-hidden"
+              className="m-4 h-64 cursor-pointer overflow-hidden"
               onClick={() => setSelectedImage(imageUrl)}
             >
               <CardContent className="grid gap-4">
                 <Image
                   src={imageUrl}
-                  alt={`${title} Image ${index + 1}`}
+                  alt={`${altPrefix} Image ${index + 1}`}
                   width={500}
                   height={300}
                   className="object-cover"
@@ -130,67 +133,101 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
       <Pagination>
         <PaginationContent className="gap-5">
           <PaginationItem>
-            <PaginationLink 
-              onClick={!isFirstPage ? () => setCurrentPage(1) : undefined} // Firstボタン
-              className={`cursor-pointer ${isFirstPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+            <PaginationLink
+              onClick={!isFirstPage ? () => setCurrentPage(1) : undefined}
+              className={`cursor-pointer ${isFirstPage ? "cursor-not-allowed opacity-50" : ""}`}
               aria-disabled={isFirstPage}
             >
               First
-            </PaginationLink> {/* 最初のページボタン */}
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationPrevious 
+            <PaginationPrevious
               onClick={
                 !isFirstPage
                   ? () => setCurrentPage((p) => Math.max(1, p - 1))
                   : undefined
               }
-              className={`cursor-pointer ${isFirstPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              className={`cursor-pointer ${isFirstPage ? "cursor-not-allowed opacity-50" : ""}`}
               aria-disabled={isFirstPage}
-            /> {/* 前へボタン */}
+            />
           </PaginationItem>
           <PaginationItem>
-            <span>{paginationLabel}</span> {/* 現在のページを表示 */}
+            <span>{paginationLabel}</span>
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext 
+            <PaginationNext
               onClick={
                 !isLastPage
                   ? () => setCurrentPage((p) => Math.min(totalPages, p + 1))
                   : undefined
-              } // 修正: 最後のページでのクリックを無効化
-              className={`cursor-pointer ${isLastPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+              }
+              className={`cursor-pointer ${isLastPage ? "cursor-not-allowed opacity-50" : ""}`}
               aria-disabled={isLastPage}
-            /> {/* 次へボタン */}
+            />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink 
-              onClick={!isLastPage ? () => setCurrentPage(totalPages) : undefined} // 修正: 最後のページでのクリックを無効化
-              className={`cursor-pointer ${isLastPage ? "opacity-50 cursor-not-allowed" : ""}`} // 変更: スタイルを修正
+            <PaginationLink
+              onClick={!isLastPage ? () => setCurrentPage(totalPages) : undefined}
+              className={`cursor-pointer ${isLastPage ? "cursor-not-allowed opacity-50" : ""}`}
               aria-disabled={isLastPage}
             >
               Last
-            </PaginationLink> {/* 最後のページボタン */}
+            </PaginationLink>
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-      <Dialog open={!!selectedImage} onOpenChange={(open) => { 
-        if (!open) setSelectedImage(null);
-      }}>
-        <DialogContent className="max-w-xl w-[90%] mx-auto">
+      <Dialog
+        open={!!selectedImage}
+        onOpenChange={(open) => {
+          if (!open) setSelectedImage(null);
+        }}
+      >
+        <DialogContent className="mx-auto w-[90%] max-w-xl">
           {selectedImage ? (
             <Image
               src={selectedImage}
-              alt={`${title} Selected`}
+              alt={`${altPrefix} Selected`}
               width={800}
               height={600}
-              className="max-w-full h-auto"
+              className="h-auto max-w-full"
             />
           ) : (
-            <div className="text-lg h-[400px] flex items-center justify-center">Loading...</div>
+            <div className="flex h-[400px] items-center justify-center text-lg">
+              Loading...
+            </div>
           )}
         </DialogContent>
       </Dialog>
+    </div>
+  );
+};
+
+const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
+  title,
+  apiPaths,
+  footer,
+  beforeGallery,
+  sectionId,
+}) => {
+  return (
+    <section
+      id={sectionId}
+      className={`flex w-full flex-col items-center justify-center${sectionId ? " scroll-mt-24" : ""}`}
+    >
+      <div className="container mx-auto mb-2 mt-6 flex items-center justify-center">
+        <h2 className="text-2xl font-bold">{title}</h2>
+      </div>
+
+      {beforeGallery}
+
+      {apiPaths.map((apiPath) => (
+        <PaginatedImageGallery
+          key={apiPath}
+          apiPath={apiPath}
+          altPrefix={title}
+        />
+      ))}
 
       {footer}
     </section>
@@ -199,8 +236,8 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({
 
 const SlashAnimal: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center mb-6">
-      <div className="container mx-auto mt-6 mb-8 flex flex-col items-center text-center">
+    <div className="mb-6 flex flex-col items-center justify-center">
+      <div className="container mx-auto mb-8 mt-6 flex flex-col items-center text-center">
         <h1 className="text-2xl font-bold">Slash Animal</h1>
         <p className="mt-3 text-sm uppercase tracking-[0.18em]">
           Sculpture Studies / 2026–Ongoing
@@ -216,57 +253,99 @@ const SlashAnimal: React.FC = () => {
 
       <AnimalGallerySection
         title="Slash Sheep"
-        apiPath="/api/images/slashsheep"
+        apiPaths={["/api/images/slashsheep-3d"]}
         sectionId="slashsheep"
+        beforeGallery={
+          <div className="mx-auto mb-6 mt-6 w-full lg:w-2/3 md:mb-12">
+            <SlashSheepModel />
+          </div>
+        }
         footer={
-          <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
-        <p>&quot;Slash Sheep&quot;</p>
-        <p>Year: 2026</p>
-        <p>Creator: <a href="https://x.com/shawn_t_art" target="_blank" rel="noopener noreferrer">@shawn_t_art</a></p>
+          <div className="mx-auto mb-6 mt-6 w-full lg:w-2/3 md:mb-12">
+            <p>&quot;Slash Sheep&quot;</p>
+            <p>Year: 2026</p>
+            <p>
+              Creator:{" "}
+              <a
+                href="https://x.com/shawn_t_art"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @shawn_t_art
+              </a>
+            </p>
 
-        <p className="text-lg mt-12 border-l-4 border-gray-500 pl-4 my-4">自由の傷を背負った、やさしい存在</p>
+            <p className="my-4 mt-12 border-l-4 border-gray-500 pl-4 text-lg">
+              自由の傷を背負った、やさしい存在
+            </p>
 
-        <p className="mt-4">
-          The Double Slash から生まれたこの羊は、自由と抑圧が静かに交わる場所に立っている。
-        </p>
-        <p className="mt-4">
-          その身体に刻まれた線は、反逆ではなく、矛盾を受け入れるための印。やさしさと抵抗、静けさと力、そのすべてが共存している。
-        </p>
-        <p className="mt-4">
-          それは、制約の中にも自由が息づいていることを思い出させる存在。
-        </p>
-        <p className="mt-4">
-          自由は叫ばない。ときに、静けさの中に宿る。
-        </p>
+            <p className="mt-4">
+              The Double Slash
+              から生まれたこの羊は、自由と抑圧が静かに交わる場所に立っている。
+            </p>
+            <p className="mt-4">
+              その身体に刻まれた線は、反逆ではなく、矛盾を受け入れるための印。やさしさと抵抗、静けさと力、そのすべてが共存している。
+            </p>
+            <p className="mt-4">
+              それは、制約の中にも自由が息づいていることを思い出させる存在。
+            </p>
+            <p className="mt-4">
+              自由は叫ばない。ときに、静けさの中に宿る。
+            </p>
 
-        <p className="text-lg italic mt-12 border-l-4 border-gray-500 pl-4 my-4">
-          The gentle creature that carries the scars of freedom
-        </p>
+            <p className="my-4 mt-12 border-l-4 border-gray-500 pl-4 text-lg italic">
+              The gentle creature that carries the scars of freedom
+            </p>
 
-        <p className="mt-4">
-          A pure being that bears marks of contradiction — traces of both gentleness and resistance.
-        </p>
+            <p className="mt-4">
+              A pure being that bears marks of contradiction — traces of both
+              gentleness and resistance.
+            </p>
 
-        <p className="mt-4">
-          Each slash is not a rebellion, but a silent symbol of acceptance — a reminder that even within control, freedom breathes.
-        </p>
+            <p className="mt-4">
+              Each slash is not a rebellion, but a silent symbol of acceptance —
+              a reminder that even within control, freedom breathes.
+            </p>
 
-
-        <p className="mt-4">
-         Freedom does not roar. Sometimes, it rests in silence.
-        </p>
+            <p className="mt-4">
+              Freedom does not roar. Sometimes, it rests in silence.
+            </p>
           </div>
         }
       />
 
-      <div className="w-full max-w-5xl my-10 border-t border-gray-200" />
+      <div className="my-10 w-full max-w-5xl border-t border-gray-200" />
+
+      <AnimalGallerySection
+        title="Slash Sheep - Drawing"
+        apiPaths={["/api/images/slashsheep"]}
+        sectionId="slashsheep-drawing"
+        footer={
+          <div className="mx-auto mb-6 mt-6 w-full lg:w-2/3 md:mb-12">
+            <p>&quot;Slash Sheep&quot;</p>
+            <p>Year: 2026</p>
+            <p>
+              Creator:{" "}
+              <a
+                href="https://x.com/shawn_t_art"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @shawn_t_art
+              </a>
+            </p>
+          </div>
+        }
+      />
+
+      <div className="my-10 w-full max-w-5xl border-t border-gray-200" />
 
       <AnimalGallerySection
         title="Slash Cow"
-        apiPath="/api/images/slashcow"
+        apiPaths={["/api/images/slashcow"]}
         sectionId="slashcow"
         footer={
-          <div className="w-full lg:w-2/3 mx-auto mb-6 md:mb-12 mt-6">
+          <div className="mx-auto mb-6 mt-6 w-full lg:w-2/3 md:mb-12">
             <p>&quot;Slash Cow&quot;</p>
             <p>Year: 2026</p>
             <p>

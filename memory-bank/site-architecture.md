@@ -44,7 +44,6 @@
 
 | パス | 理由 | 導線 |
 |------|------|------|
-| `/slashsheep-3d` | Slash Animal の派生 | 将来 SA ページ内（未実装） |
 | `/create` | OpenSea QR ユーティリティ | 直 URL・必要ならページ内リンク |
 | `/cryptostars` | WIP / Coming soon | 非掲載 |
 
@@ -63,7 +62,7 @@
 | `/marksoffreedom` | WORLDS | 公開 | C: MOF 専用ギャラリー（1枚表示 + data.ts）— [marksoffreedom.md](../memory-bank/marksoffreedom.md) |
 | `/marksoffreedom/extra/visitor` | 非掲載（MOF 末尾 Extra Work から） | 公開 | C: MOF Extra VISITOR |
 | `/thedoubleslash` | WORLDS | 公開 | C: ギャラリー + サブシリーズ |
-| `/slashanimal` | WORLDS | 公開 | C: ギャラリー（複数動物） |
+| `/slashanimal` | WORLDS | 公開 | C: ギャラリー（複数動物 + Slash Sheep 3D） |
 | `/motion` | MORE | 公開 | D: 動画一覧（DS 派生） |
 | `/music` | MORE | 公開 | D: 静的 |
 | `/collaborations` | RECORD | 公開 | D: 静的（Zine は制作中表記） |
@@ -71,7 +70,6 @@
 | `/apparel` | RECORD | 公開 | D: 静的 |
 | `/links` | MORE | 公開 | D: リンク集 |
 | `/nft-manifest` | MORE | 公開 | D: 静的 prose |
-| `/slashsheep-3d` | 非掲載 | 公開 | 3D（model-viewer） |
 | `/create` | 非掲載 | 公開 | ユーティリティ |
 | `/cryptostars` | 非掲載 | WIP | C: ギャラリー（Coming soon 要素あり） |
 
