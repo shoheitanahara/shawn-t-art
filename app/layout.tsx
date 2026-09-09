@@ -17,7 +17,12 @@ export const metadata: Metadata = {
   description:
     'Japanese artist Shawn T. — art between freedom and control: Marks of Freedom, The Double Slash, SlashAnimal, and more.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
 };
 
@@ -26,7 +31,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ja" className="dark">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="bg-background text-foreground">
         <nav className="flex w-full items-center justify-between px-6 pt-5 pb-6 md:px-24 md:pb-12">
