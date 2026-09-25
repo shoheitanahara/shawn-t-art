@@ -27,7 +27,7 @@ const menuSections: MenuSection[] = [
     items: [
       { href: "/marksoffreedom", label: "Marks of Freedom" },
       { href: "/thedoubleslash", label: "The Double Slash" },
-      { href: "/slashanimal", label: "Slash Animal" },
+      { href: "/unusefulcodes", label: "Unuseful Codes" },
     ],
   },
   {
@@ -48,6 +48,7 @@ const menuSections: MenuSection[] = [
   {
     label: "MORE",
     items: [
+      { href: "/slashanimal", label: "Slash Animal" },
       { href: "/motion", label: "Motion" },
       { href: "/music", label: "Music" },
       { href: "/nft-manifest", label: "NFT Manifest" },

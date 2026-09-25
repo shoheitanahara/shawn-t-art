@@ -214,12 +214,12 @@ export function LandingPage() {
             imageSrc="/images/doubleslash-v2/spam/spam-01.png"
           />
           <WorldCard
-            href="/slashanimal"
-            title="Slash Animal"
-            kicker="Sculpture Studies / 2026–Ongoing"
-            subtitleEn="AI-assisted visual studies for a future series of physical sculptures."
-            subtitleJa="将来の彫刻作品に向けたスタディ。"
-            imageSrc="/images/slashanimal/slashsheep/slashsheep01.png"
+            href="/unusefulcodes"
+            title="Unuseful Codes"
+            kicker="Code as Expression / 2026"
+            subtitleEn="Human expression through code that has no practical use."
+            subtitleJa="役に立たないコードで人間的な表現を。"
+            imageSrc="/images/unusefulcodes/cover.svg"
           />
         </div>
       </SectionShell>
@@ -400,6 +400,7 @@ function WorldCard({
         src={imageSrc}
         alt=""
         fill
+        unoptimized={imageSrc.endsWith(".svg")}
         className="object-cover grayscale contrast-[1.03] transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.04] group-hover:contrast-[1.08]"
         sizes="(max-width: 768px) 100vw, 33vw"
       />
