@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#000000"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" font-size="36">
+  <text x="80" y="246" fill="#f5f5f5" xml:space="preserve">const trueFriend = 100;</text>
+  <text x="80" y="298" fill="#f5f5f5" xml:space="preserve">let relationship = 0;</text>
+  <text x="80" y="350" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="402" fill="#f5f5f5" xml:space="preserve">function chance() {</text>
+  <text x="80" y="454" fill="#f5f5f5" xml:space="preserve">  return [-1, 1][Math.floor(Math.random() * 2)];</text>
+  <text x="80" y="506" fill="#f5f5f5" xml:space="preserve">}</text>
+  <text x="80" y="558" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="610" fill="#f5f5f5" xml:space="preserve">while (relationship &lt; trueFriend) {</text>
+  <text x="80" y="662" fill="#a3a3a3" xml:space="preserve">  // You can change chance() to choose().</text>
+  <text x="80" y="714" fill="#f5f5f5" xml:space="preserve">  relationship += chance();</text>
+  <text x="80" y="766" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="818" fill="#f5f5f5" xml:space="preserve">  if (relationship === -trueFriend) break;</text>
+  <text x="80" y="870" fill="#f5f5f5" xml:space="preserve">}</text>
+  <text x="80" y="922" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="974" fill="#a3a3a3" xml:space="preserve">// Shawn T. Art - 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#000000"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" font-size="36">
+  <text x="80" y="376" fill="#f5f5f5" xml:space="preserve">let life = 0;</text>
+  <text x="80" y="428" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="480" fill="#f5f5f5" xml:space="preserve">function day() {</text>
+  <text x="80" y="532" fill="#f5f5f5" xml:space="preserve">  life += 1;</text>
+  <text x="80" y="584" fill="#f5f5f5" xml:space="preserve">  life -= 1;</text>
+  <text x="80" y="636" fill="#f5f5f5" xml:space="preserve">}</text>
+  <text x="80" y="688" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="740" fill="#f5f5f5" xml:space="preserve">setInterval(day, 24 * 60 * 60 * 1000);</text>
+  <text x="80" y="792" fill="#f5f5f5" xml:space="preserve"></text>
+  <text x="80" y="844" fill="#a3a3a3" xml:space="preserve">// Shawn T. Art - 2026</text>
+  </g>
+</svg>

@@ -170,10 +170,11 @@ export function LandingPage() {
               variant="light"
             />
             <Tile
-              href="/marksoffreedom"
-              label="Marks of Freedom"
-              src="/images/marksoffreedom/tokyo-2025/marksoffreedom_tokyo00017.jpg"
-              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px]"
+              href="/unusefulcodes"
+              label="Unuseful Codes"
+              src="/images/unusefulcodes/cover.svg"
+              className="col-span-6 md:col-span-4 md:row-start-3 min-h-[170px] md:min-h-[200px] bg-black"
+              imageClassName="object-cover object-left"
               sizes="(max-width: 768px) 50vw, 33vw"
               variant="light"
             />
@@ -209,16 +210,15 @@ export function LandingPage() {
           <WorldCard
             href="/thedoubleslash"
             title="The Double Slash"
-            subtitleEn="A mark between freedom and oppression — not denial."
-            subtitleJa="自由と抑圧のあいだの記号。「否定」ではない。"
+            subtitleEn="A mark between freedom and oppression."
+            subtitleJa="自由と抑圧のあいだの記号。"
             imageSrc="/images/doubleslash-v2/spam/spam-01.png"
           />
           <WorldCard
             href="/unusefulcodes"
             title="Unuseful Codes"
-            kicker="Code as Expression / 2026"
-            subtitleEn="Human expression through code that has no practical use."
-            subtitleJa="役に立たないコードで人間的な表現を。"
+            subtitleEn="The meaning of code that has no practical use."
+            subtitleJa="役に立たないコードの意味。"
             imageSrc="/images/unusefulcodes/cover.svg"
           />
         </div>
@@ -340,6 +340,7 @@ function Tile({
   label,
   src,
   className,
+  imageClassName,
   sizes,
   variant,
 }: {
@@ -347,6 +348,7 @@ function Tile({
   label: string;
   src: string;
   className: string;
+  imageClassName?: string;
   sizes: string;
   variant: "light" | "dark";
 }) {
@@ -363,7 +365,8 @@ function Tile({
         src={src}
         alt={label}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        unoptimized={src.endsWith(".svg")}
+        className={`transition-transform duration-700 group-hover:scale-[1.03] ${imageClassName ?? "object-cover"}`}
         sizes={sizes}
       />
       <span
