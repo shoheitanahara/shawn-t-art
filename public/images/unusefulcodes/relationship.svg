@@ -2,8 +2,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
   <rect width="1200" height="1200" fill="#000000"/>
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" font-size="36">
-  <text x="80" y="246" fill="#f5f5f5" xml:space="preserve">const trueFriend = 100;</text>
-  <text x="80" y="298" fill="#f5f5f5" xml:space="preserve">let relationship = 0;</text>
+  <text x="80" y="246" fill="#f5f5f5" xml:space="preserve">let relationship = 0;</text>
+  <text x="80" y="298" fill="#f5f5f5" xml:space="preserve">const trueFriend = 100;</text>
   <text x="80" y="350" fill="#f5f5f5" xml:space="preserve"></text>
   <text x="80" y="402" fill="#f5f5f5" xml:space="preserve">function chance() {</text>
   <text x="80" y="454" fill="#f5f5f5" xml:space="preserve">  return [-1, 1][Math.floor(Math.random() * 2)];</text>

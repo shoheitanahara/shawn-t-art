@@ -65,8 +65,8 @@ while (human) {
     number: "03",
     title: "Relationship",
     slug: "relationship",
-    code: `const trueFriend = 100;
-let relationship = 0;
+    code: `let relationship = 0;
+const trueFriend = 100;
 
 function chance() {
   return [-1, 1][Math.floor(Math.random() * 2)];
