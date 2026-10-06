@@ -33,7 +33,7 @@ setInterval(day, 24 * 60 * 60 * 1000);
 
 // Shawn T. Art - 2026`,
     bodyJa: [
-      "何も変わらなかったように見える一日にも、小さな喜びがあり、小さな悲しみがある。最後にはまた同じ場所に戻ったように見えても、その一日には確かに変化が存在していた。日々の些細な変化を、もう少し楽しんでみよう。",
+      "何も変わらなかったように見える一日にも、小さな喜びがあり、小さな悲しみがある。最後にはまた同じ場所に戻ったように見えても、その一日には確かに変化が存在している。日々の些細な変化を、もう少し楽しんでみよう。",
     ],
     bodyEn: [
       "Even on a day when nothing seems to have changed, there are small joys and small sorrows. You may end up in the same place where you started, but small changes still happened during the day. Maybe we can enjoy these small changes in everyday life a little more.",
